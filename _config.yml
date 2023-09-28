@@ -19,8 +19,8 @@ locale                   : "ja-JP"
 title                    : "Site Title"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
+name                     : "キム　キュホ"
+description              : "毎日成長していくブログ"
 url                      : "https://Kim-kyuho.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "Kyuho KIM"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
+  bio              : "毎日成長していく開発者です。"
   location         : "Somewhere"
   email            :
   links:
