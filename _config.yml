@@ -25,7 +25,7 @@ url                      : "https://Kim-kyuho.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : #"/assets/images/mamekoko.png"
-logo                     : #"/assets/images/mamekoko.png"
+logo                     : "/assets/images/totori.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -107,7 +107,7 @@ author:
   name             : "Kyuho KIM"
   avatar           : "/assets/images/mamekoko.png"
   bio              : "毎日成長していく開発者です。"
-  location         : "Live IN NAGOYA, JAPAN"
+  location         : "愛知県名古屋市中区栄"
   email            : "kgh9002@icloud.com"
   links:
     - label: "Email"
