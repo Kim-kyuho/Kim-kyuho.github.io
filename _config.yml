@@ -24,8 +24,8 @@ description              : "毎日成長していくブログ"
 url                      : "https://Kim-kyuho.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "/assets/images/mamekoko.png"
-logo                     : "/assets/images/mamekoko.png"
+teaser                   : #"/assets/images/mamekoko.png"
+logo                     : #"/assets/images/mamekoko.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -108,7 +108,7 @@ author:
   avatar           : "/assets/images/mamekoko.png"
   bio              : "毎日成長していく開発者です。"
   location         : "Live IN NAGOYA, JAPAN"
-  email            :
+  email            : "kgh9002@icloud.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
