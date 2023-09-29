@@ -105,9 +105,9 @@ analytics:
 # Site Author
 author:
   name             : "Kyuho KIM"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/mamekoko.png"
   bio              : "毎日成長していく開発者です。"
-  location         : "Somewhere"
+  location         : "Live IN NAGOYA, JAPAN"
   email            :
   links:
     - label: "Email"
