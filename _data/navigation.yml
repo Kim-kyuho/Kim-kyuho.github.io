@@ -2,6 +2,20 @@
 main:
   - title: "Quick-Start Guide"
     url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+
+# docs links
+docs:
+  - title: Getting Started
+    children:
+      - title: "Today's Study"
+        url: /docs/study-today/
+      - title: "Posts"
+        url: /docs/posts/
+      - title: "Thinking"
+        url: /docs/Thinking/
+      - title: "History"
+        url: /docs/History/
+        
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
