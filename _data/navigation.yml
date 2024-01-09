@@ -10,3 +10,14 @@ main:
     url: /collection-archive/
   - title: "Sitemap"
     url: /sitemap/
+
+# 2024.01.10 sidebar update : simple ver.
+categories:
+  - title: "Categories1"
+    url: /categories/categories1/
+  - title: "Categories2"
+    url: /categories/categories2/
+  - title: "Categories3"
+    url: /categories/categories3/
+  - title: "Categories4"
+    url: /categories/categories4/
