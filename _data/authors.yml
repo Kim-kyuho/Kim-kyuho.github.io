@@ -1,9 +1,9 @@
 # The primary author of this blog.
 # Must be the same as `author` in `_config.yml`.
 # Change `qwtel` to your shortname (used in the front matter to set a page's author, e.g. `author: qwtel`).
-isme2n:
-  name:              aiden min
-  email:             zooqzqz@gmail.com
+author: Kim-kyuho
+  name:              Kim kyuho
+  email:             kgh9002@icloud.com
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
