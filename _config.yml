@@ -20,9 +20,9 @@ tagline:             テストです
 description:         >
   テストです
 # This should be the same author as first entry in `_data/authors.yml`
-author: Kim-kyuho
-  name: Kim kyuho
-  email: kgh9002@icloud.com
+author:
+  name:              Kim kyuho
+  email:             kgh9002@icloud.com
 
 # Fallback image and color
 image:               /assets/img/mario.jpg
