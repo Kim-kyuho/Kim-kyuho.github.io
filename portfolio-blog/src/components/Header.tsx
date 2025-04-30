@@ -1,21 +1,19 @@
+// src/components/Header.tsx
 'use client';
 
 import Link from "next/link";
-
-const isProd = process.env.NODE_ENV === 'production';
-const basePath = isProd ? '/portfolio-blog' : '';
 
 export default function Header() {
   return (
     <header className="flex justify-between items-center p-4 sm:px-8 border-b border-gray-200 dark:border-gray-700">
       <h1 className="text-xl font-bold text-foreground">
-        <Link href={`${basePath}/`}>Kyuho</Link>
+        <Link href="/">Kyuho</Link>
       </h1>
       <nav className="space-x-4 text-sm sm:text-base">
-        <Link className="hover:underline" href={`${basePath}/about`}>About</Link>
-        <Link className="hover:underline" href={`${basePath}/projects`}>Projects</Link>
-        <Link className="hover:underline" href={`${basePath}/blog`}>Blog</Link>
-        <Link className="hover:underline" href={`${basePath}/contact`}>Contact</Link>
+        <Link href="/about" className="hover:underline">About</Link>
+        <Link href="/projects" className="hover:underline">Projects</Link>
+        <Link href="/blog" className="hover:underline">Blog</Link>
+        <Link href="/contact" className="hover:underline">Contact</Link>
       </nav>
     </header>
   );
