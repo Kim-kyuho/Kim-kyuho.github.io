@@ -12,7 +12,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ title, description, image, link }: ProjectCardProps) {
   return (
     <div className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
-      <Image src={image} alt={title} width={600} height={300} className="w-full object-cover" />
+      <Image src={image} alt={title} width={600} height={300} className="w-full object-cover" unoptimized />
       <div className="p-4">
         <h3 className="text-lg font-bold mb-2">{title}</h3>
         <p className="text-sm text-muted-foreground mb-4">{description}</p>

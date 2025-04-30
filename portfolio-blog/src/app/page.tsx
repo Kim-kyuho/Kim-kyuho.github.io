@@ -1,4 +1,4 @@
-// src/app/projects/page.tsx
+// src/app/page.tsx
 import ProjectCard from "@/components/ProjectCard";
 
 const dummyProjects = [
@@ -7,6 +7,7 @@ const dummyProjects = [
     description: "회사 내부 업무를 자동화한 도구입니다.",
     image: "/project1.jpg",
     link: "#",
+    unoptimized: true,
   },
   {
     title: "고객 관리 시스템",
