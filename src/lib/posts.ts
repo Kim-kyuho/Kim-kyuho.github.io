@@ -1,25 +1,27 @@
 // src/lib/posts.ts
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-export function getAllPosts() {
-  const filenames = fs.readdirSync(postsDirectory);
+export async function getAllPosts() {
+  const filenames = await fs.readdir(postsDirectory);
 
-  return filenames.map((filename) => {
-    const filePath = path.join(postsDirectory, filename);
-    const fileContents = fs.readFileSync(filePath, "utf8");
+  const posts = await Promise.all(
+    filenames.map(async (filename) => {
+      const filePath = path.join(postsDirectory, filename);
+      const fileContents = await fs.readFile(filePath, "utf8");
+      const { data } = matter(fileContents);
 
-    const { data, content } = matter(fileContents);
+      return {
+        title: data.title,
+        date: data.date,
+        summary: data.summary,
+        slug: filename.replace(/\.md$/, ""),
+      };
+    })
+  );
 
-    const slug = filename.replace(/\.md$/, "");
-
-    return {
-      slug,
-      content,
-      ...data,
-    };
-  });
+  return posts;
 }
