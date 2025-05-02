@@ -1,13 +1,36 @@
 // src/app/blog/page.tsx
-import Link from 'next/link';
-import { getAllPosts } from '@/lib/posts';
+import Link from "next/link";
+import { getAllPosts } from "@/lib/posts";
 
+// ✅ 정적 빌드 가능하게 비동기 서버 컴포넌트
 export default async function BlogPage() {
-  const posts = await getAllPosts(); // ✅ await는 async 함수 안에서만 사용 가능
+  const posts = await getAllPosts();
+
+  // ✅ 정적 필터링: 전체 카테고리/태그 목록 추출
+  const categories = Array.from(new Set(posts.map((p) => p.category)));
+  //const tags = Array.from(new Set(posts.flatMap((p) => p.tags)));
 
   return (
-    <section className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <section className="max-w-3xl mx-auto py-12 px-4">
       <h1 className="text-3xl font-bold mb-8">Blog</h1>
+
+      {/* ✅ 정적 필터 버튼 (링크 이동 기반) */}
+      <div className="mb-6 space-x-2">
+        <Link href="/blog" className="px-2 py-1 border rounded">
+          All
+        </Link>
+        {categories.map((cat) => (
+          <Link
+            key={cat}
+            href={`/blog/category/${cat}`}
+            className="px-2 py-1 border rounded"
+          >
+            {cat}
+          </Link>
+        ))}
+      </div>
+
+      {/* ✅ 전체 글 목록 렌더링 */}
       <ul className="space-y-6">
         {posts.map((post) => (
           <li key={post.slug} className="border-b pb-4">

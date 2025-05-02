@@ -1,7 +1,17 @@
 // src/lib/posts.ts
+
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
+
+export type Post = {
+    title: string;
+    date: string;
+    summary: string;
+    slug: string;
+    category: string;
+    tags: string[];
+  };
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -15,10 +25,12 @@ export async function getAllPosts() {
       const { data } = matter(fileContents);
 
       return {
-        title: data.title,
-        date: data.date,
-        summary: data.summary,
+        title: data.title || "Untitled", 
+        date: data.date || "Unknown date",
+        summary: data.summary || " ",
         slug: filename.replace(/\.md$/, ""),
+        category: data.category || "etc.", 
+        tags: Array.isArray(data.tags) ? data.tags : [data.tags].filter(Boolean),
       };
     })
   );
