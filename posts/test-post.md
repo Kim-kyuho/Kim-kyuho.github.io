@@ -7,7 +7,6 @@
 ![로고](https://placehold.co/600x200)
 
 ## 코드 블럭
-
 ```ts
 const greet = (name: string) => {
   return `Hello, ${name}`;
