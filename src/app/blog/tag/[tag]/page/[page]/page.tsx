@@ -1,5 +1,3 @@
-// src/app/blog/tag/[tag]/page/[page]/page.tsx
-
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -66,12 +64,12 @@ export default async function TagPage({
       {/* ✅ Pagination */}
       <div className="mt-8 text-center space-x-2">
         {currentPage > 1 && (
-          <Link href={`/blog/tag/${tag}/page/${currentPage - 1}`} className="px-3 py-1 border rounded">
+          <Link href={`/blog/tag/${tag.toLowerCase()}/page/${currentPage - 1}`} className="px-3 py-1 border rounded">
             Prev
           </Link>
         )}
         {currentPage < totalPages && (
-          <Link href={`/blog/tag/${tag}/page/${currentPage + 1}`} className="px-3 py-1 border rounded">
+          <Link href={`/blog/tag/${tag.toLowerCase()}/page/${currentPage + 1}`} className="px-3 py-1 border rounded">
             Next
           </Link>
         )}
