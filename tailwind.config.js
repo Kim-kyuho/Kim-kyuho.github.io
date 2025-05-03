@@ -23,7 +23,7 @@ module.exports = {
                 padding: '0',
                 borderRadius: '0',
               },
-              'pre': {
+              pre: {
                 backgroundColor: '#1f2937', // gray-800
                 color: '#f9fafb',
                 padding: '1em',

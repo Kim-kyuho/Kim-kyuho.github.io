@@ -2,7 +2,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/github.css"; // 원하는 테마로 바꿔도 OK
+import "highlight.js/styles/github-dark.css";// 원하는 테마로 바꿔도 OK
 
 export default function MarkdownRenderer({ content }: { content: string }) {
   return (
