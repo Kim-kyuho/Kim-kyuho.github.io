@@ -12,7 +12,7 @@ export default async function CategoryPage({
   params: Promise<{ category: string }>;
 }) {
   // Next가 넘겨주는 params는 Promise 형태이므로 await로 꺼내 줍니다.
-  const { category } = await params;
+  const { category } = params ? await params : { category: "" };
 
   const posts = await getAllPosts();
   const filtered = posts.filter((post) => post.category === category);
@@ -41,8 +41,9 @@ export default async function CategoryPage({
   );
 }
 
+// 정적 경로 생성 함수 추가
 export async function generateStaticParams(): Promise<{ category: string }[]> {
   const posts = await getAllPosts();
-  const categories = Array.from(new Set(posts.map((p) => p.category)));
+  const categories = Array.from(new Set(posts.map((post) => post.category)));
   return categories.map((category) => ({ category }));
 }
