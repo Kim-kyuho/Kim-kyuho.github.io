@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/posts";
+import Search from "@/components/Search";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -27,6 +28,7 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
   return (
     <section className="max-w-3xl mx-auto py-12 px-4">
       <h1 className="text-3xl font-bold mb-8">Page {currentPage}</h1>
+      <Search />
 
       {/* ✅ 카테고리 필터 */}
       <div className="mb-4 space-x-2">
