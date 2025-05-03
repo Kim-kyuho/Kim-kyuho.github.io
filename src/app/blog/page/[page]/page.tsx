@@ -52,7 +52,7 @@ export default async function BlogPage({
         {Array.from(new Set(allPosts.flatMap((p) => p.tags))).map((tag) => (
           <Link
             key={tag}
-            href={`/blog/tag/${tag.toLowerCase()}`}
+            href={`/blog/tag/${tag.toLowerCase()}/page/1`}
             className="inline-block px-2 py-1 text-sm border rounded hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             #{tag}
