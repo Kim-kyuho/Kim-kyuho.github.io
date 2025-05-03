@@ -3,12 +3,13 @@
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import slugify from "slugify";
 
 export async function generateStaticParams(): Promise<{ tag: string }[]> {
   const posts = await getAllPosts();
   const tags = Array.from(new Set(posts.flatMap((post) => post.tags || [])));
   return tags.map((tag) => ({
-    tag: encodeURIComponent(tag),
+    tag: slugify(tag, { lower: true }),
   }));
 }
 
@@ -18,18 +19,18 @@ export default async function TagPage({
     params: Promise<{ tag: string }>;
   }) {
     const { tag } = await params;
-    const decodedTag = decodeURIComponent(tag);
+    const normalizedTag = tag;
     const posts = await getAllPosts();
 
     const filtered = posts.filter((post) =>
-      post.tags.includes(decodedTag)
+      post.tags.some((t) => slugify(t, { lower: true }) === normalizedTag)
     );
 
   if (filtered.length === 0) return notFound();
 
   return (
     <section className="max-w-3xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-8">#{decodedTag} 태그</h1>
+      <h1 className="text-3xl font-bold mb-8">#{tag} 태그</h1>
       <ul className="space-y-6">
         {filtered.map((post) => (
           <li key={post.slug} className="border-b pb-4">
