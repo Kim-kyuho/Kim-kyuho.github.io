@@ -12,16 +12,16 @@ export async function generateStaticParams(): Promise<{ tag: string }[]> {
 }
 
 export default async function TagPage({
-  params,
-}: {
-  params: Promise<{ tag: string }>;
-}) {
-  const { tag } = await params;
-  const posts = await getAllPosts();
+    params,
+  }: {
+    params: Promise<{ tag: string }>;
+  }) {
+    const { tag } = await params;
+    const posts = await getAllPosts();
 
-  const filtered = posts.filter((post) =>
-    post.tags.some((t) => slugify(t, { lower: true }) === slugify(tag, { lower: true }))
-  );
+    const filtered = posts.filter((post) =>
+      post.tags.some((t) => slugify(t, { lower: true }) === slugify(tag, { lower: true }))
+    );
 
   if (filtered.length === 0) return notFound();
 
