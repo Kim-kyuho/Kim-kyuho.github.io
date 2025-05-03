@@ -1,3 +1,12 @@
+---
+title: "테스트 포스팅"
+date: "2025-05-01"
+summary: "테스트 입니다."
+category: "Program" 
+tags: 
+    - "test"
+---
+
 # 테스트 포스트
 
 이건 테스트 포스트입니다.

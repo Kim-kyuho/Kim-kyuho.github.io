@@ -4,8 +4,8 @@ date: "2025-05-01"
 summary: "처음으로 작성하는 블로그 글입니다."
 category: "Program" 
 tags: 
-    - "잡담"
-    - "인삿말"
+    - "chat"
+    - "introduce"
 ---
 
 안녕하세요! 블로그를 시작합니다.
