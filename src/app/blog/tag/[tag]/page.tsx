@@ -3,25 +3,32 @@
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import slugify from "slugify";
 
 export async function generateStaticParams(): Promise<{ tag: string }[]> {
   const posts = await getAllPosts();
   const tags = Array.from(new Set(posts.flatMap((post) => post.tags || [])));
-  return tags.map((tag) => ({ tag })); // 슬러그화하지 않음
+  // return tags.map((tag) => ({
+  //   tag: encodeURIComponent(tag),
+  // }));
+  return tags.map((tag) => ({ tag }));
 }
 
-export default async function TagPage({
-  params,
-}: {
-  params: Promise<{ tag: string }>;
-}) {
-  const { tag } = await params;
-  const posts = await getAllPosts();
 
-  const filtered = posts.filter((post) =>
-    post.tags.some((t) => slugify(t, { lower: true }) === slugify(tag, { lower: true }))
-  );
+export default async function TagPage({
+    params,
+  }: {
+    params: Promise<{ tag: string }>;
+  }) {
+    const { tag } = await params;
+    // const decodedTag = decodeURIComponent(tag);
+    const posts = await getAllPosts();
+
+    // const filtered = posts.filter((post) =>
+    //   post.tags.includes(decodedTag)
+    // );
+    const filtered = posts.filter((post) => 
+      post.tags.includes(tag)
+    );
 
   if (filtered.length === 0) return notFound();
 
