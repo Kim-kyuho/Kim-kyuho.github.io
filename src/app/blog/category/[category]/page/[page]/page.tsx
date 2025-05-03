@@ -30,6 +30,7 @@ export default async function CategoryPage({
   const currentPage = parseInt(page, 10);
 
   const posts = await getAllPosts();
+  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const filtered = posts.filter((post) => post.category === category);
 
   if (filtered.length === 0) return notFound();

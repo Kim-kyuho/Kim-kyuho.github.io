@@ -27,7 +27,9 @@ export default async function TagPage({
   const POSTS_PER_PAGE = 5;
 
   const posts = await getAllPosts();
-  const filtered = posts.filter((post) => post.tags.includes(tag));
+  const filtered = posts
+    .filter((post) => post.tags.includes(tag))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   if (filtered.length === 0) return notFound();
 
