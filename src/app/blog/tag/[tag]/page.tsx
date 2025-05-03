@@ -22,15 +22,16 @@ export default async function TagPage({
     const decodedTag = decodeURIComponent(tag);
     const posts = await getAllPosts();
 
+    const originalTag = posts.flatMap(p => p.tags).find(t => slugify(t, { lower: true }) === decodedTag);
     const filtered = posts.filter((post) =>
-      post.tags.some((t) => slugify(t, { lower: true }) === decodedTag)
+      post.tags.includes(originalTag || "")
     );
 
   if (filtered.length === 0) return notFound();
 
   return (
     <section className="max-w-3xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-8">#{decodedTag} 태그</h1>
+      <h1 className="text-3xl font-bold mb-8">#{originalTag || decodedTag} 태그</h1>
       <ul className="space-y-6">
         {filtered.map((post) => (
           <li key={post.slug} className="border-b pb-4">
