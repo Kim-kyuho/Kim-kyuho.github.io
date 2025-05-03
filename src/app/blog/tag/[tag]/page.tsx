@@ -35,9 +35,9 @@ export default async function TagPage({
   );
 }
 
-// 정적 경로 생성 함수 추가
-export async function generateStaticParams(): Promise<{ tag: string }[]> {
-    const posts = await getAllPosts();
-    const tags = Array.from(new Set(posts.flatMap((post) => post.tags))); // 모든 태그를 추출하고 중복 제거
-    return tags.map((tag) => ({ tag }));
+//정적 경로 생성 함수 추가
+  export async function generateStaticParams(): Promise<{ tag: string }[]> {
+      const posts = await getAllPosts();
+      const tags = Array.from(new Set(posts.flatMap((post) => post.tags))); // 모든 태그를 추출하고 중복 제거
+      return tags.map((tag) => ({ tag }));
   }
