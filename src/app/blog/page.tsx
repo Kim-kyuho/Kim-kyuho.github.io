@@ -35,10 +35,10 @@ export default async function BlogPage() {
         <span className="font-semibold">Tags:</span>
         {tags.map((tag) => (
           <Link
-            key={tag}
-            href={`/blog/tag/${tag}`}
-            className="inline-block px-2 py-1 text-sm border rounded hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
+          key={tag}
+          href={`/blog/tag/${tag.toLowerCase()}`}
+          className="inline-block px-2 py-1 text-sm border rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+        >
             #{tag}
           </Link>
         ))}
