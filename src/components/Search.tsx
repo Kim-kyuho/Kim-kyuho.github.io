@@ -16,12 +16,17 @@ export default function Search() {
   const [query, setQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetch("/posts.json")
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, []);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [query, selectedTag, selectedCategory]);
 
   const uniqueTags = Array.from(new Set(posts.flatMap((p) => p.tags || [])));
   const uniqueCategories = Array.from(
@@ -38,6 +43,11 @@ export default function Search() {
 
     return matchesQuery && matchesTag && matchesCategory;
   });
+
+  const sorted = [...filtered].sort((a, b) => b.date.localeCompare(a.date));
+  const POSTS_PER_PAGE = 5;
+  const totalPages = Math.ceil(sorted.length / POSTS_PER_PAGE);
+  const paginated = sorted.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
 
   return (
     <div className="p-4 space-y-4">
@@ -86,7 +96,7 @@ export default function Search() {
 
       {/* 결과 리스트 */}
       <ul className="space-y-4">
-        {filtered.map((post) => (
+        {paginated.map((post) => (
           <li key={post.slug} className="border-b pb-2">
             <a href={`/blog/${post.slug}`} className="text-lg font-semibold hover:underline">
               {post.title}
@@ -96,6 +106,18 @@ export default function Search() {
           </li>
         ))}
       </ul>
+
+      <div className="flex gap-2 justify-center mt-6">
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentPage(i + 1)}
+            className={`px-3 py-1 border rounded ${currentPage === i + 1 ? "bg-gray-300 font-bold" : ""}`}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
