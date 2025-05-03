@@ -4,7 +4,7 @@ date: "2025-05-01"
 summary: "테스트 입니다."
 category: "Program" 
 tags: 
-    - "test"
+    - "테스트"
 ---
 
 # 테스트 포스트
