@@ -8,10 +8,11 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams(): Promise<{ tag: string }[]> {
   const posts = await getAllPosts();
   const tags = Array.from(new Set(posts.flatMap((post) => post.tags || [])));
-  return tags.map((tag) => ({ tag: tag.toLowerCase().replace(/\s+/g, "-") }));
+  return tags.map((tag) => ({ tag }));
 }
 
 // 페이지 함수 수정
+// 페이지 함수
 export default async function TagPage({
   params,
 }: {
@@ -20,9 +21,7 @@ export default async function TagPage({
   const { tag } = await params;
   const posts = await getAllPosts();
   const filtered = posts.filter((post) =>
-    post.tags.some(
-      (t) => t.toLowerCase().replace(/\s+/g, "-") === tag
-    )
+    post.tags.includes(tag) // 슬러그화 없이 비교
   );
 
   if (filtered.length === 0) return notFound();
