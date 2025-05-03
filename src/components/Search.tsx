@@ -14,6 +14,7 @@ type Post = {
 export default function Search() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [query, setQuery] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +27,7 @@ export default function Search() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [query, selectedTag, selectedCategory]);
+  }, [query]);
 
   const uniqueTags = Array.from(new Set(posts.flatMap((p) => p.tags || [])));
   const uniqueCategories = Array.from(
@@ -52,13 +53,21 @@ export default function Search() {
   return (
     <div className="p-4 space-y-4">
       {/* 검색창 */}
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="검색어를 입력하세요"
-        className="w-full p-2 border rounded"
-      />
+      <div className="flex">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="검색어를 입력하세요"
+          className="w-full p-2 border rounded"
+        />
+        <button
+          onClick={() => setQuery(inputValue)}
+          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          검색
+        </button>
+      </div>
 
       {/* 카테고리 필터 */}
       <div className="flex flex-wrap gap-2">
