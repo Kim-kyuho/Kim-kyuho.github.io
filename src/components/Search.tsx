@@ -65,7 +65,7 @@ export default function Search() {
           onClick={() => setQuery(inputValue)}
           className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
         >
-          검색
+          select
         </button>
       </div>
 
