@@ -116,7 +116,15 @@ export default function Search() {
         ))}
       </ul>
 
-      <div className="flex gap-2 justify-center mt-6">
+      <div className="flex gap-2 justify-center mt-6 items-center">
+        {currentPage > 1 && (
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            className="px-3 py-1 border rounded"
+          >
+            Prev
+          </button>
+        )}
         {Array.from({ length: totalPages }, (_, i) => (
           <button
             key={i}
@@ -126,6 +134,14 @@ export default function Search() {
             {i + 1}
           </button>
         ))}
+        {currentPage < totalPages && (
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            className="px-3 py-1 border rounded"
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );
