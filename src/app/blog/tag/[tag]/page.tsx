@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams(): Promise<{ tag: string }[]> {
   const posts = await getAllPosts();
   const tags = Array.from(new Set(posts.flatMap((post) => post.tags || [])));
-  return tags.map((tag) => ({ tag }));
+  return tags.map((tag) => ({ tag: tag.toLowerCase() }));
 }
 
 
@@ -18,8 +18,8 @@ export default async function TagPage({
   }) {
     const { tag } = await params;
     const posts = await getAllPosts();
-    const filtered = posts.filter((post) => 
-      post.tags.includes(tag)
+    const filtered = posts.filter((post) =>
+      post.tags.some((t) => t.toLowerCase() === tag.toLowerCase())
     );
 
   if (filtered.length === 0) return notFound();
