@@ -1,6 +1,6 @@
 [
   {
-    "slug": "Create Project",
+    "slug": "create_project",
     "title": "블로그 프로젝트 개시!",
     "summary": "블로그 제작에 앞서..",
     "date": "2025-05-03",
@@ -26,106 +26,6 @@
     "title": "테스트 포스팅",
     "summary": "테스트 입니다.",
     "date": "2025-05-01",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test1",
-    "title": "테스트 포스팅",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-01",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test10",
-    "title": "테스트 포스팅",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-01",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test2",
-    "title": "테스트 포스팅2",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-02",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test3",
-    "title": "테스트 포스팅3",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-03",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test4",
-    "title": "테스트 포스팅4",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-04",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test5",
-    "title": "테스트 포스팅",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-05",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test6",
-    "title": "테스트 포스팅",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-06",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test7",
-    "title": "테스트 포스팅",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-07",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test8",
-    "title": "테스트 포스팅",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-08",
-    "category": "Program",
-    "tags": [
-      "Test"
-    ]
-  },
-  {
-    "slug": "test9",
-    "title": "테스트 포스팅",
-    "summary": "테스트 입니다.",
-    "date": "2025-05-09",
     "category": "Program",
     "tags": [
       "Test"
