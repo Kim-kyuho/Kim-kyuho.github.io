@@ -19,13 +19,11 @@ module.exports = {
                 fontWeight: '500',
               },
               'pre code': {
-                backgroundColor: '#111827', // ✅ gray-900 같은 더 진한 회색
-                color: '#f9fafb',
-                padding: '1em',
-                borderRadius: '0.5rem',
-                overflowX: 'auto',
+                backgroundColor: 'transparent',
+                padding: '0',
+                borderRadius: '0',
               },
-              pre: {
+              'pre': {
                 backgroundColor: '#1f2937', // gray-800
                 color: '#f9fafb',
                 padding: '1em',
