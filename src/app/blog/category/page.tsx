@@ -1,3 +1,4 @@
+import slugify from 'slugify';
 import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -12,7 +13,7 @@ export async function generateStaticParams() {
   const posts = await getAllPosts();
   const categories = Array.from(new Set(posts.map((p) => p.category)));
 
-  return categories.map((category) => ({ category }));
+  return categories.map((category) => ({ category: slugify(category, { lower: true }) }));
 }
 
 // 페이지 컴포넌트
@@ -21,7 +22,9 @@ export default async function CategoryPage({ params }: Props) {
   const { category } = await params;
 
   const allPosts = await getAllPosts();
-  const filtered = allPosts.filter((post) => post.category === category);
+  const filtered = allPosts.filter(
+    (post) => slugify(post.category, { lower: true }) === category
+  );
 
   if (filtered.length === 0) return notFound();
 
