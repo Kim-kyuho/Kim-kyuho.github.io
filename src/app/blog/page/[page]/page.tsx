@@ -31,6 +31,48 @@ export default async function BlogPage({
   return (
     <section className="max-w-3xl mx-auto py-12 px-4">
       <h1 className="text-3xl font-bold mb-8">Page {currentPage}</h1>
+      {/* ✅ 카테고리 필터 */}
+      <div className="mb-4 space-x-2">
+        <span className="font-semibold">Category:</span>
+        <Link href="/blog/page/1" className="px-2 py-1 border rounded">All</Link>
+        {Array.from(new Set(allPosts.map((p) => p.category))).map((cat) => (
+          <Link
+            key={cat}
+            href={`/blog/category/${cat}`}
+            className="px-2 py-1 border rounded"
+          >
+            {cat}
+          </Link>
+        ))}
+      </div>
+
+      {/* ✅ 태그 필터 */}
+      <div className="mb-8 space-x-2">
+        <span className="font-semibold">Tags:</span>
+        {Array.from(new Set(allPosts.flatMap((p) => p.tags))).map((tag) => (
+          <Link
+            key={tag}
+            href={`/blog/tag/${tag.toLowerCase()}`}
+            className="inline-block px-2 py-1 text-sm border rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            #{tag}
+          </Link>
+        ))}
+      </div>
+      {/* 전체 페이지 네비게이션 */}
+      <div className="mt-4 space-x-2">
+        {Array.from({ length: Math.ceil(allPosts.length / POSTS_PER_PAGE) }, (_, i) => (
+          <Link
+            key={i + 1}
+            href={`/blog/page/${i + 1}`}
+            className={`px-2 py-1 border rounded ${
+              i + 1 === currentPage ? 'bg-gray-300 dark:bg-gray-700' : ''
+            }`}
+          >
+            {i + 1}
+          </Link>
+        ))}
+      </div>
       <ul className="space-y-6">
         {paginatedPosts.map((post) => (
           <li key={post.slug} className="border-b pb-4">
