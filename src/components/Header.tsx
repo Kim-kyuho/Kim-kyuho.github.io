@@ -12,7 +12,7 @@ export default function Header() {
       <nav className="space-x-4 text-sm sm:text-base">
         <Link href="/about" className="hover:underline">About</Link>
         <Link href="/projects" className="hover:underline">Projects</Link>
-        <Link href="/blog/page/1" className="hover:underline">Blog</Link>
+        <Link href="/blog" className="hover:underline">Blog</Link>
         <Link href="/contact" className="hover:underline">Contact</Link>
       </nav>
     </header>
