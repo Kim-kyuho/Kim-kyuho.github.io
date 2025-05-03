@@ -38,7 +38,7 @@ export default async function BlogPage({
         {Array.from(new Set(allPosts.map((p) => p.category))).map((cat) => (
           <Link
             key={cat}
-            href={`/blog/category/${cat}`}
+            href={`/blog/category/${cat}/page/1`}
             className="px-2 py-1 border rounded"
           >
             {cat}
