@@ -9,7 +9,7 @@ export async function generateStaticParams(): Promise<{ tag: string }[]> {
   const posts = await getAllPosts();
   const tags = Array.from(new Set(posts.flatMap((post) => post.tags || [])));
   return tags.map((tag) => ({
-    tag: slugify(tag, { lower: true }),
+    tag: encodeURIComponent(slugify(tag, { lower: true })),
   }));
 }
 
@@ -22,7 +22,9 @@ export default async function TagPage({
     const decodedTag = decodeURIComponent(tag);
     const posts = await getAllPosts();
 
-    const originalTag = posts.flatMap(p => p.tags).find(t => slugify(t, { lower: true }) === decodedTag);
+    const originalTag = posts
+      .flatMap((p) => p.tags)
+      .find((t) => slugify(t, { lower: true }) === decodedTag);
     const filtered = posts.filter((post) =>
       post.tags.includes(originalTag || "")
     );
