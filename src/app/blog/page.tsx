@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import slugify from "slugify";
 
 // ✅ 정적 빌드 가능하게 비동기 서버 컴포넌트
 export default async function BlogPage() {
@@ -33,15 +34,19 @@ export default async function BlogPage() {
       {/* ✅ 태그 필터 */}
       <div className="mb-8 space-x-2">
         <span className="font-semibold">Tags:</span>
-        {tags.map((tag) => (
-          <Link
-            key={tag}
-            href={`/blog/tag/${tag}`}
-            className="inline-block px-2 py-1 text-sm border rounded hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
-            #{tag}
-          </Link>
-        ))}
+        {tags.map((tag) => {
+          const slug = slugify(tag, { lower: true });
+
+          return (
+            <Link
+              key={tag}
+              href={`/blog/tag/${slug}`}
+              className="inline-block px-2 py-1 text-sm border rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              #{tag}
+            </Link>
+          );
+        })}
       </div>
 
       {/* ✅ 전체 글 목록 렌더링 */}
