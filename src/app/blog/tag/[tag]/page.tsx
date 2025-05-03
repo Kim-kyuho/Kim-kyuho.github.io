@@ -20,8 +20,9 @@ export default async function TagPage({
   const decodedTag = decodeURIComponent(tag); // URL-safe 형식을 원래 문자열로 변환
   const posts = await getAllPosts();
 
+  // 태그 비교 시 URL-safe 형식으로 변환된 태그와 비교
   const filtered = posts.filter((post) =>
-    post.tags.includes(decodedTag) // 원래 문자열과 비교
+    post.tags.map((t) => encodeURIComponent(t)).includes(tag)
   );
 
   if (filtered.length === 0) return notFound();
