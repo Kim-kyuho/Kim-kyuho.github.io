@@ -1,5 +1,3 @@
-// src/app/blog/page/[page]/page.tsx
-
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -13,20 +11,18 @@ export async function generateStaticParams() {
   return Array.from({ length: totalPages }, (_, i) => ({ page: String(i + 1) }));
 }
 
-export default async function BlogPage({
-  params,
-}: {
-  params: Promise<{ page: string }>;
-}) {
-  const allPosts = await getAllPosts();
-  const sortedPosts = allPosts.sort((a, b) => b.date.localeCompare(a.date));
+export default async function BlogPage({ params }: { params: Promise<{ page: string }> }) {
   const { page } = await params;
   const currentPage = parseInt(page, 10);
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  const endIndex = startIndex + POSTS_PER_PAGE;
-  const paginatedPosts = sortedPosts.slice(startIndex, endIndex);
 
-  if (paginatedPosts.length === 0) return notFound();
+  const allPosts = await getAllPosts();
+  const posts = allPosts.sort((a, b) => b.date.localeCompare(a.date));
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const paginatedPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+
+  if (posts.length > 0 && paginatedPosts.length === 0) return notFound();
 
   return (
     <section className="max-w-3xl mx-auto py-12 px-4">
@@ -35,7 +31,7 @@ export default async function BlogPage({
       <div className="mb-4 space-x-2">
         <span className="font-semibold">Category:</span>
         <Link href="/blog/page/1" className="px-2 py-1 border rounded">All</Link>
-        {Array.from(new Set(allPosts.map((p) => p.category))).map((cat) => (
+        {Array.from(new Set(posts.map((p) => p.category))).map((cat) => (
           <Link
             key={cat}
             href={`/blog/category/${cat}/page/1`}
@@ -49,7 +45,7 @@ export default async function BlogPage({
       {/* ✅ 태그 필터 */}
       <div className="mb-8 space-x-2">
         <span className="font-semibold">Tags:</span>
-        {Array.from(new Set(allPosts.flatMap((p) => p.tags))).map((tag) => (
+        {Array.from(new Set(posts.flatMap((p) => p.tags))).map((tag) => (
           <Link
             key={tag}
             href={`/blog/tag/${tag.toLowerCase()}/page/1`}
@@ -61,13 +57,11 @@ export default async function BlogPage({
       </div>
       {/* 전체 페이지 네비게이션 */}
       <div className="mt-4 space-x-2">
-        {Array.from({ length: Math.ceil(allPosts.length / POSTS_PER_PAGE) }, (_, i) => (
+        {Array.from({ length: totalPages }, (_, i) => (
           <Link
             key={i + 1}
             href={`/blog/page/${i + 1}`}
-            className={`px-2 py-1 border rounded ${
-              i + 1 === currentPage ? 'bg-gray-300 dark:bg-gray-700' : ''
-            }`}
+            className={`px-2 py-1 border rounded ${i + 1 === currentPage ? 'bg-gray-300 dark:bg-gray-700' : ''}`}
           >
             {i + 1}
           </Link>
@@ -94,7 +88,7 @@ export default async function BlogPage({
             Previous
           </Link>
         )}
-        {endIndex < allPosts.length && (
+        {startIndex + POSTS_PER_PAGE < posts.length && (
           <Link href={`/blog/page/${currentPage + 1}`} className="px-2 py-1 border rounded">
             Next
           </Link>
