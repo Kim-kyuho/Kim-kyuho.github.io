@@ -27,6 +27,7 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
   return (
     <section className="max-w-3xl mx-auto py-12 px-4">
       <h1 className="text-3xl font-bold mb-8">Page {currentPage}</h1>
+
       {/* ✅ 카테고리 필터 */}
       <div className="mb-4 space-x-2">
         <span className="font-semibold">Category:</span>
@@ -55,6 +56,7 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
           </Link>
         ))}
       </div>
+
       {/* 전체 페이지 네비게이션 */}
       <div className="mt-4 space-x-2">
         {Array.from({ length: totalPages }, (_, i) => (
@@ -67,6 +69,7 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
           </Link>
         ))}
       </div>
+
       <ul className="space-y-6">
         {paginatedPosts.map((post) => (
           <li key={post.slug} className="border-b pb-4">
