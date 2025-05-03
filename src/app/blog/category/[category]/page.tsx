@@ -4,6 +4,14 @@ import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+
+// 정적 경로 생성 함수 추가
+export async function generateStaticParams(): Promise<{ category: string }[]> {
+  const posts = await getAllPosts();
+  const categories = Array.from(new Set(posts.map((post) => post.category)));
+  return categories.map((category) => ({ category }));
+}
+// 정적 경로 생성 함수는 Promise<{ category: string }[]> 형태로 반환합니다.
 // Next.js 15 App Router가 기대하는 PageProps 타입에 딱 맞추기 위해
 // params를 Promise<{ category: string }>로 선언하고, 내부에서 await 처리합니다.
 export default async function CategoryPage({
@@ -39,11 +47,4 @@ export default async function CategoryPage({
       </ul>
     </section>
   );
-}
-
-// 정적 경로 생성 함수 추가
-export async function generateStaticParams(): Promise<{ category: string }[]> {
-  const posts = await getAllPosts();
-  const categories = Array.from(new Set(posts.map((post) => post.category)));
-  return categories.map((category) => ({ category }));
 }
