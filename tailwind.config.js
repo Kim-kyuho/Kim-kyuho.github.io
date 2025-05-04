@@ -32,6 +32,21 @@ module.exports = {
               },
             },
           },
+          dark: {
+            css: {
+              color: '#d1d5db', // 다크모드 기본 텍스트 색상 (gray-300)
+              a: { color: '#93c5fd' }, // 링크 색상 (blue-300)
+              strong: { color: '#f9fafb' },
+              code: { color: '#fca5a5' }, // red-300
+              'pre code': {
+                backgroundColor: 'transparent',
+              },
+              pre: {
+                backgroundColor: '#1f2937',
+                color: '#f9fafb',
+              },
+            },
+          },
         },
       },
     },

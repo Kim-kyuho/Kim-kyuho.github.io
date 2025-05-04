@@ -38,7 +38,7 @@ export default async function Page({
         <p className="text-sm text-muted-foreground mb-8">{data.date}</p>
         <MarkdownRenderer content={content} />  
 
-        <div className="flex justify-between text-white font-bold drop-shadow">
+        <div className="flex justify-between font-bold drop-shadow">
           {prevPost ? (
             <Link href={`/blog/${prevPost.slug}`} className="hover:underline">
               ← prev
