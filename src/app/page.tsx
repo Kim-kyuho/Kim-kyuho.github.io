@@ -1,7 +1,11 @@
 // src/app/page.tsx
 import Link from "next/link";
+import { getAllPosts } from "@/lib/posts";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await getAllPosts();
+  const latestPosts = posts.slice(0, 5);
+
   return (
     <section className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold mb-6">안녕하세요! 👋</h1>
@@ -18,6 +22,19 @@ export default function HomePage() {
       >
         프로젝트 보러가기 →
       </Link>
+      <div className="mt-12">
+        <h2 className="text-2xl font-semibold mb-4">📝 최근 포스트</h2>
+        <ul className="space-y-3">
+          {latestPosts.map((post) => (
+            <li key={post.slug}>
+              <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:underline">
+                {post.title}
+              </Link>
+              <p className="text-sm text-gray-500">{post.date}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
