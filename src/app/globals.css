@@ -20,6 +20,9 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+  body {
+    color: #f8f8f2; /* 다크모드에서만 더 밝게 */
+  }
 }
 
 body {
