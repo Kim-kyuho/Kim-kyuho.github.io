@@ -40,14 +40,14 @@ export default async function Page({
         <p className="text-sm text-muted-foreground mb-8">{data.date}</p>
         <MarkdownRenderer content={content} />  
 
-        <div className="text-white px-4 py-2 rounded">
+        <div className="flex justify-between">
           {prevPost ? (
-            <Link href={`/blog/${prevPost.slug}`} className="bg-sky-500 hover:bg-sky-700">
+            <Link href={`/blog/${prevPost.slug}`} className="bg-sky-500 hover:bg-sky-700 rounded">
               ← prev
             </Link>
           ) : <div />}
           {nextPost ? (
-            <Link href={`/blog/${nextPost.slug}`} className="bg-sky-500 hover:bg-sky-700">
+            <Link href={`/blog/${nextPost.slug}`} className="bg-sky-500 hover:bg-sky-700 rounded">
               next →
             </Link>
           ) : <div />}
