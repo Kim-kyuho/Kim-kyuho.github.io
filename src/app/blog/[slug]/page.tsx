@@ -40,7 +40,7 @@ export default async function Page({
         <p className="text-sm text-muted-foreground mb-8">{data.date}</p>
         <MarkdownRenderer content={content} />  
 
-        <div className="flex justify-between mt-12 text-sm text-blue-600">
+        <div className="text-white px-4 py-2 rounded">
           {prevPost ? (
             <Link href={`/blog/${prevPost.slug}`} className="bg-sky-500 hover:bg-sky-700">
               ← prev
