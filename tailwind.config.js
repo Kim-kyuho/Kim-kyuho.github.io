@@ -1,6 +1,6 @@
 // tailwind.config.js
 module.exports = {
-    darkMode: "class",
+    darkMode: "media",
     content: [
       "./src/**/*.{js,ts,jsx,tsx,mdx}",
       "./posts/**/*.{md,mdx}",      // 블로그 글까지 포함
