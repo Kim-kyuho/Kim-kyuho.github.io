@@ -40,12 +40,12 @@ export default async function Page({
 
         <div className="flex justify-between">
           {prevPost ? (
-            <Link href={`/blog/${prevPost.slug}`} className="bg-sky-500 hover:bg-sky-700 rounded">
+            <Link href={`/blog/${prevPost.slug}`} className="bg-sky-500 hover:bg-sky-700 rounded !text-white !font-bold">
               ← prev
             </Link>
           ) : <div />}
           {nextPost ? (
-            <Link href={`/blog/${nextPost.slug}`} className="bg-sky-500 hover:bg-sky-700 rounded">
+            <Link href={`/blog/${nextPost.slug}`} className="bg-sky-500 hover:bg-sky-700 rounded !text-white !font-bold">
               next →
             </Link>
           ) : <div />}
