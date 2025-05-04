@@ -29,13 +29,6 @@ body {
 }
 
 /* MarkdownRenderer에서 rehype-highlight와 prose가 겹치는 부분 해결 */
-.prose pre {
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  overflow-x: auto;
-}
-
 .prose code {
   background-color: transparent;
   color: inherit;
