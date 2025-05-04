@@ -40,14 +40,14 @@ export default async function Page({
         <p className="text-sm text-muted-foreground mb-8">{data.date}</p>
         <MarkdownRenderer content={content} />  
 
-        <div className="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded mt-8">
+        <div className="flex justify-between mt-12 text-sm text-blue-600">
           {prevPost ? (
-            <Link href={`/blog/${prevPost.slug}`} className="hover:underline">
+            <Link href={`/blog/${prevPost.slug}`} className="bg-sky-500 hover:bg-sky-700">
               ← prev
             </Link>
           ) : <div />}
           {nextPost ? (
-            <Link href={`/blog/${nextPost.slug}`} className="hover:underline">
+            <Link href={`/blog/${nextPost.slug}`} className="bg-sky-500 hover:bg-sky-700">
               next →
             </Link>
           ) : <div />}
