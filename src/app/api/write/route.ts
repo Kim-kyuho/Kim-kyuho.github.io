@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 // src/app/api/write/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -6,9 +7,18 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO_OWNER = process.env.REPO_OWNER;
 const REPO_NAME = process.env.REPO_NAME;
 
+const validateEnvVars = () => {
+  if (!GITHUB_TOKEN || !REPO_OWNER || !REPO_NAME) {
+    throw new Error("Missing environment variables: GITHUB_TOKEN, REPO_OWNER, or REPO_NAME");
+  }
+};
+
 export async function POST(req: NextRequest) {
   try {
-    const { title, summary, content, category, tags  } = await req.json();
+    validateEnvVars(); // 환경 변수 검증
+
+    const { title, summary, content, category, tags } = await req.json();
+
     if (!title || !summary || !content) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
@@ -40,12 +50,12 @@ export async function POST(req: NextRequest) {
 
     if (!githubRes.ok) {
       const error = await githubRes.json();
-      return NextResponse.json({ error }, { status: 500 });
+      return NextResponse.json({ error: error.message || "Failed to upload to GitHub" }, { status: 500 });
     }
 
     return NextResponse.json({ message: "Success", slug }, { status: 201 });
   } catch (err) {
-    console.error("GitHub API Error:", err);
-    return NextResponse.json({ error: "Unexpected error" }, { status: 500 });;
+    console.error("GitHub API Error:", err instanceof Error ? err.message : err);
+    return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
   }
 }

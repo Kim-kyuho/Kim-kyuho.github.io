@@ -1,5 +1,3 @@
-// src/app/blog/write/page.tsx
-
 "use client";
 
 import { useState } from "react";
@@ -11,30 +9,51 @@ export default function WritePage() {
   const [tags, setTags] = useState("");
   const [category, setCategory] = useState("");
   const [isPublishing, setIsPublishing] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const validateForm = () => {
+    if (!title || !summary || !content) {
+      setErrorMessage("제목, 요약, 내용을 모두 입력해주세요.");
+      return false;
+    }
+    setErrorMessage("");
+    return true;
+  };
 
   const handlePublish = async () => {
-    if (!title || !summary || !content) {
-      alert("제목, 요약, 내용을 모두 입력해주세요.");
-      return;
-    }
+    if (!validateForm()) return;
 
     setIsPublishing(true);
 
-    const res = await fetch("/api/write", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ title, summary, content, tags, category }),
-    });
+    try {
+      const res = await fetch("/api/write", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title, summary, content, tags, category }),
+      });
 
-    setIsPublishing(false);
-
-    if (res.ok) {
-      alert("✅ 업로드 성공!");
-    } else {
-      const errorText = await res.text();
-      alert("❌ 업로드 실패...\n" + errorText);
+      if (res.ok) {
+        setSuccessMessage("✅ 업로드 성공!");
+        setTitle("");
+        setSummary("");
+        setContent("");
+        setTags("");
+        setCategory("");
+      } else {
+        const errorText = await res.json(); // 응답을 JSON으로 처리
+        setErrorMessage(`❌ 업로드 실패...\n${errorText.message || errorText}`);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setErrorMessage(`❌ 네트워크 오류: ${error.message}`);
+      } else {
+        setErrorMessage("❌ 알 수 없는 오류 발생");
+      }
+    } finally {
+      setIsPublishing(false);
     }
   };
 
@@ -71,6 +90,8 @@ export default function WritePage() {
         onChange={(e) => setContent(e.target.value)}
         className="w-full h-60 p-2 border rounded"
       />
+      <div className="text-red-500">{errorMessage}</div>
+      <div className="text-green-500">{successMessage}</div>
       <button
         onClick={handlePublish}
         disabled={isPublishing}
