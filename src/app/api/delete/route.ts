@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 // src/app/api/delete/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -51,7 +52,10 @@ export async function POST(req: NextRequest) {
     });
 
     if (!deleteRes.ok) {
-        return NextResponse.json({ error: await deleteRes.json() }, { status: 500 });
+      return NextResponse.json(
+        { error: await deleteRes.json() },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ message: "Post deleted successfully." });
