@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic";
 // src/app/api/delete/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -52,14 +51,13 @@ export async function POST(req: NextRequest) {
     });
 
     if (!deleteRes.ok) {
-      return NextResponse.json(
-        { error: await deleteRes.json() },
-        { status: 500 }
-      );
+        const error = await deleteRes.json();
+        return NextResponse.json({ error: error.message || "Failed to Delete to GitHub" }, { status: 500 });
     }
 
     return NextResponse.json({ message: "Post deleted successfully." });
-  } catch (error) {
+  } catch (err) {
+    console.error("GitHub API Error:", err instanceof Error ? err.message : err);
     return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
   }
 }
