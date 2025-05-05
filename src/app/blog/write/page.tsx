@@ -145,7 +145,9 @@ export default function WritePage() {
         </div>
 
         <div className="w-40">
-          <label className="block font-semibold mb-1">Select File</label>
+          <label className="block font-bold text-white bg-orange-500 px-3 py-1 rounded mb-1 text-center">
+            Select File
+          </label>
           <input
             type="file"
             accept="image/*"
