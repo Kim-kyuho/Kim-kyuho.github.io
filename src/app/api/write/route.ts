@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     const base64 = Buffer.from(markdown, "utf-8").toString("base64");
 
     const githubRes = await fetch(
-      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/posts/${slug}.md`,
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/posts/${slug}.md`,
       {
         method: "PUT",
         headers: {
