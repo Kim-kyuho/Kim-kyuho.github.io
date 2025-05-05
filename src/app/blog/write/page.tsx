@@ -144,6 +144,41 @@ export default function WritePage() {
         이곳에 이미지를 드래그 앤 드롭하세요
       </div>
 
+      <div className="mb-4">
+        <label className="block font-semibold mb-1">또는 이미지 선택</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={async (e) => {
+            const file = e.target.files?.[0];
+            if (!file || !file.type.startsWith("image/")) return alert("이미지 파일만 업로드할 수 있어요!");
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const res = await fetch("/api/upload-image", {
+              method: "POST",
+              body: formData,
+            });
+
+            if (res.ok) {
+              const { url } = await res.json();
+              const textarea = textareaRef.current;
+              if (!textarea) return;
+              const cursorPos = textarea.selectionStart;
+              const before = content.slice(0, cursorPos);
+              const after = content.slice(cursorPos);
+              setContent(`${before}\n\n![image](${url})\n\n${after}`);
+            } else {
+              alert("이미지 업로드 실패 😢");
+            }
+
+            e.target.value = "";
+          }}
+          className="block w-full"
+        />
+      </div>
+
       <div>
         <label className="block font-semibold mb-1">Markdown Content</label>
         <textarea
