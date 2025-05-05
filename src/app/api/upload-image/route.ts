@@ -1,0 +1,43 @@
+// src/app/api/upload-image/route.ts
+
+import { NextRequest, NextResponse } from "next/server";
+
+const REPO_OWNER = "Kim-kyuho";
+const REPO_NAME = "Kim-kyuho.github.io";
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
+
+export async function POST(req: NextRequest) {
+  const formData = await req.formData();
+  const file = formData.get("file") as File;
+
+  if (!file || !file.type.startsWith("image/")) {
+    return NextResponse.json({ error: "이미지 파일만 업로드할 수 있습니다." }, { status: 400 });
+  }
+
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const content = buffer.toString("base64");
+
+  const filename = `${Date.now()}-${file.name}`;
+  const githubPath = `public/blog-images/${filename}`;
+  const githubApiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${githubPath}`;
+
+  const uploadRes = await fetch(githubApiUrl, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      message: `Upload image ${filename}`,
+      content,
+    }),
+  });
+
+  if (!uploadRes.ok) {
+    const error = await uploadRes.json();
+    return NextResponse.json({ error }, { status: 500 });
+  }
+
+  const imageUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${githubPath}`;
+  return NextResponse.json({ url: imageUrl });
+}

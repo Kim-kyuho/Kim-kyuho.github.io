@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function WritePage() {
   const [title, setTitle] = useState("");
@@ -11,6 +11,8 @@ export default function WritePage() {
   const [isPublishing, setIsPublishing] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const validateForm = () => {
     if (!title || !summary || !content) {
@@ -108,9 +110,44 @@ export default function WritePage() {
         />
       </div>
 
+      {/* Drag-and-drop image upload area */}
+      <div
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={async (e) => {
+          e.preventDefault();
+          const file = e.dataTransfer.files?.[0];
+          if (!file || !file.type.startsWith("image/")) return alert("이미지 파일만 올릴 수 있어요!");
+
+          const formData = new FormData();
+          formData.append("file", file);
+
+          const res = await fetch("/api/upload-image", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (res.ok) {
+            const { url } = await res.json();
+            const textarea = textareaRef.current;
+            if (!textarea) return;
+
+            const cursorPos = textarea.selectionStart;
+            const before = content.slice(0, cursorPos);
+            const after = content.slice(cursorPos);
+            setContent(`${before}\n\n![image](${url})\n\n${after}`);
+          } else {
+            alert("이미지 업로드 실패 😢");
+          }
+        }}
+        className="w-full border-2 border-dashed border-gray-300 rounded p-6 text-center text-sm text-gray-500 hover:border-blue-400 mb-4"
+      >
+        이곳에 이미지를 드래그 앤 드롭하세요
+      </div>
+
       <div>
         <label className="block font-semibold mb-1">Markdown Content</label>
         <textarea
+          ref={textareaRef}
           value={content}
           onChange={(e) => setContent(e.target.value)}
           className="w-full h-60 p-2 border rounded"
