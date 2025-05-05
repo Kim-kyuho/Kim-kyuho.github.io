@@ -2,7 +2,12 @@
 import type { WritePageProps } from "@/app/types/write";
 
 import { useState, useRef, useEffect } from "react";
+import type { PostFormData } from "@/app/types/write";
 
+interface WritePageProps {
+  initialData?: PostFormData;
+  isEditMode?: boolean;
+}
 // Internal component handling write/edit logic
 export function WritePage({ initialData, isEditMode = false }: WritePageProps = {}) {
   const [title, setTitle] = useState("");

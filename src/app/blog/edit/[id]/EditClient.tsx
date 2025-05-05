@@ -9,5 +9,5 @@ interface EditClientProps {
 }
 
 export default function EditClient({ initialData }: EditClientProps) {
-  return <WritePage initialData={initialData} isEditMode={true} />;
+  return <WritePage initialData = {initialData} isEditMode={true} />;
 }
