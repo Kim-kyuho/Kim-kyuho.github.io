@@ -13,11 +13,11 @@ import type { PostFormData } from "@/app/types/write";
 export const dynamic = "force-dynamic";
 
 interface EditPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function EditPage({ params }: EditPageProps) {
-  const id = params.id;
+  const { id } = await params;
   const filePath = path.join(process.cwd(), "posts", `${id}.md`);
 
   try {
