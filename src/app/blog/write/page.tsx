@@ -1,15 +1,9 @@
 "use client";
 import type { WritePageProps } from "@/app/types/write";
-
 import { useState, useRef, useEffect } from "react";
-import type { PostFormData } from "@/app/types/write";
 
-interface WritePageProps {
-  initialData?: PostFormData;
-  isEditMode?: boolean;
-}
 // Internal component handling write/edit logic
-export function WritePage({ initialData, isEditMode = false }: WritePageProps = {}) {
+export default function WritePage({ initialData, isEditMode = false }: WritePageProps) {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
@@ -247,6 +241,4 @@ export function WritePage({ initialData, isEditMode = false }: WritePageProps = 
  }
 
 // Page component for /blog/write route
-export default function Page() {
-  return <WritePage />;
-}
+// Removed duplicate export default
