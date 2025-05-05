@@ -41,5 +41,5 @@ export async function POST(req: NextRequest) {
   }
 
   const imageUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${githubPath}`;
-  return NextResponse.json({ url: imageUrl });
+  return NextResponse.json({ url: imageUrl, redirectTo: "/blog" });
 }
