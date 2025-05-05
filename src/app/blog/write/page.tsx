@@ -27,12 +27,17 @@ export default function WritePage() {
     setIsPublishing(true);
 
     try {
+      const tagArray = tags
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
+
       const res = await fetch("/api/write", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, summary, content, tags, category }),
+        body: JSON.stringify({ title, summary, content, tags: tagArray, category }),
       });
 
       if (res.ok) {
@@ -86,15 +91,7 @@ export default function WritePage() {
         <label className="block font-semibold mb-1">Tags (comma-separated)</label>
         <textarea
           value={tags}
-          onChange={(e) =>
-            setTags(
-              e.target.value
-                .split(",")
-                .map((tag) => tag.trim())
-                .filter(Boolean)
-                .join(", ")
-            )
-          }
+          onChange={(e) => setTags(e.target.value)}
           className="w-full p-2 border rounded"
           placeholder="e.g. react, nextjs, typescript"
         />
