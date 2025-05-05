@@ -51,8 +51,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (!deleteRes.ok) {
-      const error = await deleteRes.json();
-      return NextResponse.json({ error }, { status: 500 });
+        return NextResponse.json({ error: await deleteRes.json() }, { status: 500 });
     }
 
     return NextResponse.json({ message: "Post deleted successfully." });
