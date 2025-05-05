@@ -41,8 +41,8 @@ export async function POST(req: NextRequest) {
       } else {
         console.warn("Invalid tags format. Expected string or array, got:", tags);
       }
-    } catch (e) {
-      console.error("Error parsing tags:", e);
+    } catch (err) {
+      console.error("Error parsing tags:", err);
       tagsArray = [];
     }
 

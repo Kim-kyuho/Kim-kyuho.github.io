@@ -52,7 +52,8 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ message: "Post updated successfully" });
-  } catch (e) {
+  } catch (err) {
+    console.error("GitHub API Error:", err instanceof Error ? err.message : err);
     return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
   }
 }

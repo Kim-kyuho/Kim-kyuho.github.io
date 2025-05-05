@@ -9,7 +9,6 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
   const [category, setCategory] = useState("");
-  const [id] = useState<string | undefined>(undefined);
   const [isPublishing, setIsPublishing] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
