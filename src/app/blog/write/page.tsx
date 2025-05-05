@@ -1,18 +1,33 @@
 "use client";
+import type { WritePageProps } from "@/app/types/write";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
-export default function WritePage() {
+export default function WritePage({ initialData, isEditMode = false }: WritePageProps) {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
   const [category, setCategory] = useState("");
+  const [id] = useState<string | undefined>(undefined);
   const [isPublishing, setIsPublishing] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Initialize states if in edit mode
+  useEffect(() => {
+    if (initialData) {
+      setTitle(initialData.title);
+      setSummary(initialData.summary);
+      setContent(initialData.content);
+      setTags(initialData.tags);
+      setCategory(initialData.category);
+      // Set id if provided
+      (function() { /* no direct setter for id, it's read-only */ })();
+    }
+  }, [initialData]);
 
   const validateForm = () => {
     if (!title || !summary || !content) {
@@ -34,12 +49,22 @@ export default function WritePage() {
         .map((t) => t.trim())
         .filter(Boolean);
 
-      const res = await fetch("/api/write", {
+      const endpoint = isEditMode ? "/api/update" : "/api/write";
+      const payload = {
+        id: isEditMode ? initialData?.id : undefined,
+        title,
+        summary,
+        content,
+        tags: tagArray,
+        category,
+      };
+
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, summary, content, tags: tagArray, category }),
+        body: JSON.stringify(payload),
       });
 
       if (res.ok) {
@@ -49,6 +74,9 @@ export default function WritePage() {
         setContent("");
         setTags("");
         setCategory("");
+        if (isEditMode) {
+          setSuccessMessage("✅ 수정 성공!");
+        }
       } else {
         const errorText = await res.json(); // 응답을 JSON으로 처리
         setErrorMessage(`❌ 업로드 실패...\n${JSON.stringify(errorText)}`);
@@ -201,7 +229,13 @@ export default function WritePage() {
         disabled={isPublishing}
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:opacity-50"
       >
-        {isPublishing ? "업로드 중..." : "Publish to GitHub"}
+        {isPublishing 
+          ? isEditMode 
+            ? "수정 중..." 
+            : "업로드 중..." 
+          : isEditMode 
+            ? "Update Post" 
+            : "Publish to GitHub"}
       </button>
     </div>
   );

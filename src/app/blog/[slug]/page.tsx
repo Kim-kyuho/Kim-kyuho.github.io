@@ -38,6 +38,15 @@ export default async function Page({
         <p className="text-sm text-muted-foreground mb-8">{data.date}</p>
         <MarkdownRenderer content={content} />  
 
+        <div className="flex justify-end mb-4">
+          <Link
+            href={`/blog/edit/${slug}`}
+            className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-sm"
+          >
+            Edit
+          </Link>
+        </div>
+
         <div className="flex justify-between font-bold drop-shadow">
           {prevPost ? (
             <Link href={`/blog/${prevPost.slug}`} className="hover:underline">
