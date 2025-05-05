@@ -58,40 +58,72 @@ export default function WritePage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-4">
-      <h1 className="text-2xl font-bold">✍️ Write New Post</h1>
-      <input
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-2 border rounded"
-      />
-      <textarea
-        placeholder="Summary"
-        value={summary}
-        onChange={(e) => setSummary(e.target.value)}
-        className="w-full p-2 border rounded"
-      />
-      <input
-        placeholder="Category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        className="w-full p-2 border rounded"
-      />
-      <textarea
-        placeholder="Tags (comma-separated)"
-        value={tags}
-        onChange={(e) => setTags(e.target.value)}
-        className="w-full p-2 border rounded"
-      />
-      <textarea
-        placeholder="Markdown Content"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        className="w-full h-60 p-2 border rounded"
-      />
-      <div className="text-red-500">{errorMessage}</div>
-      <div className="text-green-500">{successMessage}</div>
+    <div className="max-w-3xl mx-auto p-6 space-y-6">
+      <h1 className="text-3xl font-bold mb-4">✍️ Write a New Blog Post</h1>
+
+      <div>
+        <label className="block font-semibold mb-1">Title</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-full p-2 border rounded"
+          placeholder="Enter the title"
+        />
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1">Summary</label>
+        <textarea
+          value={summary}
+          onChange={(e) => setSummary(e.target.value)}
+          className="w-full p-2 border rounded"
+          placeholder="Write a short summary"
+        />
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1">Tags (comma-separated)</label>
+        <textarea
+          value={tags}
+          onChange={(e) =>
+            setTags(
+              e.target.value
+                .split(",")
+                .map((tag) => tag.trim())
+                .filter(Boolean)
+                .join(", ")
+            )
+          }
+          className="w-full p-2 border rounded"
+          placeholder="e.g. react, nextjs, typescript"
+        />
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1">Category</label>
+        <input
+          type="text"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="w-full p-2 border rounded"
+          placeholder="Enter category"
+        />
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1">Markdown Content</label>
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className="w-full h-60 p-2 border rounded"
+          placeholder="Write your post in markdown..."
+        />
+      </div>
+
+      {errorMessage && <div className="text-red-500">{errorMessage}</div>}
+      {successMessage && <div className="text-green-500">{successMessage}</div>}
+
       <button
         onClick={handlePublish}
         disabled={isPublishing}

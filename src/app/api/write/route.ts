@@ -30,7 +30,25 @@ export async function POST(req: NextRequest) {
       .replace(/^-+|-+$/g, "")
       .replace(/-+/g, "-");
 
-    const markdown = `---\ntitle: "${title}"\ndate: "${today}"\nsummary: "${summary}"\ncategory: "${category || ""}"\ntags:\n${(tags || []).map((tag: string) => `  - "${tag}"`).join("\n")}\n---\n\n${content}`;
+    let tagsArray: string[] = [];
+    try {
+      if (typeof tags === "string") {
+        tagsArray = tags.split(",").map(t => t.trim()).filter(Boolean);
+      } else if (Array.isArray(tags)) {
+        tagsArray = tags.map(t => String(t).trim()).filter(Boolean);
+      } else {
+        console.warn("Invalid tags format. Expected string or array, got:", tags);
+      }
+    } catch (e) {
+      console.error("Error parsing tags:", e);
+      tagsArray = [];
+    }
+
+    const tagsYaml = Array.isArray(tagsArray)
+      ? tagsArray.map((tag: string) => `  - "${tag}"`).join("\n")
+      : "";
+
+    const markdown = `---\ntitle: "${title}"\ndate: "${today}"\nsummary: "${summary}"\ncategory: "${typeof category === "string" ? category : ""}"\ntags:\n${tagsYaml}\n---\n\n${content}`;
     const base64 = Buffer.from(markdown, "utf-8").toString("base64");
 
     const githubRes = await fetch(
