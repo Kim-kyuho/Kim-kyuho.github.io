@@ -3,7 +3,8 @@ import type { WritePageProps } from "@/app/types/write";
 
 import { useState, useRef, useEffect } from "react";
 
-export default function WritePage({ initialData, isEditMode = false }: WritePageProps) {
+// Internal component handling write/edit logic
+function WritePage({ initialData, isEditMode = false }: WritePageProps = {}) {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
@@ -238,4 +239,9 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
       </button>
     </div>
   );
+ }
+
+// Page component for /blog/write route
+export default function Page() {
+  return <WritePage />;
 }
