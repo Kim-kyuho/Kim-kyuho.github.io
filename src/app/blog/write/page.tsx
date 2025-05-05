@@ -44,7 +44,7 @@ export default function WritePage() {
         setCategory("");
       } else {
         const errorText = await res.json(); // 응답을 JSON으로 처리
-        setErrorMessage(`❌ 업로드 실패...\n${errorText.message || errorText}`);
+        setErrorMessage(`❌ 업로드 실패...\n${JSON.stringify(errorText)}`);
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
