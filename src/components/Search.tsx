@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type Post = {
   slug: string;
@@ -115,6 +116,14 @@ export default function Search() {
           </li>
         ))}
       </ul>
+      <div className="text-right mt-4">
+        <Link
+          href="/blog/write"
+          className="inline-block bg-green-600 text-white font-semibold px-4 py-2 rounded shadow hover:bg-green-700 transition"
+        >
+          ✍️ 글쓰기
+        </Link>
+      </div>
 
       <div className="flex gap-2 justify-center mt-6 items-center">
         {currentPage > 1 && (
