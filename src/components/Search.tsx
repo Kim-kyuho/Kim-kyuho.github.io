@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 type Post = {
+  id: string;
   slug: string;
   title: string;
   summary?: string;
@@ -107,12 +108,37 @@ export default function Search() {
       {/* 결과 리스트 */}
       <ul className="space-y-4">
         {paginated.map((post) => (
-          <li key={post.slug} className="border-b pb-2">
-            <a href={`/blog/${post.slug}`} className="text-lg font-semibold hover:underline">
-              {post.title}
-            </a>
-            <p className="text-sm text-gray-500">{post.date} · {post.category}</p>
-            <p className="text-sm">{post.summary}</p>
+          <li key={post.slug} className="border-b pb-2 flex justify-between items-start">
+            <div>
+              <a href={`/blog/${post.slug}`} className="text-lg font-semibold hover:underline">
+                {post.title}
+              </a>
+              <p className="text-sm text-gray-500">{post.date} · {post.category}</p>
+              <p className="text-sm">{post.summary}</p>
+            </div>
+            <button
+              className="ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600"
+              onClick={async () => {
+                const confirmed = confirm(`정말로 "${post.title}" 글을 삭제하시겠습니까?`);
+                if (!confirmed) return;
+
+                const res = await fetch("/api/delete", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ id: post.id }),
+                });
+
+                if (res.ok) {
+                  alert("삭제 완료!");
+                  location.reload();
+                } else {
+                  const error = await res.json();
+                  alert("삭제 실패: " + JSON.stringify(error));
+                }
+              }}
+            >
+              삭제
+            </button>
           </li>
         ))}
       </ul>

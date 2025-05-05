@@ -30,6 +30,8 @@ export async function POST(req: NextRequest) {
       .replace(/^-+|-+$/g, "")
       .replace(/-+/g, "-");
 
+    const id = Date.now().toString();
+
     let tagsArray: string[] = [];
     try {
       if (typeof tags === "string") {
@@ -48,7 +50,7 @@ export async function POST(req: NextRequest) {
       ? tagsArray.map((tag: string) => `  - "${tag}"`).join("\n")
       : "";
 
-    const markdown = `---\ntitle: "${title}"\ndate: "${today}"\nsummary: "${summary}"\ncategory: "${typeof category === "string" ? category : ""}"\ntags:\n${tagsYaml}\n---\n\n${content}`;
+    const markdown = `---\nid: "${id}"\ntitle: "${title}"\ndate: "${today}"\nsummary: "${summary}"\ncategory: "${typeof category === "string" ? category : ""}"\ntags:\n${tagsYaml}\n---\n\n${content}`;
     const base64 = Buffer.from(markdown, "utf-8").toString("base64");
 
     const githubRes = await fetch(

@@ -5,6 +5,7 @@ import path from "path";
 import matter from "gray-matter";
 
 export type Post = {
+    id: string;
     title: string;
     date: string;
     summary: string;
@@ -25,6 +26,7 @@ export async function getAllPosts() {
       const { data } = matter(fileContents);
 
       return {
+        id: data.id || "",
         title: data.title || "Untitled", 
         date: data.date || "Unknown date",
         summary: data.summary || " ",
