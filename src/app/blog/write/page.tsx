@@ -4,7 +4,7 @@ import type { WritePageProps } from "@/app/types/write";
 import { useState, useRef, useEffect } from "react";
 
 // Internal component handling write/edit logic
-function WritePage({ initialData, isEditMode = false }: WritePageProps = {}) {
+export function WritePage({ initialData, isEditMode = false }: WritePageProps = {}) {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
