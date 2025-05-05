@@ -26,7 +26,7 @@ export default function ContactPage() {
               💻 GitHub: @Kim-kyuho
             </a>
           </li>
-          <li>
+          <li> 
             <a
               href="https://www.linkedin.com/in/your-profile"
               target="_blank"
