@@ -241,4 +241,4 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
  }
 
 // Page component for /blog/write route
-// Removed duplicate export default
+// Removed duplicate export default function Page
