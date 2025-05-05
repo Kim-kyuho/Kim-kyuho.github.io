@@ -17,7 +17,9 @@ export async function POST(req: NextRequest) {
   const buffer = Buffer.from(await file.arrayBuffer());
   const content = buffer.toString("base64");
 
-  const filename = `${Date.now()}-${file.name}`;
+  const hash = Buffer.from(file.name + Date.now()).toString("base64").replace(/[^a-zA-Z0-9]/g, "").slice(0, 16);
+  const extension = file.name.split(".").pop() || "jpg";
+  const filename = `${hash}.${extension}`;
   const githubPath = `public/blog-images/${filename}`;
   const githubApiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${githubPath}`;
 
