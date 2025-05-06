@@ -35,7 +35,7 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
   });
 
   return (
-    <div className="w-full overflow-x-auto touch-pan-x">
+    <div className="w-full overflow-x-auto touch-pan-x scroll-smooth snap-x snap-mandatory">
       <div
         ref={sliderRef}
         className="keen-slider flex"
