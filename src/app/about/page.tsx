@@ -4,14 +4,25 @@ export default function AboutPage() {
       <section className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold mb-6">About Me</h1>
         <p className="text-lg leading-7 text-gray-700 dark:text-gray-300 mb-4">
-          안녕하세요! 저는 C#, Java, JavaScript, ASP.NET, SQL Server 등을 이용한 웹 개발과 데이터베이스 작업을 주로 해온 개발자입니다.
+          はじめまして。私はWebエンジニアとして、業務システムの開発に携わってきました。
         </p>
         <p className="text-lg leading-7 text-gray-700 dark:text-gray-300 mb-4">
-          현재는 React 및 최신 웹 기술에도 관심을 가지고 공부하고 있으며, 포트폴리오 블로그를 통해 저의 작업을 정리하고 공유하고자 합니다.
+          現在はReactやNext.jsをはじめとしたモダンなWeb技術にも関心を持ち、ブログを通じて継続的に学習し、知見を共有しています。
+        </p>
+        <p className="text-lg leading-7 text-gray-700 dark:text-gray-300 mb-4">
+          技術を通じて社会に価値を提供し、信頼されるエンジニアを目指して日々努力しています。
         </p>
         <p className="text-lg leading-7 text-gray-700 dark:text-gray-300">
-          더 나은 개발자, 그리고 좋은 사람으로 성장하는 것이 목표입니다. 감사합니다!
+          より良い開発者、そして人として成長し、社会に貢献できる存在でありたいと考えています。どうぞよろしくお願いいたします。
         </p>
+        <div className="mt-8">
+          <p className="text-lg leading-7 text-gray-700 dark:text-gray-300 mb-2">
+            保有資格：日本語能力試験N1、韓国 情報処理技師
+          </p>
+          <p className="text-lg leading-7 text-gray-700 dark:text-gray-300">
+            使用スキル：C#、Java、JavaScript、ASP.NET、SQL Server、React、Next.js、Oracle DB など
+          </p>
+        </div>
       </section>
     );
   }
