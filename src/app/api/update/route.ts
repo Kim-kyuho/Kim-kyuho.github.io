@@ -33,7 +33,8 @@ export async function POST(req: NextRequest) {
 
     // build new markdown
     const tagLines = tags.map((t: string) => `- "${t}"`).join("\n");
-    const date = new Date().toISOString();
+    const now = new Date().toLocaleString("sv-SE", { timeZone: "Asia/Tokyo" }).replace("T", " ");
+    const date = now;
     const markdown = `---\nid: "${id}"\ntitle: "${title}"\ndate: "${date}"\nsummary: "${summary}"\ncategory: "${category}"\ntags:\n${tagLines}\n---\n\n${content}`;
 
     // update via GitHub API
