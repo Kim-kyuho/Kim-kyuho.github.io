@@ -6,7 +6,7 @@ import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/lib/auth";
+import { authOptions } from "@/lib/auth";
 
 
 // 정적 경로 생성
