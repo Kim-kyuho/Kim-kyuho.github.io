@@ -18,7 +18,7 @@ export default function ProjectCard({ title, description, image, link }: Project
         <h3 className="text-lg font-bold mb-2">{title}</h3>
         <p className="text-sm text-muted-foreground mb-4">{description}</p>
         <Link href={link} className="text-blue-500 hover:underline">
-          자세히 보기 →
+          View Details →
         </Link>
       </div>
     </div>

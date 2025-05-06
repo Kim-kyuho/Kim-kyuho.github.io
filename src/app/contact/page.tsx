@@ -10,10 +10,10 @@ export default function ContactPage() {
         <ul className="space-y-4">
           <li>
             <a
-              href="mailto:gimgyuho@example.com"
+              href="mailto:kgh9002@icloud.com"
               className="text-blue-600 hover:underline"
             >
-              ✉️ Email: gimgyuho@example.com
+              ✉️ Email: kgh9002@icloud.com
             </a>
           </li>
           <li>
@@ -33,7 +33,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
-              🔗 LinkedIn: your-profile
+              🔗 LinkedIn: kgh9002
             </a>
           </li>
         </ul>

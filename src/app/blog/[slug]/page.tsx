@@ -61,7 +61,7 @@ export default async function Page({
         </div>
 
         <div className="mt-8">
-          <h2 className="text-lg font-semibold mb-2">📌 다른 글도 읽어보세요</h2>
+          <h2 className="text-lg font-semibold mb-2">📌 Read More Posts</h2>
           <ul className="space-y-2">
             {recentPosts.map((post) => (
               <li key={post.slug}>
@@ -74,7 +74,7 @@ export default async function Page({
         </div>
         <div className="mt-6 text-center">
             <Link href="/blog" className="inline-block px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded">
-              전체 글 보기 →
+              View All Posts →
             </Link>
           </div>
       </article>

@@ -20,11 +20,10 @@ export default async function HomePage() {
         href="/projects"
         className="inline-block mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
       >
-        프로젝트 보러가기 →
+        View Projects →
       </Link>
       <div className="mt-12">
-        <h2 className="text-2xl font-semibold mb-4">📝 최근 포스트</h2>
-        <ul className="space-y-3">
+      <h2 className="text-2xl font-semibold mb-4">📝 Latest Posts</h2>        <ul className="space-y-3">
           {latestPosts.map((post) => (
             <li key={post.slug}>
               <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:underline">

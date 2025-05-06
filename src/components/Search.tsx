@@ -155,16 +155,20 @@ export default function Search() {
         {currentPage > 1 && (
           <button
             onClick={() => setCurrentPage(currentPage - 1)}
-            className="px-3 py-1 border rounded"
+            className="w-8 h-8 flex items-center justify-center border rounded-full text-sm bg-white text-gray-700 hover:bg-gray-100"
           >
-            Prev
+            ←
           </button>
         )}
         {Array.from({ length: totalPages }, (_, i) => (
           <button
             key={i}
             onClick={() => setCurrentPage(i + 1)}
-            className={`px-3 py-1 border rounded ${currentPage === i + 1 ? "bg-gray-300 font-bold" : ""}`}
+            className={`w-8 h-8 flex items-center justify-center border rounded-full text-sm transition ${
+              currentPage === i + 1
+                ? "bg-gray-800 text-white font-semibold"
+                : "bg-white text-gray-700 hover:bg-gray-100"
+            }`}
           >
             {i + 1}
           </button>
@@ -172,9 +176,9 @@ export default function Search() {
         {currentPage < totalPages && (
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
-            className="px-3 py-1 border rounded"
+            className="w-8 h-8 flex items-center justify-center border rounded-full text-sm bg-white text-gray-700 hover:bg-gray-100"
           >
-            Next
+            →
           </button>
         )}
       </div>

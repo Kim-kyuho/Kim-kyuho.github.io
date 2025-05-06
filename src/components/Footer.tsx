@@ -7,7 +7,7 @@ export default function Footer() {
           <a href="https://github.com/Kim-kyuho" target="_blank" rel="noopener noreferrer" className="hover:underline">
             GitHub
           </a>
-          <a href="mailto:your.email@example.com" className="hover:underline">
+          <a href="mailto:kgh9002@icloud.com" className="hover:underline">
             Email
           </a>
           <a href="/contact" className="hover:underline">
