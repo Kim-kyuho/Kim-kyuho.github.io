@@ -39,7 +39,6 @@ const dummyProjects = [
 export default function ProjectsPage() {
   const [sliderRef] = useKeenSlider({
     loop: true,
-    mode: "snap",
     slides: {
       perView: "auto",
       spacing: 16,
