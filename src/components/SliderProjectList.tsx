@@ -1,8 +1,10 @@
 'use client';
 
-import { useKeenSlider } from 'keen-slider/react';
+import { useEffect, useRef, useState } from 'react';
+import { KeenSlider } from 'keen-slider';
 import 'keen-slider/keen-slider.min.css';
 import ProjectCard from './ProjectCard';
+import type { KeenSliderInstance } from 'keen-slider';
 
 type Project = {
   title: string;
@@ -11,35 +13,48 @@ type Project = {
   link: string;
 };
 
+const sliderOptions = {
+  loop: true,
+  slides: {
+    perView: 1,
+    spacing: 0,
+  },
+  breakpoints: {
+    '(min-width: 640px)': { slides: { perView: 2, spacing: 0 } },
+    '(min-width: 1024px)': { slides: { perView: 3, spacing: 0 } },
+  },
+};
+
 export default function SliderProjectList({ projects }: { projects: Project[] }) {
-  const [sliderRef] = useKeenSlider({
-    loop: true,
-    slides: {
-      perView: 1,
-      spacing: 0,
-    },
-    breakpoints: {
-      '(min-width: 640px)': {
-        slides: {
-          perView: 2,
-          spacing: 0,
-        },
-      },
-      '(min-width: 1024px)': {
-        slides: {
-          perView: 3,
-          spacing: 0,
-        },
-      },
-    },
-  });
+  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [sliderInstance, setSliderInstance] = useState<KeenSliderInstance | null>(null);
+
+  useEffect(() => {
+    if (!sliderRef.current) return;
+    const instance = new KeenSlider(sliderRef.current, sliderOptions);
+    setSliderInstance(instance);
+    return () => instance.destroy();
+  }, []);
 
   return (
-    <div className="w-full overflow-x-auto touch-pan-x scroll-smooth snap-x snap-mandatory">
-      <div
-        ref={sliderRef}
-        className="keen-slider flex"
-      >
+    <div className="relative w-full overflow-x-auto touch-pan-x scroll-smooth snap-x snap-mandatory">
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
+        <button
+          onClick={() => sliderInstance?.prev()}
+          className="bg-white/30 backdrop-blur-md border border-white/40 p-2 rounded-full shadow-lg hover:bg-white/50 transition"
+        >
+          ◀
+        </button>
+      </div>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10">
+        <button
+          onClick={() => sliderInstance?.next()}
+          className="bg-white/30 backdrop-blur-md border border-white/40 p-2 rounded-full shadow-lg hover:bg-white/50 transition"
+        >
+          ▶
+        </button>
+      </div>
+      <div ref={sliderRef} className="keen-slider flex">
         {projects.map((project, idx) => (
           <div
             key={idx}
