@@ -1,4 +1,3 @@
-// components/SliderProjectList.tsx
 'use client';
 
 import { useKeenSlider } from 'keen-slider/react';
@@ -36,15 +35,15 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
   });
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto px-4">
+    <div className="w-full overflow-x-auto touch-pan-x">
       <div
         ref={sliderRef}
-        className="keen-slider w-full flex touch-pan-x"
+        className="keen-slider flex"
       >
         {projects.map((project, idx) => (
           <div
             key={idx}
-            className="keen-slider__slide w-full sm:w-1/2 lg:w-1/3 px-2 box-border"
+            className="keen-slider__slide min-w-full sm:min-w-1/2 lg:min-w-1/3 px-2 box-border"
           >
             <ProjectCard {...project} />
           </div>
