@@ -23,7 +23,7 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
       {projects.map((project, idx) => (
         <div
           key={idx}
-          className="keen-slider__slide snap-center w-[85vw] sm:w-[50vw] md:w-[35vw] lg:w-[25vw] transition duration-300 scale-90 hover:scale-100 blur-[2px] hover:blur-none"
+          className="keen-slider__slide snap-center w-[85vw] sm:w-[50vw] md:w-[35vw] lg:w-[25vw] transition-transform duration-500 transform scale-90 hover:scale-100 hover:-translate-y-1"
         >
           <ProjectCard {...project} />
         </div>
