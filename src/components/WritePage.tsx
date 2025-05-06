@@ -93,10 +93,10 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
 
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-bold mb-4">✍️ Write a New Blog Post</h1>
+      <h1 className="text-3xl font-bold mb-4">✍️ Create a New Blog Post</h1>
 
       <div>
-        <label className="block font-semibold mb-1">Title</label>
+        <label className="block font-semibold mb-1">Post Title</label>
         <input
           type="text"
           value={title}
@@ -107,7 +107,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
       </div>
 
       <div>
-        <label className="block font-semibold mb-1">Summary</label>
+        <label className="block font-semibold mb-1">Post Summary</label>
         <textarea
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
@@ -127,7 +127,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
       </div>
 
       <div>
-        <label className="block font-semibold mb-1">Category</label>
+        <label className="block font-semibold mb-1">Post Category</label>
         <input
           type="text"
           value={category}
@@ -143,7 +143,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
           onDrop={async (e) => {
             e.preventDefault();
             const file = e.dataTransfer.files?.[0];
-            if (!file || !file.type.startsWith("image/")) return alert("이미지 파일만 올릴 수 있어요!");
+            if (!file || !file.type.startsWith("image/")) return alert("Only image files are allowed!");
 
             const formData = new FormData();
             formData.append("file", file);
@@ -163,24 +163,24 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
               const after = content.slice(cursorPos);
               setContent(`${before}\n\n![image](${url})\n\n${after}`);
             } else {
-              alert("이미지 업로드 실패 😢");
+              alert("Image upload failed 😢");
             }
           }}
           className="flex-1 border-2 border-dashed border-gray-300 rounded p-6 text-center text-sm text-gray-500 hover:border-blue-400"
         >
-          이곳에 이미지를 드래그 앤 드롭하세요
+          Drag and drop an image here
         </div>
 
         <div className="w-40">
           <label className="block font-bold text-white bg-orange-500 px-3 py-1 rounded mb-1 text-center">
-            Select File
+            Select Image File
           </label>
           <input
             type="file"
             accept="image/*"
             onChange={async (e) => {
               const file = e.target.files?.[0];
-              if (!file || !file.type.startsWith("image/")) return alert("이미지 파일만 업로드할 수 있어요!");
+              if (!file || !file.type.startsWith("image/")) return alert("Only image files can be uploaded!");
 
               const formData = new FormData();
               formData.append("file", file);
@@ -199,7 +199,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
                 const after = content.slice(cursorPos);
                 setContent(`${before}\n\n![image](${url})\n\n${after}`);
               } else {
-                alert("이미지 업로드 실패 😢");
+                alert("Image upload failed 😢");
               }
 
               e.target.value = "";
@@ -210,7 +210,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
       </div>
 
       <div>
-        <label className="block font-semibold mb-1">Markdown Content</label>
+        <label className="block font-semibold mb-1">Post Body (Markdown)</label>
         <textarea
           ref={textareaRef}
           value={content}
@@ -220,8 +220,8 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
         />
       </div>
 
-      {errorMessage && <div className="text-red-500">{errorMessage}</div>}
-      {successMessage && <div className="text-green-500">{successMessage}</div>}
+      {errorMessage && <div className="text-red-500 font-medium">{errorMessage}</div>}
+      {successMessage && <div className="text-green-600 font-medium">{successMessage}</div>}
 
       <button
         onClick={handlePublish}
