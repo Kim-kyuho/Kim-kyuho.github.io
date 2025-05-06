@@ -1,4 +1,3 @@
-// src/app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 
@@ -7,26 +6,32 @@ const handler = NextAuth({
     GitHubProvider({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
+      profile(profile) {
+        return {
+          id: profile.id.toString(),
+          name: profile.name,
+          email: profile.email,
+          image: profile.avatar_url,
+          login: profile.login, // GitHub 사용자명
+        };
+      },
     }),
   ],
   callbacks: {
-    async jwt({ token, profile }) {
-      if (profile) {
-        const githubProfile = profile as any; // 타입 단언
-        token.login = githubProfile.login;
-        token.isAdmin = githubProfile.login === "Kim-kyuho";
+    async jwt({ token, user }) {
+      if (user ) {
+        const customUser = user as unknown as { login: string };
+        token.login = customUser.login;
+        token.isAdmin = customUser.login === "Kim-kyuho";
       }
       return token;
     },
     async session({ session, token }) {
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          login: token.login,
-          isAdmin: token.isAdmin,
-        },
-      };
+      if (session.user) {
+        session.user.login = token.login;
+        session.user.isAdmin = token.isAdmin;
+      }
+      return session;
     },
   },
 });
