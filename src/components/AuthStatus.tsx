@@ -1,18 +1,10 @@
 // src/components/AuthStatus.tsx
+"use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function AuthStatus() {
-  const { data: session } = useSession() as {
-    data: {
-      user: {
-        name?: string | null;
-        email?: string | null;
-        image?: string | null;
-        isAdmin?: boolean;
-      };
-    };
-  };
+  const { data: session } = useSession();
 
   if (!session || !session.user) {
     return (
