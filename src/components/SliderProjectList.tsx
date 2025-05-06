@@ -5,7 +5,14 @@ import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import ProjectCard from './ProjectCard';
 
-export default function SliderProjectList({ projects }: { projects: any[] }) {
+type Project = {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+};
+
+export default function SliderProjectList({ projects }: { projects: Project[] }) {
   const [sliderRef] = useKeenSlider({
     loop: true,
     slides: { perView: 'auto', spacing: 16 },
