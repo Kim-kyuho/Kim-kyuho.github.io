@@ -67,15 +67,18 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
       });
 
       if (res.ok) {
-        setSuccessMessage("✅ アップロード成功！");
+        if (isEditMode) {
+          setSuccessMessage("✅ 更新成功！");
+          window.location.href = "https://kyulog.vercel.app/blog/";
+        } else {
+          setSuccessMessage("✅ アップロード成功！");
+          window.location.href = "https://kyulog.vercel.app/blog/";
+        }
         setTitle("");
         setSummary("");
         setContent("");
         setTags("");
         setCategory("");
-        if (isEditMode) {
-          setSuccessMessage("✅ 更新成功！");
-        }
       } else {
         const errorText = await res.json(); // 응답을 JSON으로 처리
         setErrorMessage(`❌ アップロード失敗...\n${JSON.stringify(errorText)}`);
