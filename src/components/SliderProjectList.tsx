@@ -36,15 +36,17 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
   });
 
   return (
-    <div ref={sliderRef} className="keen-slider flex justify-center">
-      {projects.map((project, idx) => (
-        <div
-          key={idx}
-          className="keen-slider__slide"
-        >
-          <ProjectCard {...project} />
-        </div>
-      ))}
+    <div className="max-w-screen-xl mx-auto px-4">
+      <div ref={sliderRef} className="keen-slider flex justify-center">
+        {projects.map((project, idx) => (
+          <div
+            key={idx}
+            className="keen-slider__slide"
+          >
+            <ProjectCard {...project} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
