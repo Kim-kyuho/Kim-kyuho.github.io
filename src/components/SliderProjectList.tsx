@@ -36,8 +36,8 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
   });
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4">
-      <div ref={sliderRef} className="keen-slider flex justify-center">
+    <div className="w-full flex justify-center">
+      <div ref={sliderRef} className="keen-slider w-full max-w-screen-lg px-4">
         {projects.map((project, idx) => (
           <div
             key={idx}
