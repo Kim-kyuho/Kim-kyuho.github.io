@@ -10,7 +10,7 @@ const dummyProjects = [
   },
   {
     title: "GIS 기반 설비 정보 시스템 개발",
-    description: "가스 및 전기 설비에 대한 지도 기반 정보 시스템의 기능을 개선하고 유지보수했습니다.",
+    description: "ArcGIS기반의 가스 및 전기 설비에 대한 지도 정보 시스템을 개발하였습니다. 고객의 요구사항을 반영하여 사용자 친화적인 UI/UX를 구현했습니다.",
     image: "/blog-images/project2.jpg",
     link: "#",
   },
@@ -22,7 +22,7 @@ const dummyProjects = [
   },
   {
     title: "VIP 고객용 서비스 시스템 개발",
-    description: "VIP 고객 전용 가입 절차를 간소화하기 위한 신청 페이지 및 백엔드 로직을 개발하였습니다.",
+    description: "VIP 고객 전용 가입 절차를 간소화하기 위한 요건 정의부터 시스템 설계, 개발을 담당했습니다. 고객의 편의를 최우선으로 고려했습니다.",
     image: "/blog-images/project4.jpg",
     link: "#",
   },
