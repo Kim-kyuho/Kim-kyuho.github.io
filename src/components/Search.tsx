@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 type Post = {
   id: string;
@@ -14,6 +15,7 @@ type Post = {
 };
 
 export default function Search() {
+  const { data: session } = useSession();
   const [posts, setPosts] = useState<Post[]>([]);
   const [query, setQuery] = useState("");
   const [inputValue, setInputValue] = useState("");
@@ -119,39 +121,43 @@ export default function Search() {
               <p className="text-sm text-gray-500">{post.date} · {post.category}</p>
               <p className="text-sm">{post.summary}</p>
             </div>
-            <button
-              className="ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600"
-              onClick={async () => {
-                const confirmed = confirm(`Are you sure you want to delete "${post.title}"?`);
-                if (!confirmed) return;
+            {session?.user?.isAdmin && (
+              <button
+                className="ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600"
+                onClick={async () => {
+                  const confirmed = confirm(`Are you sure you want to delete "${post.title}"?`);
+                  if (!confirmed) return;
 
-                const res = await fetch("/api/delete", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ id: post.id }),
-                });
+                  const res = await fetch("/api/delete", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id: post.id }),
+                  });
 
-                if (res.ok) {
-                  alert("Post deleted successfully!");
-                  location.reload();
-                } else {
-                  const error = await res.json();
-                  alert("Failed to delete post: " + JSON.stringify(error));
-                }
-              }}
-            >
-              delete
-            </button>
+                  if (res.ok) {
+                    alert("Post deleted successfully!");
+                    location.reload();
+                  } else {
+                    const error = await res.json();
+                    alert("Failed to delete post: " + JSON.stringify(error));
+                  }
+                }}
+              >
+                delete
+              </button>
+            )}
           </li>
         ))}
       </ul>
       <div className="text-right mt-4">
-        <Link
-          href="/blog/write"
-          className="inline-block bg-blue-200 text-blue-900 font-medium px-4 py-2 rounded hover:bg-blue-300 transition"
-        >
-          New Post
-        </Link>
+        {session?.user?.isAdmin && (
+          <Link
+            href="/blog/write"
+            className="inline-block bg-blue-200 text-blue-900 font-medium px-4 py-2 rounded hover:bg-blue-300 transition"
+          >
+            New Post
+          </Link>
+        )}
       </div>
 
       <div className="flex gap-2 justify-center mt-6 items-center">

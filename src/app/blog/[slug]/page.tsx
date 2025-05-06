@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/lib/auth";
 
 
 // 정적 경로 생성
@@ -20,7 +22,11 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const [session, { slug }] = await Promise.all([
+    getServerSession(authOptions),
+    params,
+  ]);
+
   const posts = await getAllPosts();
   const currentIndex = posts.findIndex((p) => p.slug === slug);
   const prevPost = posts[currentIndex + 1];
@@ -38,14 +44,16 @@ export default async function Page({
         <p className="text-sm text-muted-foreground mb-8">{data.date}</p>
         <MarkdownRenderer content={content} />  
 
-        <div className="flex justify-end mb-4">
-          <Link
-            href={`/blog/edit/${slug}`}
-            className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-sm"
-          >
-            Edit
-          </Link>
-        </div>
+        {session?.user?.isAdmin && (
+          <div className="flex justify-end mb-4">
+            <Link
+              href={`/blog/edit/${slug}`}
+              className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-sm"
+            >
+              Edit
+            </Link>
+          </div>
+        )}
 
         <div className="flex justify-between font-bold drop-shadow">
           {prevPost ? (
