@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth from "next-auth/next";
 import GitHubProvider from "next-auth/providers/github";
 
 const handler = NextAuth({
@@ -19,17 +19,16 @@ const handler = NextAuth({
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if (user ) {
-        const customUser = user as unknown as { login: string };
-        token.login = customUser.login;
-        token.isAdmin = customUser.login === "Kim-kyuho";
+      if (user && "login" in user) {
+        token.login = user.login;
+        token.isAdmin = user.login === "Kim-kyuho";
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.login = token.login;
-        session.user.isAdmin = token.isAdmin;
+        (session.user as any).login = token.login;
+        (session.user as any).isAdmin = token.isAdmin;
       }
       return session;
     },
