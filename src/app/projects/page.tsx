@@ -44,17 +44,16 @@ export default function ProjectsPage() {
       perView: "auto",
       spacing: 16,
     },
-    centered: true,
   });
 
   return (
     <section>
       <h1 className="text-2xl font-bold mb-6 text-center">My Projects</h1>
-      <div ref={sliderRef} className="keen-slider">
+      <div ref={sliderRef} className="keen-slider flex justify-center">
         {dummyProjects.map((project, idx) => (
           <div
             key={idx}
-            className="keen-slider__slide w-[85vw] sm:w-[50vw] md:w-[35vw] lg:w-[25vw] transition duration-300 scale-90 hover:scale-100 blur-[2px] hover:blur-none"
+            className="keen-slider__slide snap-center w-[85vw] sm:w-[50vw] md:w-[35vw] lg:w-[25vw] transition duration-300 scale-90 hover:scale-100 blur-[2px] hover:blur-none"
           >
             <ProjectCard {...project} />
           </div>
