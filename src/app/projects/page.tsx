@@ -1,5 +1,7 @@
 // src/app/page.tsx
 import ProjectCard from "@/components/ProjectCard";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 
 const dummyProjects = [
   {
@@ -35,12 +37,25 @@ const dummyProjects = [
 ];
 
 export default function ProjectsPage() {
+  const [sliderRef] = useKeenSlider({
+    loop: true,
+    mode: "snap",
+    slides: {
+      perView: "auto",
+      spacing: 16,
+    },
+    centered: true,
+  });
+
   return (
     <section>
-      <h1 className="text-2xl font-bold mb-6">My Projects</h1>
-      <div className="flex overflow-x-auto px-4 md:px-12 space-x-6 snap-x snap-mandatory scrollbar-hide">
+      <h1 className="text-2xl font-bold mb-6 text-center">My Projects</h1>
+      <div ref={sliderRef} className="keen-slider">
         {dummyProjects.map((project, idx) => (
-          <div key={idx} className="w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[25vw] snap-center flex-shrink-0 transition duration-300 hover:blur-none blur-[1px] hover:scale-105">
+          <div
+            key={idx}
+            className="keen-slider__slide w-[85vw] sm:w-[50vw] md:w-[35vw] lg:w-[25vw] transition duration-300 scale-90 hover:scale-100 blur-[2px] hover:blur-none"
+          >
             <ProjectCard {...project} />
           </div>
         ))}
