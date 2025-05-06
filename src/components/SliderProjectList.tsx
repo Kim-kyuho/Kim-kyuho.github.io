@@ -17,19 +17,19 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
     loop: true,
     slides: {
       perView: 1,
-      spacing: 16,
+      spacing: 0,
     },
     breakpoints: {
       '(min-width: 640px)': {
         slides: {
           perView: 2,
-          spacing: 20,
+          spacing: 0,
         },
       },
       '(min-width: 1024px)': {
         slides: {
           perView: 3,
-          spacing: 24,
+          spacing: 0,
         },
       },
     },
@@ -41,7 +41,7 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
         {projects.map((project, idx) => (
           <div
             key={idx}
-            className="keen-slider__slide"
+            className="keen-slider__slide w-full"
           >
             <ProjectCard {...project} />
           </div>
