@@ -54,51 +54,51 @@ export default function Search() {
 
   return (
     <div className="p-4 space-y-4">
-      {/* 검색창 */}
+      {/* Search input */}
       <div className="flex">
         <input
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder="검색어를 입력하세요"
-          className="w-full p-2 border rounded"
+          placeholder="Enter keyword"
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <button
           onClick={() => setQuery(inputValue)}
-          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
+          className="ml-2 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700"
         >
-          Search
+          🔍 Search
         </button>
       </div>
 
-      {/* 카테고리 필터 */}
-      <div className="flex flex-wrap gap-2">
-        <span className="font-bold">카테고리:</span>
-        <button onClick={() => setSelectedCategory(null)} className="underline">
-          전체
+      {/* Category Filter */}
+      <div className="flex flex-wrap gap-2 items-center">
+        <span className="font-semibold text-gray-700">Category:</span>
+        <button onClick={() => setSelectedCategory(null)} className="text-sm underline text-gray-500 hover:text-gray-800">
+          All
         </button>
         {uniqueCategories.map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`underline ${selectedCategory === cat ? "font-bold text-blue-600" : ""}`}
+            className={`text-sm underline hover:text-gray-800 ${selectedCategory === cat ? "font-bold text-gray-900" : "text-gray-500"}`}
           >
             {cat}
           </button>
         ))}
       </div>
 
-      {/* 태그 필터 */}
-      <div className="flex flex-wrap gap-2">
-        <span className="font-bold">태그:</span>
-        <button onClick={() => setSelectedTag(null)} className="underline">
-          전체
+      {/* Tag Filter */}
+      <div className="flex flex-wrap gap-2 items-center">
+        <span className="font-semibold text-gray-700">Tag:</span>
+        <button onClick={() => setSelectedTag(null)} className="text-sm underline text-gray-500 hover:text-gray-800">
+          All
         </button>
         {uniqueTags.map((tag) => (
           <button
             key={tag}
             onClick={() => setSelectedTag(tag)}
-            className={`underline ${selectedTag === tag ? "font-bold text-green-600" : ""}`}
+            className={`text-sm underline hover:text-gray-800 ${selectedTag === tag ? "font-bold text-gray-900" : "text-gray-500"}`}
           >
             #{tag}
           </button>
@@ -110,7 +110,7 @@ export default function Search() {
         {paginated.map((post) => (
           <li key={post.slug} className="border-b pb-2 flex justify-between items-start">
             <div>
-              <a href={`/blog/${post.slug}`} className="text-lg font-semibold hover:underline">
+              <a href={`/blog/${post.slug}`} className="text-lg font-semibold hover:text-gray-800">
                 {post.title}
               </a>
               <p className="text-sm text-gray-500">{post.date} · {post.category}</p>
@@ -119,7 +119,7 @@ export default function Search() {
             <button
               className="ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600"
               onClick={async () => {
-                const confirmed = confirm(`정말로 "${post.title}" 글을 삭제하시겠습니까?`);
+                const confirmed = confirm(`Are you sure you want to delete "${post.title}"?`);
                 if (!confirmed) return;
 
                 const res = await fetch("/api/delete", {
@@ -129,15 +129,15 @@ export default function Search() {
                 });
 
                 if (res.ok) {
-                  alert("삭제 완료!");
+                  alert("Post deleted successfully!");
                   location.reload();
                 } else {
                   const error = await res.json();
-                  alert("삭제 실패: " + JSON.stringify(error));
+                  alert("Failed to delete post: " + JSON.stringify(error));
                 }
               }}
             >
-              삭제
+              delete
             </button>
           </li>
         ))}
@@ -145,9 +145,9 @@ export default function Search() {
       <div className="text-right mt-4">
         <Link
           href="/blog/write"
-          className="inline-block bg-green-600 text-white font-semibold px-4 py-2 rounded shadow hover:bg-green-700 transition"
+          className="inline-block bg-gray-800 text-white font-semibold px-4 py-2 rounded shadow hover:bg-gray-700 transition"
         >
-          ✍️ 글쓰기
+          ✍️ New Post
         </Link>
       </div>
 
