@@ -1,7 +1,23 @@
-import NextAuth from "next-auth/next";
+// Module augmentation for NextAuth types
+import { DefaultSession, DefaultUser } from "next-auth";
+import { JWT } from "next-auth/jwt";
 
-// Initialize NextAuth handler
-const handler = NextAuth({
-});
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    user: DefaultSession["user"] & {
+      login?: string;
+      isAdmin?: boolean;
+    };
+  }
+  interface User extends DefaultUser {
+    login?: string;
+    isAdmin?: boolean;
+  }
+}
 
-export { handler as GET, handler as POST };
+declare module "next-auth/jwt" {
+  interface JWT {
+    login?: string;
+    isAdmin?: boolean;
+  }
+}
