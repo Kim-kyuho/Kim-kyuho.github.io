@@ -15,7 +15,24 @@ type Project = {
 export default function SliderProjectList({ projects }: { projects: Project[] }) {
   const [sliderRef] = useKeenSlider({
     loop: true,
-    slides: { perView: 'auto', spacing: 16 },
+    slides: {
+      perView: 1,
+      spacing: 16,
+    },
+    breakpoints: {
+      '(min-width: 640px)': {
+        slides: {
+          perView: 2,
+          spacing: 20,
+        },
+      },
+      '(min-width: 1024px)': {
+        slides: {
+          perView: 3,
+          spacing: 24,
+        },
+      },
+    },
   });
 
   return (
@@ -23,7 +40,7 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
       {projects.map((project, idx) => (
         <div
           key={idx}
-          className="keen-slider__slide snap-center w-[85vw] sm:w-[50vw] md:w-[35vw] lg:w-[25vw] transition-transform duration-500 transform scale-90 hover:scale-100 hover:-translate-y-1"
+          className="keen-slider__slide"
         >
           <ProjectCard {...project} />
         </div>
