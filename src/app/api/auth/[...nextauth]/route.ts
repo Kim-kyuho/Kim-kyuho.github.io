@@ -11,14 +11,15 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session, token }) {
-      // GitHub username으로 관리자 판별
-      (session.user as any).login = token.login;
-      (session.user as any).isAdmin = token.login === "Kim-kyuho";
+      if (session.user && typeof token === "object" && "login" in token) {
+        (session.user as any).login = (token as any).login;
+        (session.user as any).isAdmin = (token as any).login === "Kim-kyuho";
+      }
       return session;
     },
-    async jwt({ token, user, account, profile }: any) {
-      if (account && profile) {
-        token.login = profile.login;
+    async jwt({ token, account, profile }) {
+      if (account && profile && "login" in profile) {
+        (token as any).login = (profile as any).login;
       }
       return token;
     },
