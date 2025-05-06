@@ -1,5 +1,3 @@
-// src/components/Header.tsx
-
 'use client';
 
 import Link from "next/link";
@@ -19,7 +17,7 @@ export default function Header() {
           <Link href="/" className="transition duration-300 hover:scale-105 hover:text-sky-500 font-mono">•kyu.log</Link>
         </h1>
         <button
-          className="sm:hidden text-sm text-gray-700 dark:text-gray-200"
+          className="sm:hidden text-lg text-gray-700 dark:text-gray-200"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <Bars3Icon className="w-6 h-6" />
@@ -33,12 +31,12 @@ export default function Header() {
         </div>
       </div>
       {menuOpen && (
-        <div className="flex flex-col sm:hidden mt-4 gap-2 text-sm text-gray-700 dark:text-gray-300">
-          <Link href="/about" className="hover:text-sky-500 transition">About</Link>
-          <Link href="/projects" className="hover:text-sky-500 transition">Projects</Link>
-          <Link href="/blog" className="hover:text-sky-500 transition">Blog</Link>
-          <Link href="/contact" className="hover:text-sky-500 transition">Contact</Link>
-          <AuthStatus />
+        <div className="flex flex-col sm:hidden mt-4 gap-2 text-base text-gray-700 dark:text-gray-300 divide-y divide-gray-200 dark:divide-gray-700">
+          <Link href="/about" className="py-2 hover:text-sky-500 transition">About</Link>
+          <Link href="/projects" className="py-2 hover:text-sky-500 transition">Projects</Link>
+          <Link href="/blog" className="py-2 hover:text-sky-500 transition">Blog</Link>
+          <Link href="/contact" className="py-2 hover:text-sky-500 transition">Contact</Link>
+          <div className="py-2"><AuthStatus /></div>
         </div>
       )}
     </header>
