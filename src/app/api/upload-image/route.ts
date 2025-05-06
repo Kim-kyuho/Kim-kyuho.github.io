@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   const file = formData.get("file") as File;
 
   if (!file || !file.type.startsWith("image/")) {
-    return NextResponse.json({ error: "이미지 파일만 업로드할 수 있습니다." }, { status: 400 });
+    return NextResponse.json({ error: "画像ファイルのみアップロード可能です。" }, { status: 400 });
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      message: `Upload image ${filename}`,
+      message: `画像 ${filename} をアップロード`,
       content,
     }),
   });

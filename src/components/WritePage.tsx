@@ -30,7 +30,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
 
   const validateForm = () => {
     if (!title || !summary || !content) {
-      setErrorMessage("제목, 요약, 내용을 모두 입력해주세요.");
+      setErrorMessage("タイトル、概要、本文をすべて入力してください。");
       return false;
     }
     setErrorMessage("");
@@ -67,24 +67,24 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
       });
 
       if (res.ok) {
-        setSuccessMessage("✅ 업로드 성공!");
+        setSuccessMessage("✅ アップロード成功！");
         setTitle("");
         setSummary("");
         setContent("");
         setTags("");
         setCategory("");
         if (isEditMode) {
-          setSuccessMessage("✅ 수정 성공!");
+          setSuccessMessage("✅ 更新成功！");
         }
       } else {
         const errorText = await res.json(); // 응답을 JSON으로 처리
-        setErrorMessage(`❌ 업로드 실패...\n${JSON.stringify(errorText)}`);
+        setErrorMessage(`❌ アップロード失敗...\n${JSON.stringify(errorText)}`);
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setErrorMessage(`❌ 네트워크 오류: ${error.message}`);
+        setErrorMessage(`❌ ネットワークエラー: ${error.message}`);
       } else {
-        setErrorMessage("❌ 알 수 없는 오류 발생");
+        setErrorMessage("❌ 不明なエラーが発生しました");
       }
     } finally {
       setIsPublishing(false);
@@ -230,8 +230,8 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
       >
         {isPublishing 
           ? isEditMode 
-            ? "수정 중..." 
-            : "업로드 중..." 
+            ? "更新中..." 
+            : "アップロード中..." 
           : isEditMode 
             ? "Update Post" 
             : "Publish to GitHub"}
