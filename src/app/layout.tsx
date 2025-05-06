@@ -18,16 +18,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${inter.className} bg-background text-foreground`}>
-        <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
-          <Header />
-          <SessionProvider>
-            <html lang="en">
-              <body>{children}</body>
-            </html>
-          </SessionProvider>
-          <main className="p-4 sm:p-8">{children}</main>
-          <Footer />
-        </div>
+        {/* Wrap the layout in SessionProvider and render header, main, footer in order */}
+        <SessionProvider>
+          <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
+            <Header />
+            <main className="p-4 sm:p-8">{children}</main>
+            <Footer />
+          </div>
+        </SessionProvider>
       </body>
     </html>
   );
