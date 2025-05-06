@@ -23,7 +23,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    const today = new Date().toISOString().split("T")[0];
+    const now = new Date().toLocaleString("sv-SE", { timeZone: "Asia/Tokyo" }).replace("T", " ");
+    const today = now;
+
     const slug = title
       .toLowerCase()
       .replace(/[^a-z0-9가-힣]+/g, "-")
