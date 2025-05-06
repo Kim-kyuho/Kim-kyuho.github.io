@@ -11,9 +11,10 @@ const handler = NextAuth({
   ],
   callbacks: {
     async jwt({ token, profile }) {
-      if (profile && typeof profile === "object" && "login" in profile) {
-        token.login = (profile as { login: string }).login;
-        token.isAdmin = token.login === "Kim-kyuho";
+      if (profile) {
+        const githubProfile = profile as any; // 타입 단언
+        token.login = githubProfile.login;
+        token.isAdmin = githubProfile.login === "Kim-kyuho";
       }
       return token;
     },
