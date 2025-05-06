@@ -1,13 +1,14 @@
 // src/app/api/auth/[...nextauth]/route.ts
-import NextAuth from "next-auth";
+import NextAuth from "next-auth/next";
 import GitHubProvider from "next-auth/providers/github";
 
-const handler = NextAuth({
+export default NextAuth({
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
       profile(profile) {
+        // GitHub 프로필에서 필요한 필드만 추출
         return {
           id: profile.id.toString(),
           name: profile.name ?? profile.login,
@@ -19,21 +20,18 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, profile }) {
       if (user) {
-        token.login = user.login;
-        token.isAdmin = user.login === "Kim-kyuho";
+        // `profile` 콜백에서 추가한 login 필드
+        token.login = (user as any).login;
+        token.isAdmin = token.login === "Kim-kyuho";
       }
       return token;
     },
     async session({ session, token }) {
-      if (session.user) {
-        session.user.login = token.login;
-        session.user.isAdmin = token.isAdmin;
-      }
+      session.user.login = token.login as string;
+      session.user.isAdmin = token.isAdmin as boolean;
       return session;
     },
   },
 });
-
-export { handler as GET, handler as POST };

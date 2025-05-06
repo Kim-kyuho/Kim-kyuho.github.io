@@ -1,16 +1,17 @@
 // src/components/AuthStatus.tsx
 "use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function AuthStatus() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  if (status === "loading") return <p>Loading...</p>;
 
-  if (!session || !session.user) {
+  if (!session?.user) {
     return (
       <button
         onClick={() => signIn("github")}
-        className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700"
+        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
       >
         Login with GitHub
       </button>
@@ -18,14 +19,14 @@ export default function AuthStatus() {
   }
 
   return (
-    <div className="flex items-center gap-4">
-      <p className="text-sm text-gray-600">Hi, {session.user.name}</p>
-      <p className="text-sm font-semibold">
+    <div className="flex items-center gap-3">
+      <span className="text-sm">Hi, {session.user.name}</span>
+      <span className="text-xs font-medium">
         {session.user.isAdmin ? "(Admin)" : "(Viewer)"}
-      </p>
+      </span>
       <button
         onClick={() => signOut()}
-        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        className="px-3 py-1 bg-red-400 text-white rounded hover:bg-red-500"
       >
         Logout
       </button>
