@@ -1,4 +1,4 @@
-'use client';
+// src/app/projects/[slug]/page.tsx
 
 import { notFound } from 'next/navigation';
 import projectData from '@/data/projects.json';
