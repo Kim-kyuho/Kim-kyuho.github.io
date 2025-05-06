@@ -41,17 +41,17 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
       <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
         <button
           onClick={() => sliderInstance?.prev()}
-          className="bg-white/30 backdrop-blur-md border border-white/40 p-2 rounded-full shadow-lg hover:bg-white/50 transition"
+          className="text-3xl text-gray-700 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-4 py-1 shadow-md hover:bg-white/50 transition-all"
         >
-          ◀
+          &lt;
         </button>
       </div>
       <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10">
         <button
           onClick={() => sliderInstance?.next()}
-          className="bg-white/30 backdrop-blur-md border border-white/40 p-2 rounded-full shadow-lg hover:bg-white/50 transition"
+          className="text-3xl text-gray-700 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-4 py-1 shadow-md hover:bg-white/50 transition-all"
         >
-          ▶
+          &gt;
         </button>
       </div>
       <div ref={sliderRef} className="keen-slider flex">
