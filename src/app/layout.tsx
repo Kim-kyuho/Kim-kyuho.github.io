@@ -1,8 +1,7 @@
-"use client";
 // app/layout.tsx
 
 import "./globals.css";
-import { SessionProvider } from "next-auth/react";
+import Providers from "./providers";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -18,14 +17,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${inter.className} bg-background text-foreground`}>
-        {/* Wrap the layout in SessionProvider and render header, main, footer in order */}
-        <SessionProvider>
+        <Providers>
           <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
             <Header />
             <main className="p-4 sm:p-8">{children}</main>
             <Footer />
           </div>
-        </SessionProvider>
+        </Providers>
       </body>
     </html>
   );
