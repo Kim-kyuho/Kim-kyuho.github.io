@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { KeenSlider } from 'keen-slider';
+import KeenSlider from 'keen-slider';
 import 'keen-slider/keen-slider.min.css';
 import ProjectCard from './ProjectCard';
 import type { KeenSliderInstance } from 'keen-slider';
