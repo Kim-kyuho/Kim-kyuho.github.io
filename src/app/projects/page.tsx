@@ -3,32 +3,32 @@ import SliderProjectList from "@/components/SliderProjectList";
 
 const dummyProjects = [
   {
-    title: "Oracle 기반 데이터 마이그레이션",
-    description: "에너지계 회사의 시스템 데이터를 Oracle DB를 활용하여 마이그레이션한 프로젝트입니다. 초기 설계부터 SQL 작성 및 검증까지 전 과정을 담당했습니다.",
+    title: "Oracleによるデータマイグレーション",
+    description: "エネルギー系企業のシステムデータをOracle DBでマイグレーションしたプロジェクトです。初期設計からSQL作成・検証まで全工程を担当しました。",
     image: "/blog-images/project1.jpg",
     link: "/projects/oracle-migration",
   },
   {
-    title: "GIS 기반 설비 정보 시스템 개발",
-    description: "ArcGIS기반의 가스 및 전기 설비에 대한 지도 정보 시스템을 개발하였습니다. 고객의 요구사항을 반영하여 사용자 친화적인 UI/UX를 구현했습니다.",
+    title: "GISベースの地理情報システム開発",
+    description: "ArcGISベースのガスおよび電気設備に関する地地理報システムを開発しました。顧客の要件を反映し、ユーザーフレンドリーなUI/UXを実現しました。",
     image: "/blog-images/project2.jpg",
     link: "/projects/gis-system-enhancement",
   },
   {
-    title: "포인트 부여 자동화 시스템 개발",
-    description: "특정 조건에 따라 고객에게 자동으로 포인트를 지급하는 백엔드 시스템을 개발하였습니다. 효율적인 정산 및 관리가 가능하도록 설계되었습니다.",
+    title: "ポイント付与自動化システム開発",
+    description: "特定の条件に基づいて顧客に自動でポイントを付与するバックエンドシステムを開発しました。効率的な精算および管理が可能なように設計されています。",
     image: "/blog-images/project3.jpg",
     link: "/projects/point-automation",
   },
   {
-    title: "VIP 고객용 서비스 시스템 개발",
-    description: "VIP 고객 전용 가입 절차를 간소화하기 위한 요건 정의부터 시스템 설계, 개발을 담당했습니다. 고객의 편의를 최우선으로 고려했습니다.",
+    title: "VIP顧客向けサービスシステム開発",
+    description: "VIP顧客専用の申込手続きを簡素化するため、要件定義からシステム設計・開発までを担当しました。顧客の利便性を最優先に考慮しました。",
     image: "/blog-images/project4.jpg",
     link: "/projects/vip-signup-system",
   },
   {
-    title: "에너지계 시스템 유지보수 및 인시던트 대응",
-    description: "다양한 소규모 시스템의 장애 대응, 기능 개선 및 정기 점검을 수행하고 있습니다. 현장과의 커뮤니케이션 및 긴급 대응 경험이 강점입니다.",
+    title: "エネルギー系システムの保守およびインシデント対応",
+    description: "さまざまな小規模システムの障害対応、機能改善、定期点検を実施しています。現場とのコミュニケーションや緊急対応の経験が強みです。",
     image: "/blog-images/project5.jpg",
     link: "/projects/incident-maintenance",
   },

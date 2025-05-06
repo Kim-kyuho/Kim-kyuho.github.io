@@ -8,13 +8,14 @@ export default async function HomePage() {
 
   return (
     <section className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold mb-6">안녕하세요! 👋</h1>
+      <h1 className="text-3xl font-bold mb-6">こんにちは！👋</h1>
       <p className="text-lg leading-7 text-gray-700 dark:text-white mb-4">
-        저는 웹 개발자 김규호입니다. C#, Java, ASP.NET, SQL Server를 기반으로 한 다양한 시스템을 개발해왔습니다. 
-        최근엔 React와 Next.js를 중심으로 새로운 기술을 배우고 있습니다.
+        はじめまして、Webエンジニアのキム・ギュホと申します。Web開発を通じて「使いやすく、価値のあるサービスを作ること」にやりがいを感じており、常に学び続ける姿勢を大切にしています。<br />
+        C#、Java、ASP.NET、Oracle DB、SQL Serverなどを用いた業務システムの開発経験があり、現在はReactやNext.jsなどの最新技術にも積極的に取り組んでいます。<br />
+        日本語能力試験N1および韓国の情報処理技師資格を保有しています。
       </p>
       <p className="text-lg leading-7 text-gray-700 dark:text-white mb-4">
-        아래 링크를 통해 제가 진행한 프로젝트들을 확인해보세요!
+        下記のリンクから、私が担当したプロジェクトをご確認いただけます。
       </p>
       <Link
         href="/projects"
