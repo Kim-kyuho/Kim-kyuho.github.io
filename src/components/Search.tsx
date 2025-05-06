@@ -145,9 +145,9 @@ export default function Search() {
       <div className="text-right mt-4">
         <Link
           href="/blog/write"
-          className="inline-block bg-gray-800 text-white font-semibold px-4 py-2 rounded shadow hover:bg-gray-700 transition"
+          className="inline-block bg-blue-200 text-blue-900 font-medium px-4 py-2 rounded hover:bg-blue-300 transition"
         >
-          ✍️ New Post
+          New Post
         </Link>
       </div>
 
@@ -155,7 +155,7 @@ export default function Search() {
         {currentPage > 1 && (
           <button
             onClick={() => setCurrentPage(currentPage - 1)}
-            className="w-8 h-8 flex items-center justify-center border rounded-full text-sm bg-white text-gray-700 hover:bg-gray-100"
+            className="w-8 h-8 flex items-center justify-center border rounded-full text-sm bg-blue-100 text-blue-800 hover:bg-blue-200"
           >
             ←
           </button>
@@ -166,8 +166,8 @@ export default function Search() {
             onClick={() => setCurrentPage(i + 1)}
             className={`w-8 h-8 flex items-center justify-center border rounded-full text-sm transition ${
               currentPage === i + 1
-                ? "bg-gray-800 text-white font-semibold"
-                : "bg-white text-gray-700 hover:bg-gray-100"
+                ? "bg-blue-500 text-white font-semibold"
+                : "bg-blue-100 text-blue-800 hover:bg-blue-200"
             }`}
           >
             {i + 1}
@@ -176,7 +176,7 @@ export default function Search() {
         {currentPage < totalPages && (
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
-            className="w-8 h-8 flex items-center justify-center border rounded-full text-sm bg-white text-gray-700 hover:bg-gray-100"
+            className="w-8 h-8 flex items-center justify-center border rounded-full text-sm bg-blue-100 text-blue-800 hover:bg-blue-200"
           >
             →
           </button>
