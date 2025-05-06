@@ -16,13 +16,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-background text-foreground`}>
+      <body>
         <Providers>
-          <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
-            <Header />
-            <main className="p-4 sm:p-8">{children}</main>
-            <Footer />
-          </div>
+          <Header />
+          <main>{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>
