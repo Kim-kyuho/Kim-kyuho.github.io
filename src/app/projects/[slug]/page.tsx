@@ -8,7 +8,11 @@ export async function generateStaticParams() {
   return projectData.map((project) => ({ slug: project.slug }));
 }
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
+interface ProjectPageProps {
+  params: { slug: string };
+}
+
+export default function ProjectDetailPage({ params }: ProjectPageProps) {
   const project = projectData.find((p) => p.slug === params.slug);
 
   if (!project) return notFound();
