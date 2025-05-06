@@ -23,20 +23,20 @@ export default function Header() {
           <Bars3Icon className="w-6 h-6" />
         </button>
         <div className="hidden sm:flex items-center gap-6 text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">
-          <Link href="/about" className="hover:text-sky-500 transition">About</Link>
-          <Link href="/projects" className="hover:text-sky-500 transition">Projects</Link>
-          <Link href="/blog" className="hover:text-sky-500 transition">Blog</Link>
-          <Link href="/contact" className="hover:text-sky-500 transition">Contact</Link>
+          <Link href="/about" className="hover:text-sky-500 active:scale-95 transform transition">About</Link>
+          <Link href="/projects" className="hover:text-sky-500 active:scale-95 transform transition">Projects</Link>
+          <Link href="/blog" className="hover:text-sky-500 active:scale-95 transform transition">Blog</Link>
+          <Link href="/contact" className="hover:text-sky-500 active:scale-95 transform transition">Contact</Link>
           <AuthStatus />
         </div>
       </div>
       {menuOpen && (
         <div className="flex flex-col sm:hidden mt-4 gap-2 text-base text-gray-700 dark:text-gray-300 divide-y divide-gray-200 dark:divide-gray-700">
           <div>
-            <Link href="/about" className="py-2 hover:text-sky-500 transition block">About</Link>
-            <Link href="/projects" className="py-2 hover:text-sky-500 transition block">Projects</Link>
-            <Link href="/blog" className="py-2 hover:text-sky-500 transition block">Blog</Link>
-            <Link href="/contact" className="py-2 hover:text-sky-500 transition block">Contact</Link>
+            <Link href="/about" className="py-2 hover:text-sky-500 active:scale-95 transform transition block">About</Link>
+            <Link href="/projects" className="py-2 hover:text-sky-500 active:scale-95 transform transition block">Projects</Link>
+            <Link href="/blog" className="py-2 hover:text-sky-500 active:scale-95 transform transition block">Blog</Link>
+            <Link href="/contact" className="py-2 hover:text-sky-500 active:scale-95 transform transition block">Contact</Link>
           </div>
           <div className="py-2 flex justify-end">
             <AuthStatus />
