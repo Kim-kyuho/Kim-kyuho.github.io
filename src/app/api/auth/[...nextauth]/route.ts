@@ -10,18 +10,22 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session, token }) {
-      if (session.user && typeof token === "object" && "login" in token) {
-        (session.user as any).login = (token as any).login;
-        (session.user as any).isAdmin = (token as any).login === "Kim-kyuho";
-      }
-      return session;
-    },
-    async jwt({ token, account, profile }) {
-      if (account && profile && "login" in profile) {
-        (token as any).login = (profile as any).login;
+    async jwt({ token, profile }) {
+      if (profile && typeof profile === "object" && "login" in profile) {
+        token.login = (profile as { login: string }).login;
+        token.isAdmin = token.login === "Kim-kyuho";
       }
       return token;
+    },
+    async session({ session, token }) {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          login: token.login,
+          isAdmin: token.isAdmin,
+        },
+      };
     },
   },
 });
