@@ -21,7 +21,7 @@ export default function Header() {
           className="sm:hidden text-sm text-gray-700 dark:text-gray-200"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          Menu 
+          Menuo
         </button>
         <div className="hidden sm:flex items-center gap-6 text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">
           <Link href="/about" className="hover:text-sky-500 transition">About</Link>
