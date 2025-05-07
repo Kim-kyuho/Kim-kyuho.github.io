@@ -4,7 +4,10 @@ import { getAllPosts } from "@/lib/posts";
 
 export default async function HomePage() {
   const posts = await getAllPosts();
-  const latestPosts = posts.slice(0, 5);
+  const latestPosts = posts
+    .slice()
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, 5);
 
   return (
     <section className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
