@@ -9,13 +9,15 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 export default function MarkdownRenderer({ content }: { content: string }) {
   return (
-    <div className="prose dark:prose-invert">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight, rehypeSlug, rehypeAutolinkHeadings]}
-      >
-        {content}
-      </ReactMarkdown>
+    <div className="overflow-x-auto">
+      <div className="prose dark:prose-invert">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeHighlight, rehypeSlug, rehypeAutolinkHeadings]}
+        >
+          {content}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 }
