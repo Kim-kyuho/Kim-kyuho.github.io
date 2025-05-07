@@ -29,9 +29,13 @@ export default async function Page({
 
   const posts = await getAllPosts();
   const currentIndex = posts.findIndex((p) => p.slug === slug);
-  const prevPost = posts[currentIndex + 1];
-  const nextPost = posts[currentIndex - 1];
-  const recentPosts = posts.filter((p) => p.slug !== slug).slice(0, 3);
+  const prevPost = posts[currentIndex - 1];
+  const nextPost = posts[currentIndex + 1];
+  const recentPosts = posts
+    .filter((p) => p.slug !== slug)
+    .slice()
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, 3);
 
   const filePath = path.join(process.cwd(), "posts", `${slug}.md`);
   try {
