@@ -9,6 +9,16 @@ module.exports = {
     ],
     theme: {
       extend: {
+        colors: {
+          pastel: {
+            blue: "#a7d3f2",
+            pink: "#f9c5d1",
+            green: "#b7e4c7",
+            yellow: "#fce38a",
+            purple: "#cdb4db",
+            gray: "#f8f9fa",
+          },
+        },
         typography: {
           DEFAULT: {
             css: {
