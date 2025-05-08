@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
 /* src/app/globals.css */
 @config "../../tailwind.config.js";
 @import "tailwindcss";
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #ffebae;
   --foreground: #171717;
 }
 
@@ -25,7 +26,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
 }
 
 /* MarkdownRenderer에서 rehype-highlight와 prose가 겹치는 부분 해결 */

@@ -55,15 +55,16 @@ export default function Search() {
   const paginated = sorted.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
 
   return (
-    <div className="p-4 space-y-4">
-      {/* Search input */}
+    <div className="bg-green-200 p-6 rounded-3xl shadow-lg shadow-green-300/50">
+
+      {/* Search Input */}
       <div className="relative">
         <input
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Search..."
-          className="w-full p-2 pr-10 border border-gray-300 rounded-full"
+          className="w-full p-2 pr-10 bg-gray-100 border border-gray-300 rounded-full"
         />
         <button
           onClick={() => setQuery(inputValue)}
@@ -78,10 +79,8 @@ export default function Search() {
 
       {/* Category Filter */}
       <div className="flex flex-wrap gap-2 items-center">
-        <span className="font-semibold text-gray-700">Category:</span>
-        <button onClick={() => setSelectedCategory(null)} className="text-sm underline text-gray-500 hover:text-gray-800">
-          All
-        </button>
+        <span className="font-semibold text-green-700">Category:</span>
+        <button onClick={() => setSelectedCategory(null)} className="text-sm underline text-gray-500 hover:text-gray-800">All</button>
         {uniqueCategories.map((cat) => (
           <button
             key={cat}
@@ -95,10 +94,8 @@ export default function Search() {
 
       {/* Tag Filter */}
       <div className="flex flex-wrap gap-2 items-center">
-        <span className="font-semibold text-gray-700">Tag:</span>
-        <button onClick={() => setSelectedTag(null)} className="text-sm underline text-gray-500 hover:text-gray-800">
-          All
-        </button>
+        <span className="font-semibold text-red-600">Tag:</span>
+        <button onClick={() => setSelectedTag(null)} className="text-sm underline text-gray-500 hover:text-gray-800">All</button>
         {uniqueTags.map((tag) => (
           <button
             key={tag}
@@ -110,30 +107,29 @@ export default function Search() {
         ))}
       </div>
 
-      {/* 결과 리스트 */}
+      {/* Post Results */}
       <ul className="space-y-4">
         {paginated.map((post) => (
-          <li key={post.slug} className="border-b pb-2 flex justify-between items-start">
-            <div>
-              <a href={`/blog/${post.slug}`} className="text-lg font-semibold hover:text-gray-800">
-                {post.title}
-              </a>
-              <p className="text-sm text-gray-500">{post.date} · {post.category}</p>
-              <p className="text-sm">{post.summary}</p>
-            </div>
+          <li
+            key={post.slug}
+            className="bg-white/60 dark:bg-white/10 backdrop-blur-lg border border-white/30 rounded-xl shadow-md p-4 transition hover:shadow-lg"
+          >
+            <a href={`/blog/${post.slug}`} className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">
+              {post.title}
+            </a>
+            <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">{post.date} · {post.category}</p>
+            <p className="text-sm text-gray-700 dark:text-gray-100 mt-2">{post.summary}</p>
             {session?.user?.isAdmin && (
               <button
-                className="ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600"
+                className="ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600 mt-3"
                 onClick={async () => {
                   const confirmed = confirm(`Are you sure you want to delete "${post.title}"?`);
                   if (!confirmed) return;
-
                   const res = await fetch("/api/delete", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ id: post.id }),
                   });
-
                   if (res.ok) {
                     alert("Post deleted successfully!");
                     location.reload();
@@ -149,6 +145,8 @@ export default function Search() {
           </li>
         ))}
       </ul>
+
+      {/* New Post & Pagination */}
       <div className="text-right mt-4">
         {session?.user?.isAdmin && (
           <Link

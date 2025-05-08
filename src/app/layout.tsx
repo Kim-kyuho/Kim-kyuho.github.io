@@ -2,11 +2,9 @@
 
 import "./globals.css";
 import Providers from "./providers";
-import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Kyuho's Portfolio Blog",
@@ -16,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-background text-foreground`}>
+      <body className={`bg-background text-foreground font-extrabold antialiased`}>
         <Providers>
           <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
             <Header />
