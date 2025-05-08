@@ -43,7 +43,7 @@ export default async function Page({
     const { content, data } = matter(fileContent);
 
     return (
-      <article className="max-w-3xl mx-auto py-12 px-4 prose dark:prose-invert">
+      <article className="max-w-3xl mx-auto py-12 px-4 prose dark:prose-invert bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-2xl shadow-md">
         <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
         <p className="text-sm text-muted-foreground mb-8">{data.date}</p>
         <MarkdownRenderer content={content} />  
