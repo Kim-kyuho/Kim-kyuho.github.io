@@ -95,7 +95,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-6">
+    <div className="max-w-3xl mx-auto p-6 space-y-6 bg-sky-200/40 backdrop-blur-md rounded-2xl shadow-md">
       <h1 className="text-3xl font-bold mb-4">✍️ Create a New Blog Post</h1>
 
       <div>
@@ -104,7 +104,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-white/80"
           placeholder="Enter the title"
         />
       </div>
@@ -114,7 +114,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
         <textarea
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-white/80"
           placeholder="Write a short summary"
         />
       </div>
@@ -124,7 +124,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
         <textarea
           value={tags}
           onChange={(e) => setTags(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-white/80"
           placeholder="e.g. react, nextjs, typescript"
         />
       </div>
@@ -135,7 +135,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-white/80"
           placeholder="Enter category"
         />
       </div>
@@ -218,7 +218,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
           ref={textareaRef}
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="w-full h-60 p-2 border rounded"
+          className="w-full h-60 p-2 border rounded bg-white/80"
           placeholder="Write your post in markdown..."
         />
       </div>
