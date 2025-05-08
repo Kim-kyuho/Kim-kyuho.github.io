@@ -55,7 +55,7 @@ export default function Search() {
   const paginated = sorted.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
 
   return (
-    <div className="bg-green-200 p-6 rounded-3xl shadow-lg shadow-green-300/50">
+    <div className="bg-green-200 dark:bg-gray-600 p-6 rounded-3xl shadow-lg shadow-green-300/50">
 
       {/* Search Input */}
       <div className="relative">
