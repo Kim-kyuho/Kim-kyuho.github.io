@@ -60,7 +60,7 @@ export default function Search() {
   return (
     <div className="bg-green-200 dark:bg-gray-600 p-6 rounded-3xl shadow-lg shadow-green-300/50">
       {/* Search, Category, Tag Filters */}
-      <div className="space-y-4 mb-8">
+      <div className="space-y-1 mb-6">
         {/* Search Input */}
         <div className="relative mb-4">
           <input
@@ -91,7 +91,7 @@ export default function Search() {
             {selectedCategory || "All"}
           </button>
           {showCategories && (
-            <div className="absolute z-10 top-8 left-0 mt-1.5 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
+            <div className="absolute z-10 top-1 left-full ml-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
               <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
               {uniqueCategories.map((cat) => (
                 <button
