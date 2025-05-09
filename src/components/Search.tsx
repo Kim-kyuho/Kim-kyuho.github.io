@@ -91,7 +91,7 @@ export default function Search() {
             {selectedCategory || "All"}
           </button>
           {showCategories && (
-            <div className="absolute z-10 top-0 left-full ml-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
+            <div className="absolute z-10 top-0 left-[14.5%] ml-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
               <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
               {uniqueCategories.map((cat) => (
                 <button
@@ -116,7 +116,7 @@ export default function Search() {
             {selectedTag || "All"}
           </button>
           {showTags && (
-            <div className="absolute z-10 top-8 left-0 mt-1.5 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
+            <div className="absolute z-10 top-87left-0 mt-1.5 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
               <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
               {uniqueTags.map((tag) => (
                 <button
