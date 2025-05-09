@@ -86,7 +86,7 @@ export default function Search() {
           <span className="font-semibold text-green-700">Category: </span>
           <button
             onClick={() => setShowCategories(!showCategories)}
-            className="inline-block text-xs font-semibold text-green-900 bg-emerald-200 px-1.5 py-0.5 rounded-full shadow-md hover:bg-emerald-300 transition duration-200"
+            className="absolute z-10 left-full top-1 ml-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in"
           >
             {selectedCategory || "All"}
           </button>
