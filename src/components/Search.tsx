@@ -116,23 +116,7 @@ export default function Search() {
           {showCategories && (
             <div
               ref={categoryRef}
-              onMouseDown={(e) => {
-                const target = e.currentTarget;
-                const startX = e.pageX - target.offsetLeft;
-                const scrollLeft = target.scrollLeft;
-                const handleMouseMove = (moveEvent: MouseEvent) => {
-                  const x = moveEvent.pageX - target.offsetLeft;
-                  const walk = x - startX;
-                  target.scrollLeft = scrollLeft - walk;
-                };
-                const stop = () => {
-                  document.removeEventListener("mousemove", handleMouseMove);
-                  document.removeEventListener("mouseup", stop);
-                };
-                document.addEventListener("mousemove", handleMouseMove);
-                document.addEventListener("mouseup", stop);
-              }}
-              className="absolute z-10 top-0 left-[14.5%] ml-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in max-w-xs overflow-x-auto whitespace-nowrap cursor-grab"
+              className="absolute z-10 top-7 left-[14.5%] ml-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in max-w-xs overflow-x-auto whitespace-nowrap"
             >
               <p className="text-xs font-bold text-green-800 mb-2">Categories</p>
               <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
@@ -161,23 +145,7 @@ export default function Search() {
           {showTags && (
             <div
               ref={tagRef}
-              onMouseDown={(e) => {
-                const target = e.currentTarget;
-                const startX = e.pageX - target.offsetLeft;
-                const scrollLeft = target.scrollLeft;
-                const handleMouseMove = (moveEvent: MouseEvent) => {
-                  const x = moveEvent.pageX - target.offsetLeft;
-                  const walk = x - startX;
-                  target.scrollLeft = scrollLeft - walk;
-                };
-                const stop = () => {
-                  document.removeEventListener("mousemove", handleMouseMove);
-                  document.removeEventListener("mouseup", stop);
-                };
-                document.addEventListener("mousemove", handleMouseMove);
-                document.addEventListener("mouseup", stop);
-              }}
-              className="absolute z-10 top-8 left-0 mt-1.5 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in max-w-xs overflow-x-auto whitespace-nowrap cursor-grab"
+              className="absolute z-10 top-6 left-[9.5%] mt-1.5 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in max-w-xs overflow-x-auto whitespace-nowrap"
             >
               <p className="text-xs font-bold text-red-800 mb-2">Tags</p>
               <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
