@@ -22,6 +22,9 @@ export default function Search() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  // dropdown state for tag/category
+  const [showTags, setShowTags] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
 
   useEffect(() => {
     fetch("/posts.json")
@@ -78,33 +81,53 @@ export default function Search() {
       </div>
 
       {/* Category Filter */}
-      <div className="flex flex-wrap gap-2 items-center">
-        <span className="font-semibold text-green-700">Category:</span>
-        <button onClick={() => setSelectedCategory(null)} className="text-sm underline text-gray-500 hover:text-gray-800">All</button>
-        {uniqueCategories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`text-sm underline hover:text-gray-800 ${selectedCategory === cat ? "font-bold text-gray-900" : "text-gray-500"}`}
-          >
-            {cat}
-          </button>
-        ))}
+      <div className="relative">
+        <span className="font-semibold text-green-700">Category: </span>
+        <button
+          onClick={() => setShowCategories(!showCategories)}
+          className="text-sm font-medium underline text-gray-700 hover:text-gray-900"
+        >
+          {selectedCategory || "All"}
+        </button>
+        {showCategories && (
+          <div className="absolute z-10 mt-2 bg-white dark:bg-gray-800 shadow-lg rounded p-2">
+            <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
+            {uniqueCategories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => { setSelectedCategory(cat); setShowCategories(false); }}
+                className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Tag Filter */}
-      <div className="flex flex-wrap gap-2 items-center">
-        <span className="font-semibold text-red-600">Tag:</span>
-        <button onClick={() => setSelectedTag(null)} className="text-sm underline text-gray-500 hover:text-gray-800">All</button>
-        {uniqueTags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => setSelectedTag(tag)}
-            className={`text-sm underline hover:text-gray-800 ${selectedTag === tag ? "font-bold text-gray-900" : "text-gray-500"}`}
-          >
-            #{tag}
-          </button>
-        ))}
+      <div className="relative">
+        <span className="font-semibold text-red-600">Tag: </span>
+        <button
+          onClick={() => setShowTags(!showTags)}
+          className="text-sm font-medium underline text-gray-700 hover:text-gray-900"
+        >
+          {selectedTag || "All"}
+        </button>
+        {showTags && (
+          <div className="absolute z-10 mt-2 bg-white dark:bg-gray-800 shadow-lg rounded p-2">
+            <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
+            {uniqueTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => { setSelectedTag(tag); setShowTags(false); }}
+                className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                #{tag}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Post Results */}
