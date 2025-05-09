@@ -59,75 +59,77 @@ export default function Search() {
 
   return (
     <div className="bg-green-200 dark:bg-gray-600 p-6 rounded-3xl shadow-lg shadow-green-300/50">
+      {/* Search, Category, Tag Filters */}
+      <div className="space-y-4 mb-8">
+        {/* Search Input */}
+        <div className="relative mb-4">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Search..."
+            className="w-full p-2 pr-10 bg-gray-100 border border-gray-300 rounded-full"
+          />
+          <button
+            onClick={() => setQuery(inputValue)}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black"
+            aria-label="Search"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18.5a7.5 7.5 0 006.15-3.85z" />
+            </svg>
+          </button>
+        </div>
 
-      {/* Search Input */}
-      <div className="relative">
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Search..."
-          className="w-full p-2 pr-10 bg-gray-100 border border-gray-300 rounded-full"
-        />
-        <button
-          onClick={() => setQuery(inputValue)}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black"
-          aria-label="Search"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18.5a7.5 7.5 0 006.15-3.85z" />
-          </svg>
-        </button>
-      </div>
+        {/* Category Filter */}
+        <div className="relative">
+          <span className="font-semibold text-green-700">Category: </span>
+          <button
+            onClick={() => setShowCategories(!showCategories)}
+            className="inline-block text-xs font-semibold text-green-900 bg-emerald-200 px-2 py-0.5 rounded-full shadow-md hover:bg-emerald-300 transition duration-200"
+          >
+            {selectedCategory || "All"}
+          </button>
+          {showCategories && (
+            <div className="absolute z-10 top-full left-0 mt-1.5 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
+              <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
+              {uniqueCategories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => { setSelectedCategory(cat); setShowCategories(false); }}
+                  className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
-      {/* Category Filter */}
-      <div className="relative">
-        <span className="font-semibold text-green-700">Category: </span>
-        <button
-          onClick={() => setShowCategories(!showCategories)}
-          className="inline-block text-sm font-semibold text-green-900 bg-green-400 px-3 py-1 rounded-full shadow-md hover:bg-green-400 transition duration-200"
-        >
-          {selectedCategory || "All"}
-        </button>
-        {showCategories && (
-          <div className="absolute z-10 mt-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
-            <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
-            {uniqueCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => { setSelectedCategory(cat); setShowCategories(false); }}
-                className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Tag Filter */}
-      <div className="relative">
-        <span className="font-semibold text-red-600">Tag: </span>
-        <button
-          onClick={() => setShowTags(!showTags)}
-          className="inline-block text-sm font-semibold text-red-900 bg-pink-200 px-3 py-1 rounded-full shadow-md hover:bg-pink-300 transition duration-200"
-        >
-          {selectedTag || "All"}
-        </button>
-        {showTags && (
-          <div className="absolute z-10 mt-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
-            <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
-            {uniqueTags.map((tag) => (
-              <button
-                key={tag}
-                onClick={() => { setSelectedTag(tag); setShowTags(false); }}
-                className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                #{tag}
-              </button>
-            ))}
-          </div>
-        )}
+        {/* Tag Filter */}
+        <div className="relative">
+          <span className="font-semibold text-red-600">Tag: </span>
+          <button
+            onClick={() => setShowTags(!showTags)}
+            className="inline-block text-xs font-semibold text-red-900 bg-pink-200 px-2 py-0.5 rounded-full shadow-md hover:bg-pink-300 transition duration-200"
+          >
+            {selectedTag || "All"}
+          </button>
+          {showTags && (
+            <div className="absolute z-10 top-full left-0 mt-1.5 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
+              <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
+              {uniqueTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => { setSelectedTag(tag); setShowTags(false); }}
+                  className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  #{tag}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Post Results */}
