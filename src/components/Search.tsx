@@ -85,12 +85,12 @@ export default function Search() {
         <span className="font-semibold text-green-700">Category: </span>
         <button
           onClick={() => setShowCategories(!showCategories)}
-          className="text-sm font-medium underline text-gray-700 hover:text-gray-900"
+          className="inline-block text-sm font-semibold text-green-900 bg-green-400 px-3 py-1 rounded-full shadow-md hover:bg-green-400 transition duration-200"
         >
           {selectedCategory || "All"}
         </button>
         {showCategories && (
-          <div className="absolute z-10 mt-2 bg-white dark:bg-gray-800 shadow-lg rounded p-2">
+          <div className="absolute z-10 mt-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
             <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
             {uniqueCategories.map((cat) => (
               <button
@@ -110,12 +110,12 @@ export default function Search() {
         <span className="font-semibold text-red-600">Tag: </span>
         <button
           onClick={() => setShowTags(!showTags)}
-          className="text-sm font-medium underline text-gray-700 hover:text-gray-900"
+          className="inline-block text-sm font-semibold text-red-900 bg-pink-200 px-3 py-1 rounded-full shadow-md hover:bg-pink-300 transition duration-200"
         >
           {selectedTag || "All"}
         </button>
         {showTags && (
-          <div className="absolute z-10 mt-2 bg-white dark:bg-gray-800 shadow-lg rounded p-2">
+          <div className="absolute z-10 mt-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in">
             <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
             {uniqueTags.map((tag) => (
               <button
