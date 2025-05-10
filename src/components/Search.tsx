@@ -114,10 +114,10 @@ export default function Search() {
                 <button
                   type="button"
                   onClick={() => setShowCategories(!showCategories)}
-                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-green-900 shadow-sm ring-1 ring-green-300 hover:bg-green-50"
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-lg bg-pink-100 px-2 py-1.5 text-sm font-semibold text-pink-900 ring-1 ring-pink-300 hover:bg-pink-200"
                 >
                   {selectedCategory || "Category"}
-                  <svg className="-mr-1 w-4 h-4 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg className="-mr-1 w-4 h-4 text-pink-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
                   </svg>
                 </button>
@@ -149,7 +149,7 @@ export default function Search() {
                 <button
                   type="button"
                   onClick={() => setShowTags(!showTags)}
-                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-pink-300 hover:bg-pink-50"
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-lg bg-pink-100 px-2 py-1.5 text-sm font-semibold text-pink-900 ring-1 ring-pink-300 hover:bg-pink-200"
                 >
                   {selectedTag || "Tag"}
                   <svg className="-mr-1 w-4 h-4 text-pink-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
