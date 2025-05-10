@@ -114,10 +114,10 @@ export default function Search() {
                 <button
                   type="button"
                   onClick={() => setShowCategories(!showCategories)}
-                  className="inline-flex items-center justify-center gap-x-1.5 rounded-lg bg-pink-100 px-2 py-1.5 text-sm font-semibold text-pink-900 ring-1 ring-pink-300 hover:bg-pink-200"
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-green-900 shadow-sm ring-1 ring-green-300 hover:bg-green-50"
                 >
                   {selectedCategory || "Category"}
-                  <svg className="-mr-1 w-4 h-4 text-pink-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg className="-mr-1 w-4 h-4 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
                   </svg>
                 </button>
@@ -149,7 +149,7 @@ export default function Search() {
                 <button
                   type="button"
                   onClick={() => setShowTags(!showTags)}
-                  className="inline-flex items-center justify-center gap-x-1.5 rounded-lg bg-pink-100 px-2 py-1.5 text-sm font-semibold text-pink-900 ring-1 ring-pink-300 hover:bg-pink-200"
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-pink-300 hover:bg-pink-50"
                 >
                   {selectedTag || "Tag"}
                   <svg className="-mr-1 w-4 h-4 text-pink-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -233,7 +233,7 @@ export default function Search() {
         {currentPage > 1 && (
           <button
             onClick={() => setCurrentPage(currentPage - 1)}
-            className="w-8 h-8 flex items-center justify-center border rounded-full text-sm bg-blue-100 text-blue-800 hover:bg-blue-200"
+            className="w-8 h-8 flex items-center justify-center border rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200"
           >
             ←
           </button>
@@ -242,10 +242,10 @@ export default function Search() {
           <button
             key={i}
             onClick={() => setCurrentPage(i + 1)}
-            className={`w-8 h-8 flex items-center justify-center border rounded-full text-sm transition ${
+            className={`w-8 h-8 flex items-center justify-center border rounded-lg text-sm transition ${
               currentPage === i + 1
-                ? "bg-blue-500 text-white font-semibold"
-                : "bg-blue-100 text-blue-800 hover:bg-blue-200"
+                ? "bg-pink-500 text-white font-semibold"
+                : "bg-pink-100 text-pink-800 hover:bg-pink-200"
             }`}
           >
             {i + 1}
@@ -254,7 +254,7 @@ export default function Search() {
         {currentPage < totalPages && (
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
-            className="w-8 h-8 flex items-center justify-center border rounded-full text-sm bg-blue-100 text-blue-800 hover:bg-blue-200"
+            className="w-8 h-8 flex items-center justify-center border rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200"
           >
             →
           </button>
