@@ -16,7 +16,7 @@ const dummyProjects = [
   },
   {
     title: "ポイント付与自動化システム開発",
-    description: "特定の条件に基づいて顧客に自動でポイントを付与するバックエンドシステムを開発しました。効率的な精算および管理が可能なように設計されています。",
+    description: "特定条件に基づき顧客に自動でポイントを付与するバックエンドシステムを開発しました。効率的な精算と管理が可能なように設計されています。",
     image: "/blog-images/project3.jpg",
     link: "/projects/point-automation",
   },

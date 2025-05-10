@@ -104,36 +104,77 @@ export default function Search() {
           </button>
         </div>
 
-        {/* Category Filter */}
-        <div className="mb-4">
-          <label htmlFor="category" className="font-semibold text-green-700 mr-2">Category:</label>
-          <select
-            id="category"
-            value={selectedCategory || ""}
-            onChange={(e) => setSelectedCategory(e.target.value || null)}
-            className="rounded-lg border border-green-300 px-3 py-1 bg-white text-green-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-200"
-          >
-            <option value="">All</option>
-            {uniqueCategories.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
-            ))}
-          </select>
-        </div>
+        {/* Category & Tag Filters - horizontally aligned */}
+        <div className="flex flex-wrap gap-4 mb-4">
+          {/* Category Filter */}
+          <div ref={categoryRef}>
+            <label className="font-semibold text-green-700 mr-2">Category:</label>
+            <div className="relative inline-block text-left mb-2">
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setShowCategories(!showCategories)}
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-green-900 shadow-sm ring-1 ring-green-300 hover:bg-green-50"
+                >
+                  {selectedCategory || "Category"}
+                  <svg className="-mr-1 w-4 h-4 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+              {showCategories && (
+                <div className="absolute z-10 mt-1 w-44 rounded-md bg-white ring-1 ring-gray-300 focus:outline-none">
+                  <div className="py-1">
+                    <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50">All</button>
+                    {uniqueCategories.map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => { setSelectedCategory(cat); setShowCategories(false); }}
+                        className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50"
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
 
-        {/* Tag Filter */}
-        <div className="mb-4">
-          <label htmlFor="tag" className="font-semibold text-red-600 mr-2">Tag:</label>
-          <select
-            id="tag"
-            value={selectedTag || ""}
-            onChange={(e) => setSelectedTag(e.target.value || null)}
-            className="rounded-lg border border-pink-300 px-3 py-1 bg-white text-red-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-200"
-          >
-            <option value="">All</option>
-            {uniqueTags.map((tag) => (
-              <option key={tag} value={tag}>{tag}</option>
-            ))}
-          </select>
+          {/* Tag Filter */}
+          <div ref={tagRef}>
+            <label className="font-semibold text-red-600 mr-2">Tag:</label>
+            <div className="relative inline-block text-left mb-2">
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setShowTags(!showTags)}
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-pink-300 hover:bg-pink-50"
+                >
+                  {selectedTag || "Tag"}
+                  <svg className="-mr-1 w-4 h-4 text-pink-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+              {showTags && (
+                <div className="absolute z-10 mt-1 w-44 rounded-md bg-white ring-1 ring-gray-300 focus:outline-none">
+                  <div className="py-1">
+                    <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50">All</button>
+                    {uniqueTags.map((tag) => (
+                      <button
+                        key={tag}
+                        onClick={() => { setSelectedTag(tag); setShowTags(false); }}
+                        className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50"
+                      >
+                        {tag}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
