@@ -81,8 +81,8 @@ export default function Search() {
   const paginated = sorted.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
 
   return (
-    <div className="flex flex-col gap-6 max-w-6xl mx-auto px-6 py-12">
-      <div className="bg-white shadow-xs dark:bg-gray-600 dark:shadow-white p-6 rounded-xl w-full">
+    <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <div className="w-full sm:w-full bg-white shadow p-4 rounded-xl dark:bg-gray-700 dark:shadow-white/10">
         {/* Search, Category, Tag Filters */}
         <div className="space-y-1 mb-6">
           {/* Search Input */}
@@ -180,7 +180,7 @@ export default function Search() {
         </div>
       </div>
 
-      <div className="bg-white dark:shadow-white/10 shadow p-4 rounded-xl w-full">
+      <div className="w-full sm:w-full bg-white shadow p-4 rounded-xl dark:bg-gray-700 dark:shadow-white/10">
         {/* Post Results */}
         <ul className="space-y-4">
           {paginated.map((post) => (
