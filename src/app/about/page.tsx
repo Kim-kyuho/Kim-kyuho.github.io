@@ -20,7 +20,7 @@ export default function About() {
           <strong>保有資格:</strong> 日本語能力試験N1、(韓国)情報処理技師資格
         </p>
       </div>
-      <div className ="bg-cyan-200 shadow-xl shadow-cyan-200/50 dark:bg-gray-800  rounded-xl p-3">
+      <div className ="bg-emerald-200 shadow-xl shadow-emerald-200/50 dark:bg-gray-800  rounded-xl p-3">
         <p className="text-lg font-bold text-yellow-950 dark:text-gray-100 mb-2">
           使用スキル:
         </p>

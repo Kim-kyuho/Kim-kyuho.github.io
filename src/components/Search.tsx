@@ -104,8 +104,8 @@ export default function Search() {
           </button>
         </div>
 
-        {/* Category & Tag Filters - horizontally aligned */}
-        <div className="flex flex-wrap gap-4 mb-4">
+        {/* Category & Tag Filters - responsive direction */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-4">
           {/* Category Filter */}
           <div ref={categoryRef}>
             <label className="font-semibold text-green-700 mr-2">Category:</label>
