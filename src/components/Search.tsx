@@ -81,7 +81,7 @@ export default function Search() {
   const paginated = sorted.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <div className="flex flex-col gap-4 w-full max-w-6xl mx-auto px-4 sm:px-2 py-2">
       <div className="w-full sm:w-full bg-white shadow p-4 rounded-xl dark:bg-gray-700 dark:shadow-white/10">
         {/* Search, Category, Tag Filters */}
         <div className="space-y-1 mb-6">
@@ -187,7 +187,7 @@ export default function Search() {
             <li key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-amber-600 hover:shadow-amber-400"
+                className="block bg-white dark:bg-white/5 p-4 rounded-xl border-white/70 dark:border-white/20 shadow-xs dark:shadow-white transition duration-300 ease-in-out hover:bg-amber-600 hover:shadow-hober-400"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">
