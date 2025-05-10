@@ -7,12 +7,12 @@ export default async function HomePage() {
   const latestPosts = posts
     .slice()
     .sort((a, b) => (a.date < b.date ? 1 : -1))
-    .slice(0, 5);
+    .slice(0, 3);
 
   return (
     <section className="max-w-3xl mx-auto px-4 py-8">
       {/* Introduction Section */}
-      <div className="bg-sky-200 shadow-xl shadow-sky-200/50 dark:bg-gray-800 rounded-xl p-6 mb-8">
+      <div className="bg-white shadow-xl dark:bg-gray-800 dark:shadow-white rounded-xl p-6 mb-8">
         <h1 className="text-2xl font-bold mb-4 text-blue-950 dark:text-gray-100">
           こんにちは！ <span role="img" aria-label="waving hand">👋</span>
         </h1>
@@ -28,31 +28,35 @@ export default async function HomePage() {
         </p>
         <Link
           href="/projects"
-          className="inline-block mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+          className="inline-block mt-4 px-6 py-2 bg-pink-200 text-pink-950 rounded hover:bg-pink-400 transition"
         >
           View Projects →
         </Link>
       </div>
 
       {/* Latest Posts Section */}
-      <div className="bg-indigo-200 shadow-xl shadow-indigo-300/50 dark:bg-gray-800 rounded-xl p-6">
+      <div className="bg-white shadow-xl dark:bg-gray-800 dark:shadow-white rounded-xl p-6">
         <h2 className="text-2xl font-semibold mb-4 text-shadow-indigo-900 dark:text-gray-100">📝 最新の投稿</h2>
         <ul className="space-y-3">
           {latestPosts.map((post) => (
-            <li
-              key={post.slug}
-              className="bg-white/50 dark:bg-white/10 backdrop-blur-md p-4 rounded-lg shadow hover:shadow-md transition"
-            >
+            <li key={post.slug}>
               <Link
+                key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="text-emerald-900 dark:text-white font-semibold hover:underline"
+                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-pink-100 hover:shadow-pink-200"
               >
-                {post.title}
+                <h3 className="text-emerald-900 dark:text-white font-semibold hover:underline">{post.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{post.date}</p>
               </Link>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{post.date}</p>
             </li>
           ))}
         </ul>
+        <Link
+          href="/blog"
+          className="mt-6 inline-block px-5 py-2 bg-pink-200 text-pink-950 font-semibold rounded hover:bg-pink-300 transition"
+        >
+          View All Posts →
+        </Link>
       </div>
     </section>
   );
