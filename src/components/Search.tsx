@@ -105,12 +105,12 @@ export default function Search() {
             </button>
           </div>
 
-          {/* Category & Tag Filters - horizontally aligned */}
-          <div className="flex flex-wrap gap-4 mb-4">
+          {/* Category & Tag Filters - stacked on mobile, horizontal on larger screens */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-2 mb-auto">
             {/* Category Filter */}
             <div ref={categoryRef}>
               <label className="font-semibold text-green-700 mr-2">Category:</label>
-              <div className="relative inline-block text-left mb-2">
+              <div className="relative inline-block text-left">
                 <div>
                   <button
                     type="button"
@@ -145,7 +145,7 @@ export default function Search() {
             {/* Tag Filter */}
             <div ref={tagRef}>
               <label className="font-semibold text-red-600 mr-2">Tag:</label>
-              <div className="relative inline-block text-left mb-2">
+              <div className="relative inline-block text-left mb-auto">
                 <div>
                   <button
                     type="button"
