@@ -105,61 +105,35 @@ export default function Search() {
         </div>
 
         {/* Category Filter */}
-        <div className="relative">
-          <span className="font-semibold text-green-700">Category: </span>
-          <button
-            onClick={() => setShowCategories(!showCategories)}
-            className="inline-block text-xs font-semibold text-green-900 bg-emerald-200 px-1.5 py-0.5 rounded-full shadow-md hover:bg-emerald-300 transition duration-200"
+        <div className="mb-4">
+          <label htmlFor="category" className="font-semibold text-green-700 mr-2">Category:</label>
+          <select
+            id="category"
+            value={selectedCategory || ""}
+            onChange={(e) => setSelectedCategory(e.target.value || null)}
+            className="rounded-lg border border-green-300 px-3 py-1 bg-white text-green-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-200"
           >
-            {selectedCategory || "All"}
-          </button>
-          {showCategories && (
-            <div
-              ref={categoryRef}
-              className="absolute z-10 top-7 left-[14.5%] ml-2 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in max-w-xs overflow-x-auto whitespace-nowrap"
-            >
-              <p className="text-xs font-bold text-green-800 mb-2">Categories</p>
-              <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
-              {uniqueCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => { setSelectedCategory(cat); setShowCategories(false); }}
-                  className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          )}
+            <option value="">All</option>
+            {uniqueCategories.map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
         </div>
 
         {/* Tag Filter */}
-        <div className="relative">
-          <span className="font-semibold text-red-600">Tag: </span>
-          <button
-            onClick={() => setShowTags(!showTags)}
-            className="inline-block text-xs font-semibold text-red-900 bg-pink-200 px-1.5 py-0.5 rounded-full shadow-md hover:bg-pink-300 transition duration-200"
+        <div className="mb-4">
+          <label htmlFor="tag" className="font-semibold text-red-600 mr-2">Tag:</label>
+          <select
+            id="tag"
+            value={selectedTag || ""}
+            onChange={(e) => setSelectedTag(e.target.value || null)}
+            className="rounded-lg border border-pink-300 px-3 py-1 bg-white text-red-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-200"
           >
-            {selectedTag || "All"}
-          </button>
-          {showTags && (
-            <div
-              ref={tagRef}
-              className="absolute z-10 top-6 left-[9.5%] mt-1.5 bg-gradient-to-br from-pink-100 via-white to-emerald-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl rounded-xl p-3 ring-1 ring-emerald-200 animate-fade-in max-w-xs overflow-x-auto whitespace-nowrap"
-            >
-              <p className="text-xs font-bold text-red-800 mb-2">Tags</p>
-              <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">All</button>
-              {uniqueTags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => { setSelectedTag(tag); setShowTags(false); }}
-                  className="block px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  #{tag}
-                </button>
-              ))}
-            </div>
-          )}
+            <option value="">All</option>
+            {uniqueTags.map((tag) => (
+              <option key={tag} value={tag}>{tag}</option>
+            ))}
+          </select>
         </div>
       </div>
 
