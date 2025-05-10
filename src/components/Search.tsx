@@ -233,7 +233,7 @@ export default function Search() {
         {currentPage > 1 && (
           <button
             onClick={() => setCurrentPage(currentPage - 1)}
-            className="w-8 h-8 flex items-center justify-center border rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200"
+            className="w-8 h-8 flex items-center justify-center border rounded-lg text-sm bg-amber-100 text-amber-800 hover:bg-amber-200"
           >
             ←
           </button>
@@ -244,8 +244,8 @@ export default function Search() {
             onClick={() => setCurrentPage(i + 1)}
             className={`w-8 h-8 flex items-center justify-center border rounded-lg text-sm transition ${
               currentPage === i + 1
-                ? "bg-pink-500 text-white font-semibold"
-                : "bg-pink-100 text-pink-800 hover:bg-pink-200"
+                ? "bg-amber-500 text-white font-semibold"
+                : "bg-amber-100 text-amber-800 hover:bg-amber-200"
             }`}
           >
             {i + 1}
@@ -254,7 +254,7 @@ export default function Search() {
         {currentPage < totalPages && (
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
-            className="w-8 h-8 flex items-center justify-center border rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200"
+            className="w-8 h-8 flex items-center justify-center border rounded-lg text-sm bg-amber-100 text-amber-800 hover:bg-amber-200"
           >
             →
           </button>
