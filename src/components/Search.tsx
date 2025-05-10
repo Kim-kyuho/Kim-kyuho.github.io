@@ -187,14 +187,14 @@ export default function Search() {
             <li key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-pink-100 hover:shadow-pink-200"
+                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-amber-600 hover:shadow-amber-400"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">{post.date} · {post.category}</p>
-                  <p className="text-sm text-gray-700 dark:text-gray-100 mt-2">{post.summary}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-300 dark:hover:text-gray-300 mt-1">{post.date} · {post.category}</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-100 dark:hover:text-gray-100 mt-2">{post.summary}</p>
                 </div>
               </Link>
               {session?.user?.isAdmin && (
@@ -261,7 +261,7 @@ export default function Search() {
           {currentPage < totalPages && (
             <button
               onClick={() => setCurrentPage(currentPage + 1)}
-              className="w-8 h-8 flex items-center justify-center border rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200"
             >
               →
             </button>

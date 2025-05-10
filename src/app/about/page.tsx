@@ -4,11 +4,10 @@ export default function About() {
     <div className="max-w-3xl mx-auto px-4 py-8"> {/* Optional container centering */}
       {/* Introduction Section (Top Card) */}
       <div className="bg-white hover:bg-sky-200 shadow-xl transition duration-300 hover:shadow-sky-200/50 dark:bg-gray-800 dark:shadow-white rounded-xl p-6 mb-8">
-        <p className="text-lg leading-7 text-blue-950 dark:text-gray-100">
+        <p className="text-lg leading-7 text-blue-950 dark:text-gray-100 dark:hover:text-sky-950 transition duration-300 mb-1">
           Webエンジニアの**KYU**と申します。Web開発を通じて使いやすく、
           価値のあるサービスを作ることにやりがいを感じており、常に学び続ける姿勢を大切にしています。
-        </p>
-        <p className="text-lg leading-7 text-blue-950 dark:text-gray-100 mt-4">
+        <br/><br/>
           C#、Java、ASP.NET、Oracle DB、SQL Server などを用いた業務システムの開発経験があり、
           現在は React や Next.js などの最新技術にも積極的に取り組んでいます。
         </p>
@@ -16,12 +15,12 @@ export default function About() {
 
       {/* Qualifications & Skills Section (Bottom Card) */}
       <div className="bg-white hover:bg-pink-200 shadow-xl hover:shadow-pink-200/50 transition duration-300 dark:bg-gray-800 dark:shadow-white rounded-xl p-3 mb-8">
-        <p className="text-lg leading-7 text-red-950 dark:text-gray-100 mb-1">
+        <p className="text-lg leading-7 text-red-950 dark:text-gray-100 dark:hover:text-pink-950 transition duration-300 mb-1">
           <strong>保有資格:</strong> 日本語能力試験N1、(韓国)情報処理技師資格
         </p>
       </div>
       <div className ="bg-white hover:bg-emerald-200 shadow-xl hover:shadow-emerald-200/50 transition duration-300 dark:bg-gray-800 dark:shadow-white rounded-xl p-3">
-        <p className="text-lg font-bold text-yellow-950 dark:text-gray-100 mb-2">
+        <p className="text-lg font-bold text-yellow-950 dark:text-gray-100 dark:hover:text-emerald-950 transition duration-300 mb-2">
           使用スキル:
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
