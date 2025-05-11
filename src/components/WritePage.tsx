@@ -104,7 +104,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full p-2 border rounded bg-white/80"
+          className="w-full p-2 border rounded bg-white/80 dark:text-gray-700"
           placeholder="Enter the title"
         />
       </div>
@@ -114,7 +114,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
         <textarea
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
-          className="w-full p-2 border rounded bg-white/80"
+          className="w-full p-2 border rounded bg-white/80 dark:text-gray-700"
           placeholder="Write a short summary"
         />
       </div>
@@ -124,7 +124,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
         <textarea
           value={tags}
           onChange={(e) => setTags(e.target.value)}
-          className="w-full p-2 border rounded bg-white/80"
+          className="w-full p-2 border rounded bg-white/80 dark:text-gray-700"
           placeholder="e.g. react, nextjs, typescript"
         />
       </div>
@@ -135,7 +135,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full p-2 border rounded bg-white/80"
+          className="w-full p-2 border rounded bg-white/80 dark:text-gray-700"
           placeholder="Enter category"
         />
       </div>
@@ -169,7 +169,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
               alert("Image upload failed 😢");
             }
           }}
-          className="flex-1 border-2 border-dashed border-gray-300 rounded p-6 text-center text-sm text-gray-500 hover:border-blue-400"
+          className="flex-1 border-2 border-dashed border-gray-300 rounded p-6 text-center text-sm text-gray-700 hover:border-blue-400"
         >
           Drag and drop an image here
         </div>
@@ -218,7 +218,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
           ref={textareaRef}
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="w-full h-60 p-2 border rounded bg-white/80"
+          className="w-full h-60 p-2 border rounded bg-white/80 dark:text-gray-700"
           placeholder="Write your post in markdown..."
         />
       </div>
@@ -229,7 +229,7 @@ export default function WritePage({ initialData, isEditMode = false }: WritePage
       <button
         onClick={handlePublish}
         disabled={isPublishing}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:opacity-50"
+        className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-pink-600 disabled:opacity-50"
       >
         {isPublishing 
           ? isEditMode 
