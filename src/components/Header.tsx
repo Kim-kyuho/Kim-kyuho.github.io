@@ -62,25 +62,25 @@ export default function Header() {
           <div>
             <Link
               href="/about"
-              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/about" ? "text-sky-500" : ""}`}
+              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/about" ? "!text-sky-500" : ""}`}
             >
               About
             </Link>
             <Link
               href="/projects"
-              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/projects" ? "text-sky-500" : ""}`}
+              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/projects" ? "!text-sky-500" : ""}`}
             >
               Projects
             </Link>
             <Link
               href="/blog"
-              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/blog" ? "text-sky-500" : ""}`}
+              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/blog" ? "!text-sky-500" : ""}`}
             >
               Blog
             </Link>
             <Link
               href="/contact"
-              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/contact" ? "text-sky-500" : ""}`}
+              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/contact" ? "!text-sky-500" : ""}`}
             >
               Contact
             </Link>
