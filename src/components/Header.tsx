@@ -32,25 +32,25 @@ export default function Header() {
         <div className="hidden sm:flex items-center gap-6 text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">
           <Link
             href="/about"
-            className={`hover:text-sky-500 active:scale-95 transform transition text-lg sm:text-xl font-bold ${pathname === "/about" ? "text-sky-500" : ""}`}
+            className={`hover:text-sky-500 active:scale-95 transform transition text-lg sm:text-xl font-bold ${pathname.startsWith("/about") ? "text-pink-500" : ""}`}
           >
             About
           </Link>
           <Link
             href="/projects"
-            className={`hover:text-sky-500 active:scale-95 transform transition text-lg sm:text-xl font-bold ${pathname === "/projects" ? "text-sky-500" : ""}`}
+            className={`hover:text-sky-500 active:scale-95 transform transition text-lg sm:text-xl font-bold ${pathname.startsWith("/projects") ? "text-pink-500" : ""}`}
           >
             Projects
           </Link>
           <Link
             href="/blog"
-            className={`hover:text-sky-500 active:scale-95 transform transition text-lg sm:text-xl font-bold ${pathname === "/blog" ? "text-sky-500" : ""}`}
+            className={`hover:text-sky-500 active:scale-95 transform transition text-lg sm:text-xl font-bold ${pathname.startsWith("/blog") ? "text-pink-500" : ""}`}
           >
             Blog
           </Link>
           <Link
             href="/contact"
-            className={`hover:text-sky-500 active:scale-95 transform transition text-lg sm:text-xl font-bold ${pathname === "/contact" ? "text-sky-500" : ""}`}
+            className={`hover:text-sky-500 active:scale-95 transform transition text-lg sm:text-xl font-bold ${pathname.startsWith("/contact") ? "text-pink-500" : ""}`}
           >
             Contact
           </Link>
@@ -62,25 +62,25 @@ export default function Header() {
           <div>
             <Link
               href="/about"
-              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/about" ? "!text-pink-500" : ""}`}
+              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname.startsWith("/about") ? "text-pink-500" : ""}`}
             >
               About
             </Link>
             <Link
               href="/projects"
-              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/projects" ? "!text-pink-500" : ""}`}
+              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname.startsWith("/projects") ? "text-pink-500" : ""}`}
             >
               Projects
             </Link>
             <Link
               href="/blog"
-              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/blog" ? "!text-pink-500" : ""}`}
+              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname.startsWith("/blog") ? "text-pink-500" : ""}`}
             >
               Blog
             </Link>
             <Link
               href="/contact"
-              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname === "/contact" ? "!text-pink-500" : ""}`}
+              className={`py-2 hover:text-sky-500 active:scale-95 transform transition block text-lg font-bold sm:text-xl ${pathname.startsWith("/contact") ? "text-pink-500" : ""}`}
             >
               Contact
             </Link>
