@@ -96,7 +96,7 @@ export default function Search() {
             />
             <button
               onClick={() => setQuery(inputValue)}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black active:scale-95 transition-transform"
               aria-label="Search"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -115,7 +115,7 @@ export default function Search() {
                   <button
                     type="button"
                     onClick={() => setShowCategories(!showCategories)}
-                    className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-green-900 shadow-sm ring-1 ring-green-300 hover:bg-green-50"
+                    className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-green-900 shadow-sm ring-1 ring-green-300 hover:bg-green-50 active:scale-95 transition-transform"
                   >
                     {selectedCategory || "Category"}
                     <svg className="-mr-1 w-4 h-4 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -126,12 +126,12 @@ export default function Search() {
                 {showCategories && (
                   <div className="absolute z-10 mt-1 w-44 rounded-md bg-white ring-1 ring-gray-300 focus:outline-none">
                     <div className="py-1">
-                      <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50">All</button>
+                      <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50 active:scale-95 transition-transform">All</button>
                       {uniqueCategories.map((cat) => (
                         <button
                           key={cat}
                           onClick={() => { setSelectedCategory(cat); setShowCategories(false); }}
-                          className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50"
+                          className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50 active:scale-95 transition-transform"
                         >
                           {cat}
                         </button>
@@ -150,7 +150,7 @@ export default function Search() {
                   <button
                     type="button"
                     onClick={() => setShowTags(!showTags)}
-                    className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-pink-300 hover:bg-pink-50"
+                    className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-pink-300 hover:bg-pink-50 active:scale-95 transition-transform"
                   >
                     {selectedTag || "Tag"}
                     <svg className="-mr-1 w-4 h-4 text-pink-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -161,12 +161,12 @@ export default function Search() {
                 {showTags && (
                   <div className="absolute z-10 mt-1 w-44 rounded-md bg-white ring-1 ring-gray-300 focus:outline-none">
                     <div className="py-1">
-                      <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50">All</button>
+                      <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50 active:scale-95 transition-transform">All</button>
                       {uniqueTags.map((tag) => (
                         <button
                           key={tag}
                           onClick={() => { setSelectedTag(tag); setShowTags(false); }}
-                          className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50"
+                          className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50 active:scale-95 transition-transform"
                         >
                           {tag}
                         </button>
@@ -215,7 +215,7 @@ export default function Search() {
               </Link>
               {session?.user?.isAdmin && (
                 <button
-                  className="ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600 mt-3"
+                  className="ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600 mt-3 active:scale-95 transition-transform"
                   onClick={async () => {
                     const confirmed = confirm(`Are you sure you want to delete "${post.title}"?`);
                     if (!confirmed) return;
@@ -256,7 +256,7 @@ export default function Search() {
           {currentPage > 1 && (
             <button
               onClick={() => setCurrentPage(currentPage - 1)}
-              className="w-8 h-8 flex items-center justify-center rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200 active:scale-95 transition-transform"
             >
               ←
             </button>
@@ -269,7 +269,7 @@ export default function Search() {
                 currentPage === i + 1
                   ? "bg-green-300 text-green-950 shadow-green-200 font-semibold"
                   : "bg-wtite text-black shadow-xl hover:bg-green-200"
-              }`}
+              } active:scale-95 transition-transform`}
             >
               {i + 1}
             </button>
@@ -277,7 +277,7 @@ export default function Search() {
           {currentPage < totalPages && (
             <button
               onClick={() => setCurrentPage(currentPage + 1)}
-              className="w-8 h-8 flex items-center justify-center rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-sm bg-pink-100 text-pink-800 hover:bg-pink-200 active:scale-95 transition-transform"
             >
               →
             </button>

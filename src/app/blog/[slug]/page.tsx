@@ -85,15 +85,15 @@ export default async function Page({
           {prevPost ? (
             <Link
               href={`/blog/${prevPost.slug}`}
-              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300 no-underline"
+              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300 no-underline active:scale-95 transition-transform"
             >
               ← prev
             </Link>
           ) : <div />}
-          {nextPost ? (
+          {nextPost ? (  
             <Link
               href={`/blog/${nextPost.slug}`}
-              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300 no-underline"
+              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300 no-underline active:scale-95 transition-transform"
             >
               next →
             </Link>
@@ -105,7 +105,7 @@ export default async function Page({
           <ul className="space-y-2">
             {recentPosts.map((post) => (
               <li key={post.slug}>
-                <Link href={`/blog/${post.slug}`} className="text-blue-500 hover:underline">
+                <Link href={`/blog/${post.slug}`} className="text-blue-500 hover:underline active:scale-95 transition-transform inline-block">
                   {post.title}
                 </Link>
               </li>
@@ -113,7 +113,7 @@ export default async function Page({
           </ul>
         </div>
         <div className="mt-6 text-center">
-            <Link href="/blog" className="inline-block px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded">
+            <Link href="/blog" className="inline-block px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded active:scale-95 transition-transform">
               View All Posts →
             </Link>
           </div>
