@@ -76,14 +76,20 @@ export default async function Page({
           </div>
         )}
 
-        <div className="flex justify-between font-bold drop-shadow">
+        <div className="flex justify-between font-bold drop-shadow mt-8">
           {prevPost ? (
-            <Link href={`/blog/${prevPost.slug}`} className="hover:underline">
+            <Link
+              href={`/blog/${prevPost.slug}`}
+              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300"
+            >
               ← prev
             </Link>
           ) : <div />}
           {nextPost ? (
-            <Link href={`/blog/${nextPost.slug}`} className="hover:underline">
+            <Link
+              href={`/blog/${nextPost.slug}`}
+              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300"
+            >
               next →
             </Link>
           ) : <div />}
