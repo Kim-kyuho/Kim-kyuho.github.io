@@ -49,7 +49,14 @@ export default async function HomePage() {
                   <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-300 dark:hover:text-gray-300 mt-1">{post.date} · {post.category}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-300 dark:hover:text-gray-300 mt-1">
+                    {post.date}
+                    {post.category && (
+                      <span className="ml-2 text-green-800 bg-green-100 px-2 py-1 rounded-full text-xs">
+                        {post.category}
+                      </span>
+                    )}
+                  </p>
                   <p className="text-sm text-gray-700 dark:text-gray-100 dark:hover:text-gray-100 mt-2">{post.summary}</p>
                   {post.tags && (
                     <div className="mt-2 flex flex-wrap gap-2">
