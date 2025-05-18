@@ -80,7 +80,7 @@ export default async function Page({
           {prevPost ? (
             <Link
               href={`/blog/${prevPost.slug}`}
-              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300"
+              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300 no-underline"
             >
               ← prev
             </Link>
@@ -88,7 +88,7 @@ export default async function Page({
           {nextPost ? (
             <Link
               href={`/blog/${nextPost.slug}`}
-              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300"
+              className="px-3 py-1 bg-sky-500 text-white font-bold rounded hover:bg-pink-500 transition duration-300 no-underline"
             >
               next →
             </Link>
