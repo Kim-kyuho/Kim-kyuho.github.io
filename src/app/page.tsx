@@ -45,8 +45,22 @@ export default async function HomePage() {
                 href={`/blog/${post.slug}`}
                 className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-amber-600 hover:shadow-amber-400"
               >
-                <h3 className="text-emerald-900 dark:text-white font-semibold hover:underline">{post.title}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">{post.date}</p>
+                <div>
+                  <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-300 dark:hover:text-gray-300 mt-1">{post.date} · {post.category}</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-100 dark:hover:text-gray-100 mt-2">{post.summary}</p>
+                  {post.tags && (
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="text-xs text-pink-700 bg-pink-100 px-2 py-1 rounded-full">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </Link>
             </li>
           ))}
