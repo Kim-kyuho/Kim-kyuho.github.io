@@ -45,19 +45,21 @@ export default async function Page({
     return (
       <article className="max-w-3xl mx-auto py-12 px-4 prose dark:prose-invert bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-2xl shadow-md">
         <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
-        <p className="text-sm text-muted-foreground mb-8">
+        <p className="text-sm text-muted-foreground mb-2">
           {data.date}
           {data.category && (
-            <span className="ml-2 text-xs text-green-800 bg-green-100 px-2 py-1 rounded-full">
-              {data.category}
+            <span className="ml-4 text-xs text-green-800 bg-green-100 px-2 py-1 rounded-full">
+              Category: {data.category}
             </span>
           )}
         </p>
         {data.tags && Array.isArray(data.tags) && (
-          <div className="mb-8 flex flex-wrap gap-2">
-            {data.tags.map((tag: string) => (
-              <span key={tag} className="text-xs text-pink-700 bg-pink-100 px-2 py-1 rounded-full">
+          <div className="mb-6 text-xs text-pink-700 bg-pink-100 px-2 py-1 rounded-full leading-none inline-block">
+            <strong>Tag:</strong>{" "}
+            {data.tags.map((tag: string, index: number) => (
+              <span key={tag}>
                 #{tag}
+                {index < data.tags.length - 1 && " "}
               </span>
             ))}
           </div>
