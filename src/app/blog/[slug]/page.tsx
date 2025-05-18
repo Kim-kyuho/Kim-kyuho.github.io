@@ -47,19 +47,22 @@ export default async function Page({
         <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
         <p className="text-sm text-muted-foreground mb-2">
           {data.date}
-          {data.category && (
-            <span className="ml-4 text-xs text-green-800 bg-green-100 px-2 py-1 rounded-full">
-              Category: {data.category}
+          <span className="ml-4 text-xs text-muted-foreground">
+            Category:
+            <span className="ml-1 text-green-800 bg-green-100 px-2 py-1 rounded-full">
+              {data.category}
             </span>
-          )}
+          </span>
         </p>
         {data.tags && Array.isArray(data.tags) && (
-          <div className="mb-6 text-xs text-pink-700 bg-pink-100 px-2 py-1 rounded-full leading-none inline-block">
+          <div className="mb-6 text-xs text-muted-foreground leading-none">
             <strong>Tag:</strong>{" "}
-            {data.tags.map((tag: string, index: number) => (
-              <span key={tag}>
+            {data.tags.map((tag: string) => (
+              <span
+                key={tag}
+                className="ml-1 text-pink-700 bg-pink-100 px-2 py-1 rounded-full"
+              >
                 #{tag}
-                {index < data.tags.length - 1 && " "}
               </span>
             ))}
           </div>
