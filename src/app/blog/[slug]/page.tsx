@@ -74,7 +74,7 @@ export default async function Page({
           <div className="flex justify-end mb-4">
             <Link
               href={`/blog/edit/${slug}`}
-              className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-sm"
+              className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-sm active:scale-95 transition-transform"
             >
               Edit
             </Link>
