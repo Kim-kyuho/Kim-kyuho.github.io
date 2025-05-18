@@ -195,6 +195,15 @@ export default function Search() {
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-300 dark:hover:text-gray-300 mt-1">{post.date} · {post.category}</p>
                   <p className="text-sm text-gray-700 dark:text-gray-100 dark:hover:text-gray-100 mt-2">{post.summary}</p>
+                  {post.tags && (
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="text-xs text-pink-700 bg-pink-100 px-2 py-1 rounded-full">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </Link>
               {session?.user?.isAdmin && (
