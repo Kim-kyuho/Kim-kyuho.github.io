@@ -46,7 +46,25 @@ export default async function Page({
       <article className="max-w-3xl mx-auto py-12 px-4 prose dark:prose-invert bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-2xl shadow-md">
         <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
         <p className="text-sm text-muted-foreground mb-8">{data.date}</p>
-        <MarkdownRenderer content={content} />  
+        {data.category && (
+          <div className="mb-2">
+            <span className="text-xs text-green-900 bg-green-100 px-2 py-1 rounded-full">
+              {data.category}
+            </span>
+          </div>
+        )}
+        
+        <MarkdownRenderer content={content} /> 
+
+        {data.tags && Array.isArray(data.tags) && (
+          <div className="mb-8 flex flex-wrap gap-2">
+            {data.tags.map((tag: string) => (
+              <span key={tag} className="text-xs text-pink-700 bg-pink-100 px-2 py-1 rounded-full">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         {session?.user?.isAdmin && (
           <div className="flex justify-end mb-4">
