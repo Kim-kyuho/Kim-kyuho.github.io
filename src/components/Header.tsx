@@ -18,7 +18,7 @@ export default function Header() {
         <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
           <Link
             href="/"
-            className="transition duration-300 hover:scale-110 hover:rotate-1 text-sky-500 hover:text-pink-500 font-mono text-3xl sm:text-4xl font-extrabold"
+            className="transition duration-300 active:scale-105 active:rotate-1 text-sky-500 hover:text-pink-500 font-mono text-3xl sm:text-4xl font-extrabold"
           >
             •kyu.log
           </Link>
