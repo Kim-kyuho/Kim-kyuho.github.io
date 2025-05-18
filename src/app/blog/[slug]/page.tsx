@@ -49,7 +49,7 @@ export default async function Page({
           {data.date}
           <span className="ml-4 text-xs text-muted-foreground">
             Category:
-            <span className="ml-1 text-green-800 bg-green-100 px-2 py-1 rounded-full">
+            <span className="ml-1 text-green-800 bg-green-100 px-1.5 py-0.5 rounded-full">
               {data.category}
             </span>
           </span>
@@ -60,7 +60,7 @@ export default async function Page({
             {data.tags.map((tag: string) => (
               <span
                 key={tag}
-                className="ml-1 text-pink-700 bg-pink-100 px-2 py-1 rounded-full"
+                className="ml-1 text-pink-700 bg-pink-100 px-1.5 py-0.5 rounded-full"
               >
                 #{tag}
               </span>
