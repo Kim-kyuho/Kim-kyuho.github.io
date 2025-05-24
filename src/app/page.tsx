@@ -12,7 +12,7 @@ export default async function HomePage() {
   return (
     <section className="max-w-3xl mx-auto px-4 py-8">
       {/* Introduction Section */}
-      <div className="bg-white shadow-xl dark:bg-gray-800 dark:shadow-white rounded-xl p-6 mb-8">
+      <div className="bg-white shadow-xl dark:bg-gray-800 rounded-xl p-6 mb-8">
         <h1 className="text-2xl font-bold mb-4 text-blue-950 dark:text-gray-100">
           こんにちは！ <span role="img" aria-label="waving hand">👋</span>
         </h1>
@@ -35,7 +35,7 @@ export default async function HomePage() {
       </div>
 
       {/* Latest Posts Section */}
-      <div className="bg-white shadow-xl dark:bg-gray-800 dark:shadow-white rounded-xl p-6">
+      <div className="bg-white shadow-xl dark:bg-gray-800 rounded-xl p-6">
         <h2 className="text-2xl font-semibold mb-4 text-shadow-indigo-900 dark:text-gray-100">📝 最新の投稿</h2>
         <ul className="space-y-3">
           {latestPosts.map((post) => (
@@ -43,7 +43,7 @@ export default async function HomePage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-amber-600 hover:shadow-amber-400 active:scale-95 transition-transform"
+                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-indigo-500 hover:shadow-indigo-300 active:scale-95 transition-transform"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">

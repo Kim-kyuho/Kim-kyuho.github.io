@@ -3,7 +3,7 @@ export default function About() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8"> {/* Optional container centering */}
       {/* Introduction Section (Top Card) */}
-      <div className="bg-white hover:bg-sky-200 shadow-xl transition duration-300 hover:shadow-sky-200/50 dark:bg-gray-800 dark:shadow-white rounded-xl p-6 mb-8">
+      <div className="bg-white hover:bg-sky-200 shadow-xl transition duration-300 hover:shadow-sky-200/50 dark:bg-gray-800 rounded-xl p-6 mb-8">
         <p className="text-lg leading-7 text-blue-950 dark:text-gray-100 dark:hover:text-sky-950 transition duration-300 mb-1">
           Webエンジニアの**KYU**と申します。Web開発を通じて使いやすく、
           価値のあるサービスを作ることにやりがいを感じており、常に学び続ける姿勢を大切にしています。
@@ -14,12 +14,12 @@ export default function About() {
       </div>
 
       {/* Qualifications & Skills Section (Bottom Card) */}
-      <div className="bg-white hover:bg-pink-200 shadow-xl hover:shadow-pink-200/50 transition duration-300 dark:bg-gray-800 dark:shadow-white rounded-xl p-3 mb-8">
+      <div className="bg-white hover:bg-pink-200 shadow-xl hover:shadow-pink-200/50 transition duration-300 dark:bg-gray-800 rounded-xl p-3 mb-8">
         <p className="text-lg leading-7 text-red-950 dark:text-gray-100 dark:hover:text-pink-950 transition duration-300 mb-1">
           <strong>保有資格:</strong> 日本語能力試験N1、(韓国)情報処理技師資格
         </p>
       </div>
-      <div className ="bg-white hover:bg-emerald-200 shadow-xl hover:shadow-emerald-200/50 transition duration-300 dark:bg-gray-800 dark:shadow-white rounded-xl p-3">
+      <div className ="bg-white hover:bg-emerald-200 shadow-xl hover:shadow-emerald-200/50 transition duration-300 dark:bg-gray-800 rounded-xl p-3">
         <p className="text-lg font-bold text-yellow-950 dark:text-gray-100 dark:hover:text-emerald-950 transition duration-300 mb-2">
           使用スキル:
         </p>
@@ -36,9 +36,7 @@ export default function About() {
           ].map((tech, idx) => (
             <div
               key={idx}
-              className={`flex items-center space-x-3 p-4 rounded-lg shadow-md bg-white/50 dark:bg-gray-900 transition-transform hover:scale-105 ${
-                idx % 2 === 0 ? "justify-start" : "justify-end"
-              }`}
+              className="flex items-center space-x-3 p-4 rounded-lg shadow-md bg-white/50 dark:bg-gray-900 transition-transform hover:scale-105 justify-start"
             >
               <img src={`/tech-icons/${tech.src}`} alt={tech.label} className="w-7 h-7" />
               <span className="text-gray-800 dark:text-gray-100 font-medium">{tech.label}</span>
