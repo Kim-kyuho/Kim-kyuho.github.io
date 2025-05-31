@@ -9,6 +9,10 @@ import Footer from "@/components/Footer";
 export const metadata = {
   title: "Kyuho's Portfolio Blog",
   description: "Developer portfolio and tech blog",
+  icons:{
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
