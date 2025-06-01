@@ -12,7 +12,7 @@ export default async function HomePage() {
   return (
     <section className="max-w-3xl mx-auto px-4 py-8">
       {/* Introduction Section */}
-      <div className="bg-white shadow-xl dark:bg-gray-800 rounded-xl p-6 mb-8">
+      <div className="bg-white shadow-xl dark:bg-gray-800 transition duration-300 hover:shadow-sky-200/50 dark:hover:shadow-none rounded-xl p-6 mb-8">
         <h1 className="text-2xl font-bold mb-4 text-blue-950 dark:text-gray-100">
           こんにちは！ <span role="img" aria-label="waving hand">👋</span>
         </h1>
