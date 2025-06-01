@@ -187,7 +187,7 @@ export default function Search() {
             <li key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="block bg-white dark:bg-white/5 p-4 rounded-xl border-white/70 dark:border-white/20 shadow-xs transition duration-300 ease-in-out hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
+                className="block bg-white dark:bg-white/5 p-4 rounded-xl border-white/70 dark:border-white/20 shadow-xs duration-300 ease-in-out hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">

@@ -28,7 +28,7 @@ export default async function HomePage() {
         </p>
         <Link
           href="/projects"
-          className="inline-block mt-4 px-6 py-2 bg-pink-200 text-pink-950 rounded hover:bg-pink-400 transition active:scale-95 transition-transform"
+          className="inline-block mt-4 px-6 py-2 bg-pink-200 text-pink-950 rounded hover:bg-pink-400 active:scale-95 transition-transform"
         >
           View Projects →
         </Link>
@@ -43,7 +43,7 @@ export default async function HomePage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
+                className="group block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow duration-300 ease-in-out hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 dark:text-white dark:hover:text-blue-950">
@@ -74,7 +74,7 @@ export default async function HomePage() {
         </ul>
         <Link
           href="/blog"
-          className="mt-6 inline-block px-5 py-2 bg-pink-200 text-pink-950 font-semibold rounded hover:bg-pink-300 transition active:scale-95 transition-transform"
+          className="mt-6 inline-block px-5 py-2 bg-pink-200 text-pink-950 font-semibold rounded hover:bg-pink-300 active:scale-95 transition-transform"
         >
           View All Posts →
         </Link>
