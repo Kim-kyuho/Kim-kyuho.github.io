@@ -10,23 +10,14 @@ export const metadata = {
   title: "Kyuho's Portfolio Blog",
   description: "Developer portfolio and tech blog",
   icons:{
-    icon: "/favicon.png?v=2",
-    apple: "/apple-touch-icon.png?v=2",
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
   }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="UTF-8" />
-        <meta name="theme-color" content="#ffffff" />
-        <link rel="shortcut icon" href="/favicon.png?v=3" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=3" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
-        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png?v=3" />
-      </head>
       <body className={`bg-background text-foreground font-extrabold antialiased`}>
         <Providers>
           <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
