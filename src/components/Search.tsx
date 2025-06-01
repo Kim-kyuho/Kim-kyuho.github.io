@@ -265,7 +265,7 @@ export default function Search() {
               className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm transition ${
                 currentPage === i + 1
                   ? "bg-green-300 text-green-950 shadow-green-200 font-semibold"
-                  : "bg-white text-black shadow-xl hover:bg-green-200"
+                  : "bg-white text-black shadow-xl dark:bg-gray-800 dark:text-white hover:bg-green-200"
               } active:scale-95 transition-transform`}
             >
               {i + 1}
