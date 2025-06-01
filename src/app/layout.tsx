@@ -11,7 +11,7 @@ export const metadata = {
   description: "Developer portfolio and tech blog",
   icons:{
     icon: "/favicon.png",
-    apple: "/favicon.png",
+    apple: "/apple-touch-icon.png",
   }
 };
 
