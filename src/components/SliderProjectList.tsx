@@ -5,6 +5,7 @@ import KeenSlider from 'keen-slider';
 import 'keen-slider/keen-slider.min.css';
 import ProjectCard from './ProjectCard';
 import type { KeenSliderInstance } from 'keen-slider';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 type Project = {
   title: string;
@@ -43,7 +44,7 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
           onClick={() => sliderInstance?.prev()}
           className="text-3xl text-gray-700 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-4 py-1 shadow-md hover:bg-white/50 transition-all"
         >
-          &lt;
+          <ChevronLeftIcon className="h-6 w-6 text-gray-700" />
         </button>
       </div>
       <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10">
@@ -51,7 +52,7 @@ export default function SliderProjectList({ projects }: { projects: Project[] })
           onClick={() => sliderInstance?.next()}
           className="text-3xl text-gray-700 bg-white/30 backdrop-blur-md border border-white/40 rounded-full px-4 py-1 shadow-md hover:bg-white/50 transition-all"
         >
-          &gt;
+          <ChevronRightIcon className="h-6 w-6 text-gray-700" />
         </button>
       </div>
       <div ref={sliderRef} className="keen-slider flex">
