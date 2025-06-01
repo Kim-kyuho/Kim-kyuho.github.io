@@ -43,13 +43,13 @@ export default async function HomePage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
+                className="group block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
               >
                 <div>
-                  <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">
+                  <h3 className="text-lg font-semibold text-blue-900 dark:text-white dark:hover:text-blue-950">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-300 dark:hover:text-gray-300 mt-1 inline-block active:scale-95 transition-transform">
+                  <p className="text-sm text-gray-500 dark:text-gray-300 dark:hover:text-gray-600 mt-1 inline-block active:scale-95 transition-transform">
                     {post.date}
                     {post.category && (
                       <span className="ml-2 text-green-800 bg-green-100 px-2 py-1 rounded-full text-xs">
@@ -57,7 +57,7 @@ export default async function HomePage() {
                       </span>
                     )}
                   </p>
-                  <p className="text-sm text-gray-700 dark:text-gray-100 dark:hover:text-gray-100 mt-2">{post.summary}</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-100 dark:hover:text-blue-950 mt-2">{post.summary}</p>
                   {post.tags && (
                     <div className="mt-2 flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
