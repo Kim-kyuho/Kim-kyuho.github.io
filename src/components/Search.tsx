@@ -22,7 +22,6 @@ export default function Search() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  // dropdown state for tag/category
   const [showTags, setShowTags] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
 
@@ -82,10 +81,9 @@ export default function Search() {
 
   return (
     <div className="flex flex-col gap-4 w-full max-w-6xl mx-auto px-4 sm:px-2 py-2">
-      <div className="w-full sm:w-full bg-white shadow p-4 rounded-xl dark:bg-gray-700 dark:shadow-white/10">
-        {/* Search, Category, Tag Filters */}
+      <div className="w-full bg-white shadow p-4 rounded-xl dark:bg-gray-700 dark:shadow-white/10">
+        {/* Search Input */}
         <div className="space-y-1 mb-6">
-          {/* Search Input */}
           <div className="relative mb-4">
             <input
               type="text"
@@ -105,24 +103,22 @@ export default function Search() {
             </button>
           </div>
 
-          {/* Category & Tag Filters - stacked on mobile, horizontal on larger screens */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-2 mb-auto">
+          {/* Filters */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2">
             {/* Category Filter */}
             <div ref={categoryRef}>
               <label className="font-semibold text-green-700 mr-2">Category:</label>
               <div className="relative inline-block text-left">
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => setShowCategories(!showCategories)}
-                    className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-green-900 shadow-sm ring-1 ring-green-300 hover:bg-green-50 active:scale-95 transition-transform"
-                  >
-                    {selectedCategory || "Category"}
-                    <svg className="-mr-1 w-4 h-4 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
-                    </svg>
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowCategories(!showCategories)}
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-green-900 shadow-sm ring-1 ring-green-300 hover:bg-green-50 active:scale-95 transition-transform"
+                >
+                  {selectedCategory || "Category"}
+                  <svg className="-mr-1 w-4 h-4 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
+                  </svg>
+                </button>
                 {showCategories && (
                   <div className="absolute z-10 mt-1 w-44 rounded-md bg-white ring-1 ring-gray-300 focus:outline-none">
                     <div className="py-1">
@@ -145,19 +141,17 @@ export default function Search() {
             {/* Tag Filter */}
             <div ref={tagRef}>
               <label className="font-semibold text-red-600 mr-2">Tag:</label>
-              <div className="relative inline-block text-left mb-auto">
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => setShowTags(!showTags)}
-                    className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-pink-300 hover:bg-pink-50 active:scale-95 transition-transform"
-                  >
-                    {selectedTag || "Tag"}
-                    <svg className="-mr-1 w-4 h-4 text-pink-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
-                    </svg>
-                  </button>
-                </div>
+              <div className="relative inline-block text-left">
+                <button
+                  type="button"
+                  onClick={() => setShowTags(!showTags)}
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-pink-300 hover:bg-pink-50 active:scale-95 transition-transform"
+                >
+                  {selectedTag || "Tag"}
+                  <svg className="-mr-1 w-4 h-4 text-pink-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
+                  </svg>
+                </button>
                 {showTags && (
                   <div className="absolute z-10 mt-1 w-44 rounded-md bg-white ring-1 ring-gray-300 focus:outline-none">
                     <div className="py-1">
@@ -180,20 +174,20 @@ export default function Search() {
         </div>
       </div>
 
-      <div className="w-full sm:w-full bg-white shadow p-4 rounded-xl dark:bg-gray-700 dark:shadow-white/10">
-        {/* Post Results */}
+      {/* Post list */}
+      <div className="w-full bg-white shadow p-4 rounded-xl dark:bg-gray-700 dark:shadow-white/10">
         <ul className="space-y-4">
           {paginated.map((post) => (
             <li key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="block bg-white dark:bg-white/5 p-4 rounded-xl border-white/70 dark:border-white/20 shadow-xs duration-300 ease-in-out hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
+                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow-xs hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-300 dark:hover:text-gray-300 mt-1">
+                  <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">
                     {post.date}
                     {post.category && (
                       <span className="ml-2 text-green-800 bg-green-100 px-2 py-1 rounded-full text-xs">
@@ -201,7 +195,9 @@ export default function Search() {
                       </span>
                     )}
                   </p>
-                  <p className="text-sm text-gray-700 dark:text-gray-100 dark:hover:text-gray-100 mt-2">{post.summary}</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-100 mt-2">
+                    {post.summary}
+                  </p>
                   {post.tags && (
                     <div className="mt-2 flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
@@ -213,6 +209,7 @@ export default function Search() {
                   )}
                 </div>
               </Link>
+
               {session?.user?.isAdmin && (
                 <button
                   className="ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600 mt-3 active:scale-95 transition-transform"
@@ -268,7 +265,7 @@ export default function Search() {
               className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm transition ${
                 currentPage === i + 1
                   ? "bg-green-300 text-green-950 shadow-green-200 font-semibold"
-                  : "bg-wtite text-black shadow-xl hover:bg-green-200"
+                  : "bg-white text-black shadow-xl hover:bg-green-200"
               } active:scale-95 transition-transform`}
             >
               {i + 1}
