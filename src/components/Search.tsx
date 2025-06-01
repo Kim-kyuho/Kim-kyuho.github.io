@@ -1,3 +1,4 @@
+// Search.tsx
 "use client";
 
 import { useEffect, useState, useRef } from "react";
@@ -40,22 +41,15 @@ export default function Search() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        categoryRef.current && !categoryRef.current.contains(event.target as Node)
-      ) {
+      if (categoryRef.current && !categoryRef.current.contains(event.target as Node)) {
         setShowCategories(false);
       }
-      if (
-        tagRef.current && !tagRef.current.contains(event.target as Node)
-      ) {
+      if (tagRef.current && !tagRef.current.contains(event.target as Node)) {
         setShowTags(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const uniqueTags = Array.from(new Set(posts.flatMap((p) => p.tags || [])));
@@ -67,10 +61,8 @@ export default function Search() {
     const matchesQuery =
       post.title.toLowerCase().includes(query.toLowerCase()) ||
       post.summary?.toLowerCase().includes(query.toLowerCase());
-
     const matchesTag = selectedTag ? post.tags?.includes(selectedTag) : true;
     const matchesCategory = selectedCategory ? post.category === selectedCategory : true;
-
     return matchesQuery && matchesTag && matchesCategory;
   });
 
@@ -97,9 +89,7 @@ export default function Search() {
               className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black active:scale-95 transition-transform"
               aria-label="Search"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18.5a7.5 7.5 0 006.15-3.85z" />
-              </svg>
+              🔍
             </button>
           </div>
 
@@ -112,22 +102,22 @@ export default function Search() {
                 <button
                   type="button"
                   onClick={() => setShowCategories(!showCategories)}
-                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-green-900 shadow-sm ring-1 ring-green-300 hover:bg-green-50 active:scale-95 transition-transform"
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-green-900 shadow-sm ring-1 ring-green-300 hover:bg-green-50 dark:hover:bg-white active:scale-95 transition-transform"
                 >
-                  {selectedCategory || "Category"}
-                  <svg className="-mr-1 w-4 h-4 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
-                  </svg>
+                  {selectedCategory || "Category"} ▼
                 </button>
                 {showCategories && (
                   <div className="absolute z-10 mt-1 w-44 rounded-md bg-white ring-1 ring-gray-300 focus:outline-none">
                     <div className="py-1">
-                      <button onClick={() => { setSelectedCategory(null); setShowCategories(false); }} className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50 active:scale-95 transition-transform">All</button>
+                      <button
+                        onClick={() => { setSelectedCategory(null); setShowCategories(false); }}
+                        className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50 dark:hover:bg-white active:scale-95 transition-transform"
+                      >All</button>
                       {uniqueCategories.map((cat) => (
                         <button
                           key={cat}
                           onClick={() => { setSelectedCategory(cat); setShowCategories(false); }}
-                          className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50 active:scale-95 transition-transform"
+                          className="block w-full px-4 py-2 text-left text-sm text-green-700 hover:bg-green-50 dark:hover:bg-white active:scale-95 transition-transform"
                         >
                           {cat}
                         </button>
@@ -145,22 +135,22 @@ export default function Search() {
                 <button
                   type="button"
                   onClick={() => setShowTags(!showTags)}
-                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-pink-300 hover:bg-pink-50 active:scale-95 transition-transform"
+                  className="inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-pink-300 hover:bg-pink-50 dark:hover:bg-white active:scale-95 transition-transform"
                 >
-                  {selectedTag || "Tag"}
-                  <svg className="-mr-1 w-4 h-4 text-pink-400" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 011.06 0L10 11.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.22 9.28a.75.75 0 010-1.06z" clipRule="evenodd" />
-                  </svg>
+                  {selectedTag || "Tag"} ▼
                 </button>
                 {showTags && (
                   <div className="absolute z-10 mt-1 w-44 rounded-md bg-white ring-1 ring-gray-300 focus:outline-none">
                     <div className="py-1">
-                      <button onClick={() => { setSelectedTag(null); setShowTags(false); }} className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50 active:scale-95 transition-transform">All</button>
+                      <button
+                        onClick={() => { setSelectedTag(null); setShowTags(false); }}
+                        className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50 dark:hover:bg-white active:scale-95 transition-transform"
+                      >All</button>
                       {uniqueTags.map((tag) => (
                         <button
                           key={tag}
                           onClick={() => { setSelectedTag(tag); setShowTags(false); }}
-                          className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50 active:scale-95 transition-transform"
+                          className="block w-full px-4 py-2 text-left text-sm text-red-700 hover:bg-pink-50 dark:hover:bg-white active:scale-95 transition-transform"
                         >
                           {tag}
                         </button>
@@ -181,12 +171,10 @@ export default function Search() {
             <li key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow-xs hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
+                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow-xs hover:bg-lime-300 dark:hover:bg-white/5 hover:shadow-lime-200 dark:hover:shadow-none active:scale-95 transition-transform"
               >
                 <div>
-                  <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">
-                    {post.title}
-                  </h3>
+                  <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">{post.title}</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">
                     {post.date}
                     {post.category && (
@@ -195,15 +183,11 @@ export default function Search() {
                       </span>
                     )}
                   </p>
-                  <p className="text-sm text-gray-800 dark:text-gray-100 mt-2">
-                    {post.summary}
-                  </p>
+                  <p className="text-sm text-gray-800 dark:text-gray-100 mt-2">{post.summary}</p>
                   {post.tags && (
                     <div className="mt-2 flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
-                        <span key={tag} className="text-xs text-pink-700 bg-pink-100 px-2 py-1 rounded-full">
-                          #{tag}
-                        </span>
+                        <span key={tag} className="text-xs text-pink-700 bg-pink-100 px-2 py-1 rounded-full">#{tag}</span>
                       ))}
                     </div>
                   )}
@@ -265,7 +249,7 @@ export default function Search() {
               className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm transition ${
                 currentPage === i + 1
                   ? "bg-green-300 text-green-950 shadow-green-200 font-semibold"
-                  : "bg-white text-black shadow-xl dark:bg-gray-800 dark:text-white hover:bg-green-200"
+                  : "bg-white text-black shadow-xl dark:bg-gray-800 dark:text-white hover:bg-green-200 dark:hover:bg-gray-800"
               } active:scale-95 transition-transform`}
             >
               {i + 1}

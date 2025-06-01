@@ -3,7 +3,7 @@ export default function About() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       {/* Introduction Section (Top Card) */}
-      <div className="group bg-white hover:bg-sky-200 shadow-xl transition duration-300 hover:shadow-sky-200/50 dark:bg-gray-800 rounded-xl p-6 mb-8">
+      <div className="group bg-white hover:bg-sky-200 dark:hover:bg-gray-800 shadow-xl transition duration-300 hover:shadow-sky-200/50 dark:hover:shadow-none dark:bg-gray-800 rounded-xl p-6 mb-8">
         <p className="text-lg leading-7 text-blue-950 dark:text-gray-100 transition duration-300 mb-1">
           Webエンジニアの<strong>KYU</strong>と申します。Web開発を通じて使いやすく、
           価値のあるサービスを作ることにやりがいを感じており、常に学び続ける姿勢を大切にしています。
@@ -14,13 +14,13 @@ export default function About() {
       </div>
 
       {/* Qualifications & Skills Section (Bottom Card) */}
-      <div className="group bg-white hover:bg-pink-200 shadow-xl hover:shadow-pink-200/50 transition duration-300 dark:bg-gray-800 rounded-xl p-3 mb-8">
+      <div className="group bg-white hover:bg-pink-200 dark:hover:bg-gray-800 shadow-xl hover:shadow-pink-200/50 dark:hover:shadow-none transition duration-300 dark:bg-gray-800 rounded-xl p-3 mb-8">
         <p className="text-lg leading-7 text-red-950 dark:text-gray-100 transition duration-300 mb-1">
           <strong>保有資格:</strong> 日本語能力試験N1、(韓国)情報処理技師資格
         </p>
       </div>
 
-      <div className="group bg-white hover:bg-emerald-200 shadow-xl hover:shadow-emerald-200/50 transition duration-300 dark:bg-gray-800 rounded-xl p-3">
+      <div className="group bg-white hover:bg-emerald-200 dark:hover:bg-gray-800 shadow-xl hover:shadow-emerald-200/50 dark:hover:shadow-none transition duration-300 dark:bg-gray-800 rounded-xl p-3">
         <p className="text-lg font-bold text-yellow-950 dark:text-gray-100 transition duration-300 mb-2">
           使用スキル:
         </p>
