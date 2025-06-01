@@ -81,7 +81,7 @@ export default function Search() {
 
   return (
     <div className="flex flex-col gap-4 w-full max-w-6xl mx-auto px-4 sm:px-2 py-2">
-      <div className="w-full bg-white shadow p-4 rounded-xl dark:bg-gray-700 dark:shadow-white/10">
+      <div className="w-full bg-white shadow p-4 rounded-xl dark:bg-gray-800 dark:shadow-white/10">
         {/* Search Input */}
         <div className="space-y-1 mb-6">
           <div className="relative mb-4">
@@ -175,7 +175,7 @@ export default function Search() {
       </div>
 
       {/* Post list */}
-      <div className="w-full bg-white shadow p-4 rounded-xl dark:bg-gray-700 dark:shadow-white/10">
+      <div className="w-full bg-white shadow p-4 rounded-xl dark:bg-gray-800 dark:shadow-white/10">
         <ul className="space-y-4">
           {paginated.map((post) => (
             <li key={post.slug}>
@@ -195,7 +195,7 @@ export default function Search() {
                       </span>
                     )}
                   </p>
-                  <p className="text-sm text-gray-700 dark:text-gray-100 mt-2">
+                  <p className="text-sm text-gray-800 dark:text-gray-100 mt-2">
                     {post.summary}
                   </p>
                   {post.tags && (
