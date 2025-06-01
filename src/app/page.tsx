@@ -43,7 +43,7 @@ export default async function HomePage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-lime-400 hover:shadow-lime-300 active:scale-95 transition-transform"
+                className="block bg-white dark:bg-white/5 p-4 rounded-xl border border-white/70 dark:border-white/20 shadow transition duration-300 ease-in-out hover:bg-lime-300 hover:shadow-lime-200 active:scale-95 transition-transform"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 dark:text-white hover:underline">
